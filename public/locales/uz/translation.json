@@ -1,0 +1,252 @@
+{
+  "loginData": {
+    "header": "Tizimga kirish",
+    "header2": "Parolni tiklash",
+    "description": "“Aqilli suv nasos stansiyasi” statistik ma'lumotlar bazasiga hush kelibsiz",
+    "usernameDetectMessage": "Iltimos Foydalanuvchi nomini kiriting",
+    "passwordDetectMessage": "Iltimos Parolni kiriting",
+    "phoneDetectMessage": "Iltimos Telefon raqam kiriting",
+    "rememberMessage": "Eslab qolish",
+    "loginButton": "Tizimga kirish",
+    "userPlaceholder": "Foydalanuvchi nomi",
+    "passPlaceholder": "Parol",
+    "phonePlaceholder": "Telefon raqam",
+    "codeSendButton": "Tasdiqlash",
+    "resetPassword": "Parolni unutdingiz",
+    "notFoundTitle": "Mavjud bo'lmagan sahifaga kelib qoldingiz",
+    "notFoundLink": "Bosh sahifaga qaytish"
+  },
+  "layoutData": {
+    "navLink1": "Bosh sahifa",
+    "navLink2": "Xarita",
+    "navLink3": "Ma'lumotlar",
+    "navLink4": "Stansiyalar",
+    "navLink5": "Foydalanuvchilar",
+    "navLink6": "Tizimdan chiqish",
+    "navLink7": "Elektr ma'lumotlari",
+    "navLink8": "Nasos ma'lumotlari",
+    "navLink9": "Viloyatlar",
+    "navLink10": "Tumanlar",
+    "navLink11": "Tashkilotlar",
+    "navLink12": "Stansiya biriktirish",
+    "navLink13": "Foydalanish darajasi",
+    "navLink14": "Xisobotlar",
+    "navLink15": "Bildirishnomalar",
+    "navLink16": "Ma'lumot qo'shish",
+    "notifTitle": "Xabarlar",
+    "rus": "Rus",
+    "eng": "Ingliz",
+    "oz": "O'zbek"
+  },
+  "stationsPageData": {
+    "createStationsButton": "Stansiya yaratish",
+    "stationsDataHeader": "Stansiya ma'lumotlari",
+    "stationsUpdateHeaderModal": "Stansiya Ma'lumotlarini yangilash",
+    "cancelButtonModal": "Bekor qilish",
+    "submitButtonModal": "Saqlash",
+    "createStationsModalHeader": "Yangi stansiya yaratish",
+    "stationsInputName": "Stansiya nomi",
+    "stationsInputRegion": "Viloyatni tanlang",
+    "stationsInputDestrict": "Tumanni tanlang",
+    "stationsInputOrganizations": "Tashkilotni tanlang",
+    "stationsInputEnergy": "Energiya kodini kiriting",
+    "stationsCheckboxEnergy": "Elektr energiyasi",
+    "stationsCheckboxIntegration": "Integratsiya",
+    "stationsAggregateNameInput": "Aggregat nomi",
+    "stationsAggregateCode": "Aggregat kodi",
+    "stationsEnergyNameInput": "Elekt nomi",
+    "stationsEnerdyCode": "Elektr Kodi",
+    "noDataTitle": "Ma'lumot topilmadi",
+    "validInputs": "Barcha bo'limlarni to'ldiring",
+    "table1Data": "Stansiya nomi",
+    "table2Data": "Viloyati",
+    "table3Data": "Tumani",
+    "table4Data": "Tashkilot",
+    "table5Data": "Mobil raqami",
+    "table6Data": "Energiya kod",
+    "table7Data": "Integratsiya",
+    "table8Data": "Status",
+    "table9Data": "Elektr qo'shish",
+    "table10Data": "Yangilash",
+    "table11Data": "O'chirish",
+    "table12Data": "Joylashuv",
+    "tableData1": "Mavjud",
+    "tableData2": "Mavjud emas",
+    "table13Data": "Agregart qo'shish",
+    "table14Data": "Ma'lumot olish",
+    "aggrigateStations": "Stansiya uchun agregat qo'shish",
+    "energyStations": "Stansiya uchun elektr qurilma qo'shish",
+    "stationsMoreInfo": {
+      "codeElectricalEnergy": "Elektr energiyasi kodi",
+      "devicePhoneNum": "Telefon raqami",
+      "district": "Tuman",
+      "electricalEnergy": "Elektr energiyasi ma'lumotlari",
+      "haveElectricalEnergy": "Elektr energiyasi mavjudligi",
+      "id": "Identifikator",
+      "isIntegration": "Integratsiya holati",
+      "location": "Joylashuv koordinatalari",
+      "organization": "Tashkilot",
+      "region": "Viloyat",
+      "code": "Kod",
+      "defectionStatus": "Nosozlik holati",
+      "workingStatus": "Ishlash holati",
+      "stationsAggrigats": "Stansiya agrigat ma'lumotlari",
+      "stationsElectrs": "Stansiyaning elektr ma'lumotlari"
+    }
+  },
+  "dashboardPageData": {
+    "cardData": [
+      {
+        "status": "Barcha stansiyalar",
+        "color": "#11A9FF",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Faol stansiyalar",
+        "color": "#3652AD",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Faolmas stansiyalar",
+        "color": "#F76500",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Barcha agrigatlar",
+        "color": "#00AB6A",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Faol agrigatlar",
+        "color": "#03845C",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Buzilgan agrigatlar",
+        "color": "#FF9445",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Nosoz agrigatlar",
+        "color": "#FB0015",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Barcha hisoblagichlar",
+        "color": "#03845C",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Faol hisoblagichlar",
+        "color": "#85A1D0",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Nosoz hisoblagichlar",
+        "color": "#C91B21",
+        "countValue": "Qurilmalar soni"
+      },
+      {
+        "status": "Buzilgan hisoblagichlar",
+        "color": "#E2C11E",
+        "countValue": "Qurilmalar soni"
+      }
+    ],
+    "filterCardData": [
+      {
+        "title": "Bugungi ma'lumotlar"
+      },
+      {
+        "title": "Kechagi ma'lumotlar"
+      },
+      {
+        "title": "Haftalik ma'lumotlar"
+      },
+      {
+        "title": "Oylik ma'lumotlar"
+      },
+      {
+        "title": "Bu yillik ma'lumotlar"
+      }
+    ],
+    "filterTitle": "Tanlangan stansiya so'ngi ma'lumotlari",
+    "tooltipName": "Suv hajmi",
+    "tooltipName2": "Sariflangan quvat",
+    "statisticsTitle1": "Stansiyalarning suv hajmi statistikasi",
+    "statisticsTitle2": "Stansiyalarning elektr sarfi statistikasi",
+    "emptyData": "Ma'lumot mavjud emas",
+    "filterTitle2": [
+      {
+        "title": "Bugungi ma'lumotlar statistikasi"
+      },
+      {
+        "title": "Kechagi ma'lumotlar statistikasi"
+      },
+      {
+        "title": "Haftalik ma'lumotlar statistikasi"
+      },
+      {
+        "title": "Oylik ma'lumotlar statistikasi"
+      },
+      {
+        "title": "Bu yillik ma'lumotlar statistikasi"
+      }
+    ],
+    "lastStationsData": {
+      "locations": "Viloyat",
+      "locations2": "Tashkilot",
+      "agrigateName": "Agrigat nomi",
+      "agrigateSpeed": "Oqim tezligi",
+      "aggrigateCode": "Agrigat kodi",
+      "agrigateStatus": "Ishlamoqda",
+      "agrigateStatus2": "Nosoz",
+      "aggrigateTitle": "Qurilma xolati",
+      "aggrigateSpeedConst": "m³/s",
+      "aggrigateTotalVolume": "Umumiy hajm",
+      "aggrigateTotalFlow": "Umumiy oqim",
+      "aggrigateTime": "Ma'lumot vaqti",
+      "electryName": "Elektr nomi",
+      "electryCode": "Elektr kodi",
+      "electryVolt": "Elektr kuchlanish",
+      "electryAmper": "Tok kuchi",
+      "energyValueView": "Kw*soat",
+      "energyActive": "Aktiv energiya",
+      "energyReactive": "Reaktiv energiya",
+      "powerActive": "Aktiv quvat",
+      "powerReactive": "Reaktiv quvat",
+      "energyActiveToday": "Bugungi aktiv energiya",
+      "energyActiveTotal": "Umumiy aktiv energiya",
+      "energyReactiveToday": "Bugungi reaktiv energiya",
+      "energyReactiveTotal": "Umumiy reaktiv energiya",
+      "stationsMoreInfoAgirgate": "Stansiya agrigatining so'ngi ma'lumotlari",
+      "stationsMoreInfoElectr": "Stansiya elektr qurilmasining so'ngi ma'lumotlari"
+    },
+    "titleStationsDetails1": "Barcha stansiya agrigatlarining holati",
+    "titleStationsDetails2": "Barcha stansiya elektr hisoblagichlarning holati"
+  },
+  "dataPagesInformation": {
+    "selectButtonNames": [
+      { "title": "Bugungi ma'lumotlar" },
+      { "title": "Kechagi ma'lumotlar" },
+      { "title": "Kundalik ma'lumotlar" },
+      { "title": "Haftalik ma'lumotlar" },
+      { "title": "10 kunlik ma'lumotlar" },
+      { "title": "Oylik ma'lumotlar" },
+      { "title": "Tanlangan sana" },
+      { "title": "Tanlangan sana oralig'i" }
+    ],
+    "dataPagesTitle": "Stansiya agrigatlarining ma'lumotlari",
+    "dataHeaderTitle": "Stansiyalarning so'ngi ma'lumotlari",
+    "moreButton": "Ko'proq",
+    "buttonDataType1": "Jadval shaklida",
+    "buttonDataType2": "Grafik shakilda",
+    "dataTableInformation": {
+      "dataVelocity": "Tezlik (m/s)",
+      "dataFlow": "Oqim tezligi (m/s)",
+      "dataVolume": "Hajm (m³)",
+      "dataDate": "Ma'lumot sanasi"
+    },
+    "active_indicator": "Faol",
+    "not_active_indicator": "Faolmas"
+  }
+}

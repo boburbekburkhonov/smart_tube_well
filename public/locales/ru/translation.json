@@ -1,0 +1,252 @@
+{
+  "loginData": {
+    "header": "Войти",
+    "header2": "Восстановление пароля",
+    "description": "Добро пожаловать в статистическую базу данных “Умная водонасосная станция”",
+    "usernameDetectMessage": "Пожалуйста, введите имя пользователя",
+    "passwordDetectMessage": "Пожалуйста, введите пароль",
+    "phoneDetectMessage": "Пожалуйста, введите номер телефона",
+    "rememberMessage": "Запомнить меня",
+    "loginButton": "Авторизоваться",
+    "userPlaceholder": "Имя пользователя",
+    "passPlaceholder": "Пароль",
+    "phonePlaceholder": "Номер телефона",
+    "codeSendButton": "Подтверждение",
+    "resetPassword": "Забыли пароль",
+    "notFoundTitle": "Вы попали на страницу, которая не существует.",
+    "notFoundLink": "Вернуться на главную страницу"
+  },
+  "layoutData": {
+    "navLink1": "Панель приборов",
+    "navLink2": "Карты",
+    "navLink3": "Данные",
+    "navLink4": "Станции",
+    "navLink5": "Пользователи",
+    "navLink6": "Выйти",
+    "navLink7": "Электрические данные",
+    "navLink8": "Данные насоса",
+    "navLink9": "Провинции",
+    "navLink10": "Районы",
+    "navLink11": "Организации",
+    "navLink12": "Привязка станции",
+    "navLink13": "Скорость использования",
+    "navLink14": "Отчеты",
+    "navLink15": "Уведомления",
+    "navLink16": "Добавить информацию",
+    "notifTitle": "Уведомления",
+    "rus": "Русский",
+    "eng": "Английский",
+    "oz": "Узбекский"
+  },
+  "stationsPageData": {
+    "createStationsButton": "Создать станцию",
+    "stationsDataHeader": "Информация о станции",
+    "stationsUpdateHeaderModal": "Обновление информации о станции",
+    "cancelButtonModal": "Отмена",
+    "submitButtonModal": "Сохранять",
+    "createStationsModalHeader": "Создать новую станцию",
+    "stationsInputName": "Название станции",
+    "stationsInputRegion": "Выберите регион",
+    "stationsInputDestrict": "Выбрать район",
+    "stationsInputOrganizations": "Выберите организацию",
+    "stationsInputEnergy": "Энергетический код",
+    "stationsCheckboxEnergy": "Электричество",
+    "stationsCheckboxIntegration": "Интеграция",
+    "stationsAggregateNameInput": "Название агрегата",
+    "stationsAggregateCode": "Агрегатный код",
+    "stationsEnergyNameInput": "Электрическое название",
+    "stationsEnerdyCode": "Электротехнический кодекс",
+    "noDataTitle": "Информация не найдена",
+    "validInputs": "Заполните все разделы.",
+    "table1Data": "Название станции",
+    "table2Data": "Область",
+    "table3Data": " Районы",
+    "table4Data": "Организация",
+    "table5Data": "Номер телефона",
+    "table6Data": "Энергетический код",
+    "table7Data": "Интеграция",
+    "table8Data": "Статус",
+    "table9Data": "Энергетический Добавить",
+    "table10Data": "Обновлять",
+    "table11Data": "Удалить",
+    "table12Data": "Joylashuv",
+    "tableData1": "Есть",
+    "tableData2": "Нет",
+    "table13Data": "Добавить агрегат",
+    "table14Data": "Получить информацию",
+    "aggrigateStations": "Добавить заполнитель для станции",
+    "energyStations": "Добавить электрическое устройство для станции",
+    "stationsMoreInfo": {
+      "codeElectricalEnergy": "Код электроэнергии",
+      "devicePhoneNum": "Номер телефона",
+      "district": "Район",
+      "electricalEnergy": "Информация о электроэнергии",
+      "haveElectricalEnergy": "Наличие электроэнергии",
+      "id": "Идентификатор",
+      "isIntegration": "Статус интеграции",
+      "location": "Координаты местоположения",
+      "organization": "Организация",
+      "region": "Регион",
+      "code": "Код",
+      "defectionStatus": "Статус неисправности",
+      "workingStatus": "Рабочий статус",
+      "stationsAggrigats": "Совокупная информация о станции",
+      "stationsElectrs": "Электрические данные станции"
+    }
+  },
+  "dashboardPageData": {
+    "cardData": [
+      {
+        "status": "Все станции",
+        "color": "#11A9FF",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Активные станции",
+        "color": "#3652AD",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Неактивные станции",
+        "color": "#F76500",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Все агрегаты",
+        "color": "#00AB6A",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Активные агрегаты",
+        "color": "#03845C",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Сломанные агрегаты",
+        "color": "#FF9445",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Неисправные агрегаты",
+        "color": "#FB0015",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Вся счетчики",
+        "color": "#03845C",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Активная счетчики",
+        "color": "#85A1D0",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Плохая счетчики",
+        "color": "#C91B21",
+        "countValue": "Количество устройств"
+      },
+      {
+        "status": "Разбитая счетчики",
+        "color": "#E2C11E",
+        "countValue": "Количество устройств"
+      }
+    ],
+    "filterCardData": [
+      {
+        "title": "Сегодняшние данные"
+      },
+      {
+        "title": "Вчерашние данные"
+      },
+      {
+        "title": "Еженедельные данные"
+      },
+      {
+        "title": "Ежемесячные данные"
+      },
+      {
+        "title": "Это годовые данные"
+      }
+    ],
+    "filterTitle": "Информация о выбранной станции",
+    "tooltipName": "Объем воды",
+    "tooltipName2": "Заряженная мощность",
+    "statisticsTitle1": "Статистика объёма воды станций",
+    "statisticsTitle2": "Статистика потребления электроэнергии станциями",
+    "emptyData": "Информация недоступна",
+    "filterTitle2": [
+      {
+        "title": "Статистика сегодняшних данных"
+      },
+      {
+        "title": "Статистика вчерашних данных"
+      },
+      {
+        "title": "Еженедельная статистика данных"
+      },
+      {
+        "title": "Ежемесячная статистика данных"
+      },
+      {
+        "title": "Это годовые данные"
+      }
+    ],
+    "lastStationsData": {
+      "locations": "Viloyat",
+      "locations2": "Tashkilot",
+      "agrigateName": "Совокупное имя",
+      "agrigateSpeed": "Скорость потока",
+      "aggrigateCode": "Совокупный код",
+      "agrigateStatus": "Это работает",
+      "agrigateStatus2": "Дефектный",
+      "aggrigateTitle": "Статус устройства",
+      "aggrigateSpeedConst": "m³/час",
+      "aggrigateTotalVolume": "Общий объем",
+      "aggrigateTotalFlow": "Общий поток",
+      "aggrigateTime": "Информационное время",
+      "electryName": "Электрическое название",
+      "electryCode": "Электрический код",
+      "electryVolt": "Электрическое напряжение",
+      "electryAmper": "Электрический ток",
+      "energyValueView": "кВт·ч",
+      "energyActive": "Активная энергия",
+      "energyReactive": "Реактивная энергия",
+      "powerActive": "Активная мощность",
+      "powerReactive": "Реактивная мощность",
+      "energyActiveToday": "Активная энергия сегодня",
+      "energyActiveTotal": "Общая активная энергия",
+      "energyReactiveToday": "Реактивная энергия сегодня",
+      "energyReactiveTotal": "Общая реактивная энергия",
+      "stationsMoreInfoAgirgate": "Последняя информация о станционном блоке",
+      "stationsMoreInfoElectr": "Самая актуальная информация по электрооборудованию станции"
+    },
+    "titleStationsDetails1": "Состояние всех узлов станции",
+    "titleStationsDetails2": "Состояние всех станционных счетчиков электроэнергии"
+  },
+  "dataPagesInformation": {
+    "selectButtonNames": [
+      { "title": "Данные за сегодня" },
+      { "title": "Данные за вчера" },
+      { "title": "Ежедневные данные" },
+      { "title": "Еженедельные данные" },
+      { "title": "Данные за 10 дней" },
+      { "title": "Ежемесячные данные" },
+      { "title": "Выбранная дата" },
+      { "title": "Выбранный диапазон дат" }
+    ],
+    "dataPagesTitle": "Данные станционных агрегатов",
+    "dataHeaderTitle": "Последняя информация о станциях",
+    "moreButton": "Более",
+    "buttonDataType1": "Табличный вид",
+    "buttonDataType2": "Графический вид",
+    "dataTableInformation": {
+      "dataVelocity": "Скорость (м/с)",
+      "dataFlow": "Расход воды (м³/с)",
+      "dataVolume": "Объем (м³)",
+      "dataDate": "Дата данных"
+    },
+    "active_indicator": "Активный",
+    "not_active_indicator": "Неактивный"
+  }
+}
