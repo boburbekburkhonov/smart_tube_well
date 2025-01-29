@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signInAction, verifySignInAction } from "../../redux/actions/authActions";
+import { resetPasswordUser, signInAction, verifySignInAction } from "../../redux/actions/authActions";
 import { useTranslation } from "react-i18next";
 const LoginVerifyUser = () => {
   const { colors } = useSelector((state) => state.theme);
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
-  const { signInMessage } = useSelector((state) => state.auth);
+  const { signInMessage, resetPasswordMessage } = useSelector((state) => state.auth);
   const [code, setCode] = useState(["", "", "", ""]);
   const [codeErrorMessage, setCodeErrorMessage] = useState("");
   const dispatch = useDispatch();
@@ -53,12 +53,18 @@ const LoginVerifyUser = () => {
   };
 
   const handleResendCode = () => {
-    const data = {
-      username: signInMessage.username,
-      password: signInMessage.password,
-    };
-
-    dispatch(signInAction(data, lang));
+    if(signInMessage?.password != undefined){
+      const dataSignIn = {
+        username: signInMessage.username,
+        password: signInMessage.password,
+      };
+      dispatch(signInAction(dataSignIn, lang));
+    }else {
+      const dataResetPassword = {
+        username: resetPasswordMessage.username,
+      };
+      dispatch(resetPasswordUser(dataResetPassword, lang));
+    }
   };
 
   return (

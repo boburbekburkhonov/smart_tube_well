@@ -1,7 +1,8 @@
 import { AUTH_TYPES } from "../actions/authActions";
 
 const initialState = {
-  signInMessage: []
+  signInMessage: [],
+  resetPasswordMessage: []
 };
 
 const authReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         signInMessage: action.payload,
+      };
+    case AUTH_TYPES.RESET_PASSWORD:
+      return {
+        ...state,
+        resetPasswordMessage: action.payload,
       };
     default:
       return state;

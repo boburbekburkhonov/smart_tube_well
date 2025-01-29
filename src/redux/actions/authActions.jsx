@@ -123,7 +123,6 @@ export const resetPasswordUser = (data, lang) => async (dispatch) => {
         payload: {
           statusCode: res.data.statusCode,
           username: data.username,
-          password: data.password,
         },
       });
     }
@@ -134,6 +133,60 @@ export const resetPasswordUser = (data, lang) => async (dispatch) => {
         success: res.data.message,
       },
     });
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.message,
+      },
+    });
+  } finally {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+  }
+};
+
+export const verifyResetPasswordUser = (data, lang) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+
+    const res = await postDataApi(`auth/verifyResetPasswordCode?lang=${lang}`, {
+      username: data.username,
+      code: data.code,
+    });
+    console.log(res);
+
+    if (res.data.data.tokens != null) {
+      localStorage.setItem('username', data.username)
+      // localStorage.setItem('password', data.password)
+      localStorage.setItem("roles", res.data.data.user.role.id);
+      localStorage.setItem("access_token", res.data.data.tokens.accessToken);
+      localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
+      localStorage.setItem('regionId', res.data.data.user.regionId)
+      localStorage.setItem('districtId', res.data.data.user.districtId)
+      localStorage.setItem('userId', res.data.data.user.id)
+
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          success: res.data.message,
+        },
+      });
+
+      window.location.href = "/user";
+    } else {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          error: res.data.message,
+        },
+      });
+    }
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,

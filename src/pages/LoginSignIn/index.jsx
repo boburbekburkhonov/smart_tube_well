@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AUTH_TYPES, signInAction } from "../../redux/actions/authActions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import './index.css'
 
 const LoginSignIn = () => {
   const { i18n, t } = useTranslation();
@@ -96,13 +97,13 @@ const LoginSignIn = () => {
                   >
                     Eslab qolish
                   </label>
-                  <a
+                  <div
                     onClick={() => navigate("/forget-password")}
                     href=""
                     className="text-muted float-end"
                   >
                     Forgot password?
-                  </a>
+                  </div>
                 </div>
 
                 <div className="mt-4">
