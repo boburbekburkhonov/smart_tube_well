@@ -3,13 +3,14 @@ import { GLOBALTYPES } from "./globalTypes";
 
 export const AUTH_TYPES = {
   SIGN_IN: "SIGN_IN",
+  RESET_PASSWORD: "RESET_PASSWORD",
   VERIFY_SIGN_IN: "VERIFY_SIGN_IN",
 };
 export const signInAction = (data, lang) => async (dispatch) => {
   try {
     dispatch({
       type: GLOBALTYPES.LOADING,
-      payload: false,
+      payload: true,
     });
 
     const res = await postDataApi(`auth/signIn?lang=${lang}`, {
@@ -24,16 +25,6 @@ export const signInAction = (data, lang) => async (dispatch) => {
           statusCode: res.data.statusCode,
           username: data.username,
           password: data.password,
-        },
-      });
-
-      localStorage.setItem("navigate", '/login-verify');
-    } else {
-      dispatch({
-        type: AUTH_TYPES.SIGN_IN,
-        payload: {
-          statusCode: res.data.statusCode,
-          message: res.data.message,
         },
       });
     }
@@ -99,6 +90,50 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
         },
       });
     }
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.message,
+      },
+    });
+  } finally {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+  }
+};
+
+export const resetPasswordUser = (data, lang) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: true,
+    });
+
+    const res = await postDataApi(`auth/resetPasswordRequestCode?lang=${lang}`, {
+      username: data.username,
+      selectedSendType:"phone"
+    });
+
+    if (res.data.statusCode == 200) {
+      dispatch({
+        type: AUTH_TYPES.RESET_PASSWORD,
+        payload: {
+          statusCode: res.data.statusCode,
+          username: data.username,
+          password: data.password,
+        },
+      });
+    }
+
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.message,
+      },
+    });
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,

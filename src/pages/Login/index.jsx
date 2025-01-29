@@ -10,6 +10,7 @@ import {
 import { Route, Routes } from "react-router-dom";
 import LoginVerifyUser from "../LoginVerifyUser";
 import LoginSignIn from "../LoginSignIn";
+import ForgetPassword from "../ForgetPassword";
 
 const Login = () => {
 
@@ -27,8 +28,9 @@ const Login = () => {
 
         <div className="right">
           <Routes>
-            <Route path="/login-verify" element={<LoginVerifyUser />} />
             <Route path="/" element={<LoginSignIn />} />
+            <Route path="/login-verify" element={<LoginVerifyUser />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
           </Routes>
         </div>
       </div>

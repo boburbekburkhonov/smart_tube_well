@@ -12,7 +12,6 @@ const LoginVerifyUser = () => {
   const [code, setCode] = useState(["", "", "", ""]);
   const [codeErrorMessage, setCodeErrorMessage] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleInputChange = (event, index) => {
     const value = event.target.value;
@@ -92,15 +91,6 @@ const LoginVerifyUser = () => {
         <div className="d-flex  justify-content-between alice">
           <span className="login_send_code_resend" onClick={handleResendCode}>
             Kodni qayta yuborish
-          </span>
-          <span
-            className="login_send_code_resend"
-            onClick={() => {
-              navigate("/");
-              localStorage.removeItem("navigate");
-            }}
-          >
-            Orqaga
           </span>
         </div>
       </div>
