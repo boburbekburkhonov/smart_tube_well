@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { resetPasswordUser, signInAction, verifySignInAction } from "../../redux/actions/authActions";
+import {
+  AUTH_TYPES,
+  resetPasswordUser,
+  signInAction,
+  verifyResetPasswordUser,
+  verifySignInAction,
+} from "../../redux/actions/authActions";
 import { useTranslation } from "react-i18next";
 const LoginVerifyUser = () => {
   const { colors } = useSelector((state) => state.theme);
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
-  const { signInMessage, resetPasswordMessage } = useSelector((state) => state.auth);
+  const { signInMessage, resetPasswordMessage, verifyResetPasswordMessage } =
+    useSelector((state) => state.auth);
   const [code, setCode] = useState(["", "", "", ""]);
   const [codeErrorMessage, setCodeErrorMessage] = useState("");
+  const [remainingTime, setRemainingTime] = useState(60); // 60 soniyadan boshlanadi
+  const [isActive, setIsActive] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleInputChange = (event, index) => {
     const value = event.target.value;
@@ -39,13 +49,21 @@ const LoginVerifyUser = () => {
 
   const handleVerifyCode = () => {
     const fullCode = code.join("");
-    const data = {
-      username: signInMessage.username,
-      code: fullCode,
-    };
 
     if (fullCode.length === 4) {
-      dispatch(verifySignInAction(data, lang));
+      if (signInMessage?.password != undefined) {
+        const data = {
+          username: signInMessage.username,
+          code: fullCode,
+        };
+        dispatch(verifySignInAction(data, lang));
+      } else {
+        const data = {
+          username: resetPasswordMessage.username,
+          code: fullCode,
+        };
+        dispatch(verifyResetPasswordUser(data, lang));
+      }
     } else {
       setCodeErrorMessage("Iltimos, barcha raqamlarni kiriting!");
       return false;
@@ -53,19 +71,50 @@ const LoginVerifyUser = () => {
   };
 
   const handleResendCode = () => {
-    if(signInMessage?.password != undefined){
+    if (signInMessage?.password != undefined) {
       const dataSignIn = {
         username: signInMessage.username,
         password: signInMessage.password,
       };
       dispatch(signInAction(dataSignIn, lang));
-    }else {
+    } else {
       const dataResetPassword = {
         username: resetPasswordMessage.username,
       };
       dispatch(resetPasswordUser(dataResetPassword, lang));
     }
   };
+
+  useEffect(() => {
+    let timer;
+    if (isActive && remainingTime > 0) {
+      timer = setInterval(() => {
+        setRemainingTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else if (remainingTime === 0) {
+      setIsActive(false);
+    }
+
+    return () => clearInterval(timer); // Tozalash
+  }, [isActive, remainingTime]);
+
+  const startTimer = () => {
+    setRemainingTime(60);
+    setIsActive(true); // Har safar qayta bosilganda 60 soniyadan boshlanadi
+  };
+
+  useEffect(() => {
+    if (verifyResetPasswordMessage.statusCode === 200) {
+      navigate(`/change-password`);
+      dispatch({
+        type: AUTH_TYPES.VERIFY_RESET_PASSWORD,
+        payload: {
+          ...verifyResetPasswordMessage,
+          statusCode: null,
+        },
+      });
+    }
+  }, [verifyResetPasswordMessage]);
 
   return (
     <div>
@@ -91,11 +140,22 @@ const LoginVerifyUser = () => {
         <div className="login_send_code_error">
           <h4 className="login_send_code_error_heading">{codeErrorMessage}</h4>
         </div>
+
+        <div className="timer-container mt-2">
+          <p className="time-display">{`Qolgan vaqt: ${remainingTime}`}</p>
+        </div>
+
         <button className="login_send_code_button" onClick={handleVerifyCode}>
           Tasdiqlash
         </button>
         <div className="d-flex  justify-content-between alice">
-          <span className="login_send_code_resend" onClick={handleResendCode}>
+          <span
+            className="login_send_code_resend"
+            onClick={() => {
+              handleResendCode();
+              startTimer();
+            }}
+          >
             Kodni qayta yuborish
           </span>
         </div>

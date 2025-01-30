@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
   const { i18n, t } = useTranslation();
-  const { resetPasswordMessage } = useSelector((state) => state.auth);
   const lang = i18n.language;
+  const { resetPasswordMessage } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,6 +39,7 @@ const ForgetPassword = () => {
   return (
     <>
       <div className="sign_in_title">
+      <h3 className="text-center"><i className="fa fa-lock fa-4x"></i></h3>
         <h2>Parolni tiklash uchun usernamemingizni kiriting</h2>
       </div>
       <div className="form">

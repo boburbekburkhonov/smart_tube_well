@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AUTH_TYPES, signInAction } from "../../redux/actions/authActions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import './index.css'
+import "./index.css";
 
 const LoginSignIn = () => {
   const { i18n, t } = useTranslation();
@@ -40,6 +40,16 @@ const LoginSignIn = () => {
     }
   }, [signInMessage]);
 
+  const clearSignInMessage = () => {
+    dispatch({
+      type: AUTH_TYPES.SIGN_IN,
+      payload: {
+        ...signInMessage,
+        statusCode: null,
+        password: undefined,
+      },
+    });
+  };
   return (
     <>
       {loading ? (
@@ -98,7 +108,10 @@ const LoginSignIn = () => {
                     Eslab qolish
                   </label>
                   <div
-                    onClick={() => navigate("/forget-password")}
+                    onClick={() => {
+                      navigate("/forget-password");
+                      clearSignInMessage();
+                    }}
                     href=""
                     className="text-muted float-end"
                   >

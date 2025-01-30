@@ -4,7 +4,9 @@ import { GLOBALTYPES } from "./globalTypes";
 export const AUTH_TYPES = {
   SIGN_IN: "SIGN_IN",
   RESET_PASSWORD: "RESET_PASSWORD",
+  CHANGE_PASSWORD: "CHANGE_PASSWORD",
   VERIFY_SIGN_IN: "VERIFY_SIGN_IN",
+  VERIFY_RESET_PASSWORD: "VERIFY_RESET_PASSWORD",
 };
 export const signInAction = (data, lang) => async (dispatch) => {
   try {
@@ -159,34 +161,65 @@ export const verifyResetPasswordUser = (data, lang) => async (dispatch) => {
       username: data.username,
       code: data.code,
     });
-    console.log(res);
 
-    if (res.data.data.tokens != null) {
-      localStorage.setItem('username', data.username)
-      // localStorage.setItem('password', data.password)
-      localStorage.setItem("roles", res.data.data.user.role.id);
-      localStorage.setItem("access_token", res.data.data.tokens.accessToken);
-      localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
-      localStorage.setItem('regionId', res.data.data.user.regionId)
-      localStorage.setItem('districtId', res.data.data.user.districtId)
-      localStorage.setItem('userId', res.data.data.user.id)
-
+    if (res.data.statusCode == 200) {
       dispatch({
-        type: GLOBALTYPES.ALERT,
+        type: AUTH_TYPES.VERIFY_RESET_PASSWORD,
         payload: {
-          success: res.data.message,
-        },
-      });
-
-      window.location.href = "/user";
-    } else {
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: {
-          error: res.data.message,
+          statusCode: res.data.statusCode,
+          username: data.username,
         },
       });
     }
+
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.message,
+      },
+    });
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.message,
+      },
+    });
+  } finally {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+  }
+};
+
+export const changePasswordUser = (data, lang) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+
+    const res = await postDataApi(`auth/resetPassword?lang=${lang}`, {
+      username: data.username,
+      password:data.password
+    });
+
+    if (res.data.statusCode == 200) {
+      dispatch({
+        type: AUTH_TYPES.CHANGE_PASSWORD,
+        payload: {
+          statusCode: res.data.statusCode,
+        },
+      });
+    }
+
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.message,
+      },
+    });
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,

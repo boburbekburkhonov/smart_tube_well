@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import logo from "../../assets/app_logo_white.png";
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
-import {
-  signInAction,
-  verifySignInAction,
-} from "../../redux/actions/authActions";
 import { Route, Routes } from "react-router-dom";
-import LoginVerifyUser from "../LoginVerifyUser";
-import LoginSignIn from "../LoginSignIn";
-import ForgetPassword from "../ForgetPassword";
+import LoginVerifyUser from "../../components/LoginVerifyUser";
+import LoginSignIn from "../../components/LoginSignIn";
+import ForgetPassword from "../../components/ForgetPassword";
+import ChangePassword from "../../components/ChangePassword";
 
 const Login = () => {
 
@@ -31,6 +26,7 @@ const Login = () => {
             <Route path="/" element={<LoginSignIn />} />
             <Route path="/login-verify" element={<LoginVerifyUser />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/change-password" element={<ChangePassword />} />
           </Routes>
         </div>
       </div>

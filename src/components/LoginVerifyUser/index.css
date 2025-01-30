@@ -65,3 +65,15 @@
   font-size: 20px;
   color: red
 }
+
+.timer-container {
+  border-radius: 10px;
+  max-width: 200px;
+}
+
+.time-display {
+  font-family: "Roboto";
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}

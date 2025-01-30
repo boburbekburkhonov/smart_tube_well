@@ -2,7 +2,9 @@ import { AUTH_TYPES } from "../actions/authActions";
 
 const initialState = {
   signInMessage: [],
-  resetPasswordMessage: []
+  resetPasswordMessage: [],
+  changeMessage: [],
+  verifyResetPasswordMessage: []
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +18,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         resetPasswordMessage: action.payload,
+      };
+    case AUTH_TYPES.CHANGE_PASSWORD:
+      return {
+        ...state,
+        changeMessage: action.payload,
+      };
+    case AUTH_TYPES.VERIFY_RESET_PASSWORD:
+      return {
+        ...state,
+        verifyResetPasswordMessage: action.payload,
       };
     default:
       return state;
