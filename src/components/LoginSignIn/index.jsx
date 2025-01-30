@@ -50,6 +50,7 @@ const LoginSignIn = () => {
       },
     });
   };
+
   return (
     <>
       {loading ? (
@@ -59,7 +60,7 @@ const LoginSignIn = () => {
       ) : (
         <>
           <div className="sign_in_title">
-            <h2>Smart Tube Well dasturiga xush kelibsiz</h2>
+            <h2 className="fs-4">{t("loginData.header")}</h2>
           </div>
           <div className="form">
             <form onSubmit={signIn}>
@@ -105,7 +106,7 @@ const LoginSignIn = () => {
                     className="form-check-label"
                     htmlFor="auth-remember-check"
                   >
-                    Eslab qolish
+                    {t("loginData.remember")}
                   </label>
                   <div
                     onClick={() => {
@@ -115,13 +116,13 @@ const LoginSignIn = () => {
                     href=""
                     className="text-muted float-end"
                   >
-                    Forgot password?
+                    {t("loginData.header2")}
                   </div>
                 </div>
 
                 <div className="mt-4">
                   <button type="submit" className="btn btn-success login-btn">
-                    Kirish
+                    {t("loginData.loginButton")}
                   </button>
                 </div>
               </div>

@@ -120,7 +120,7 @@ const LoginVerifyUser = () => {
     <div>
       <div className="login_send_code_container">
         <h2 className="login_send_code_title">
-          Telefoningizga yuborilgan kodni kiriting
+          {t("loginData.headerVerifyUser")}
         </h2>
         <div className="login_send_code_input_group">
           {code.map((value, index) => (
@@ -142,11 +142,13 @@ const LoginVerifyUser = () => {
         </div>
 
         <div className="timer-container mt-2">
-          <p className="time-display">{`Qolgan vaqt: ${remainingTime}`}</p>
+          <p className="time-display">{`${t(
+            "loginData.timeLimitVerifyUser"
+          )}: ${remainingTime}`}</p>
         </div>
 
         <button className="login_send_code_button" onClick={handleVerifyCode}>
-          Tasdiqlash
+          {t("loginData.timeLimitVerifyUserButton")}
         </button>
         <div className="d-flex  justify-content-between alice">
           <span
@@ -156,7 +158,7 @@ const LoginVerifyUser = () => {
               startTimer();
             }}
           >
-            Kodni qayta yuborish
+            {t("loginData.sendCodeMessageAgain")}
           </span>
         </div>
       </div>

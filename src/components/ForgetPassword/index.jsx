@@ -39,8 +39,10 @@ const ForgetPassword = () => {
   return (
     <>
       <div className="sign_in_title">
-      <h3 className="text-center"><i className="fa fa-lock fa-4x"></i></h3>
-        <h2>Parolni tiklash uchun usernamemingizni kiriting</h2>
+        <h3 className="text-center">
+          <i className="fa fa-lock fa-4x"></i>
+        </h3>
+        <h2 className="fs-4"> {t("loginData.headerResetPassword")}</h2>
       </div>
       <div className="form">
         <form onSubmit={resetPassword}>
@@ -61,7 +63,7 @@ const ForgetPassword = () => {
 
             <div className="mt-4">
               <button type="submit" className="btn btn-success login-btn">
-                Parolni tiklash
+              {t("loginData.headerResetPasswordButton")}
               </button>
             </div>
           </div>

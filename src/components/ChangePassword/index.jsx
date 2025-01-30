@@ -31,13 +31,13 @@ const ChangePassword = () => {
       };
       dispatch(changePasswordUser(data, lang));
     } else {
-      setErrorMessage("Iltimos, kiritayotgan 2 ta parolingiz bir xil bo'lsin");
+      setErrorMessage(t("loginData.errorConfirmationNewPassword"));
     }
   };
 
   useEffect(() => {
     if (changeMessage.statusCode == 200) {
-      setIsSuccess(false)
+      setIsSuccess(false);
       dispatch({
         type: AUTH_TYPES.CHANGE_PASSWORD,
         payload: {
@@ -57,7 +57,7 @@ const ChangePassword = () => {
               <i className="fa fa-lock fa-3x"></i>
             </h3>
 
-            <h2 className="fs-3 m-0">Parolni o'zgartirish</h2>
+            <h2 className="fs-3 m-0"> {t("loginData.newPasswordHeading")}</h2>
           </div>
           <div className="form" onSubmit={resetPassword}>
             <form>
@@ -67,14 +67,13 @@ const ChangePassword = () => {
                     htmlFor="new-password"
                     className="new-password-label mb-2"
                   >
-                    Yangi parol
+                    {t("loginData.newPassword")}
                   </label>
                   <input
                     name="newPassword"
                     type="password"
                     id="new-password"
                     className="form-control"
-                    placeholder="yangi parolni kiriting"
                     required
                   />
                 </div>
@@ -84,7 +83,7 @@ const ChangePassword = () => {
                     className="new-password-again-label mb-2"
                     htmlFor="new-password-again"
                   >
-                    Parolni tasdiqlang
+                    {t("loginData.confirmationNewPassword")}
                   </label>
                   <div className="position-relative auth-pass-inputgroup mb-3">
                     <input
@@ -92,7 +91,6 @@ const ChangePassword = () => {
                       type="password"
                       id="new-password-again"
                       className="form-control pe-5 password-input"
-                      placeholder="yangi parolni qaytadan kiriting"
                       required
                     />
                   </div>
@@ -106,7 +104,7 @@ const ChangePassword = () => {
 
                 <div className="mt-4">
                   <button type="submit" className="btn btn-success login-btn">
-                    O'zgartirish
+                    {t("loginData.changePasswordButton")}
                   </button>
                 </div>
               </div>
@@ -122,14 +120,14 @@ const ChangePassword = () => {
                 color: "#1A998E",
               }}
             />
-            <h2 className="mt-3 mb-3 fs-3">
-              Parolingiz muvaffaqqiyatli o'zgartirildi.
+            <h2 className="mt-3 mb-3 fs-4">
+              {t("loginData.passwordChangedSuccessfully")}
             </h2>
             <button
               onClick={() => navigate(`/`)}
               className="btn btn-success login-btn"
             >
-              Kirish
+              {t("loginData.loginButton")}
             </button>
           </div>
         </>
