@@ -8,6 +8,7 @@ const ForgetPassword = () => {
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
   const { resetPasswordMessage } = useSelector((state) => state.auth);
+    const { colors } = useSelector((state) => state.theme);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -62,7 +63,7 @@ const ForgetPassword = () => {
             </div>
 
             <div className="mt-4">
-              <button type="submit" className="btn btn-success login-btn">
+              <button type="submit" className="btn btn-success login-btn" style={{background: colors.layoutBackground}}>
               {t("loginData.headerResetPasswordButton")}
               </button>
             </div>

@@ -19,6 +19,7 @@ const ChangePassword = () => {
   const [isSuccess, setIsSuccess] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { colors } = useSelector((state) => state.theme);
 
   const resetPassword = (e) => {
     e.preventDefault();
@@ -103,7 +104,11 @@ const ChangePassword = () => {
                 </div>
 
                 <div className="mt-4">
-                  <button type="submit" className="btn btn-success login-btn">
+                  <button
+                    type="submit"
+                    className="btn btn-success login-btn"
+                    style={{ background: colors.layoutBackground }}
+                  >
                     {t("loginData.changePasswordButton")}
                   </button>
                 </div>
@@ -117,7 +122,7 @@ const ChangePassword = () => {
             <CheckCircleOutlined
               style={{
                 fontSize: "80px",
-                color: "#1A998E",
+                color: colors.layoutBackground,
               }}
             />
             <h2 className="mt-3 mb-3 fs-4">
@@ -126,6 +131,7 @@ const ChangePassword = () => {
             <button
               onClick={() => navigate(`/`)}
               className="btn btn-success login-btn"
+              style={{ background: colors.layoutBackground }}
             >
               {t("loginData.loginButton")}
             </button>

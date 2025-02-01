@@ -34,8 +34,10 @@ const initialState = {
 const themes = {
   light: {
     background: "#F3F7FF",
-    layoutBackground: "#FDFEFF",
-    text: "#31394D",
+    layoutBackground:  "#1A998E",
+    isActiveBackground: "#F3F7FF",
+    isActiveColor: "#37424e",
+    text: "#FFFFFF" ,
     buttonColor: "#3652AD",
     buttonText: "#F3F7FF",
     boxShadow: "rgba(34, 60, 80, 0.1)",
@@ -49,8 +51,10 @@ const themes = {
   },
   dark: {
     background: "#37424e",
-    layoutBackground: "#2e3540",
-    text: "#FFFFFF",
+    layoutBackground:  "#176B87",
+    isActiveBackground: "#F3F7FF" ,
+    isActiveColor: "#262A35",
+    text:"#FAFAFA",
     buttonColor: "#3652AD",
     buttonText: "#37424e",
     textWhite: "#fff",

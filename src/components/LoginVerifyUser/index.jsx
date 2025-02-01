@@ -18,7 +18,7 @@ const LoginVerifyUser = () => {
     useSelector((state) => state.auth);
   const [code, setCode] = useState(["", "", "", ""]);
   const [codeErrorMessage, setCodeErrorMessage] = useState("");
-  const [remainingTime, setRemainingTime] = useState(60); // 60 soniyadan boshlanadi
+  const [remainingTime, setRemainingTime] = useState(59); // 60 soniyadan boshlanadi
   const [isActive, setIsActive] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -95,12 +95,12 @@ const LoginVerifyUser = () => {
       setIsActive(false);
     }
 
-    return () => clearInterval(timer); // Tozalash
+    return () => clearInterval(timer);
   }, [isActive, remainingTime]);
 
   const startTimer = () => {
-    setRemainingTime(60);
-    setIsActive(true); // Har safar qayta bosilganda 60 soniyadan boshlanadi
+    setRemainingTime(59);
+    setIsActive(true);
   };
 
   useEffect(() => {
@@ -147,7 +147,7 @@ const LoginVerifyUser = () => {
           )}: ${remainingTime}`}</p>
         </div>
 
-        <button className="login_send_code_button" onClick={handleVerifyCode}>
+        <button className="login_send_code_button" onClick={handleVerifyCode} style={{background: colors.layoutBackground}}>
           {t("loginData.timeLimitVerifyUserButton")}
         </button>
         <div className="d-flex  justify-content-between alice">

@@ -6,11 +6,13 @@ import LoginVerifyUser from "../../components/LoginVerifyUser";
 import LoginSignIn from "../../components/LoginSignIn";
 import ForgetPassword from "../../components/ForgetPassword";
 import ChangePassword from "../../components/ChangePassword";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const { colors } = useSelector((state) => state.theme);
 
   return (
-    <section className="login">
+    <section className="login" style={{background: colors.layoutBackground}}>
       <div className="content">
         <div className="left">
           <img

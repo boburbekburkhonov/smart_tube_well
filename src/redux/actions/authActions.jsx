@@ -83,7 +83,7 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
         },
       });
 
-      window.location.href = "/user";
+      window.location.href = "/supervisor";
     } else {
       dispatch({
         type: GLOBALTYPES.ALERT,

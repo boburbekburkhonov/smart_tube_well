@@ -12,6 +12,7 @@ const LoginSignIn = () => {
   const dispatch = useDispatch();
   const { signInMessage } = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state.alert);
+  const { colors } = useSelector((state) => state.theme);
 
   const signIn = (e) => {
     e.preventDefault();
@@ -121,7 +122,7 @@ const LoginSignIn = () => {
                 </div>
 
                 <div className="mt-4">
-                  <button type="submit" className="btn btn-success login-btn">
+                  <button type="submit" className="btn btn-success login-btn" style={{background: colors.layoutBackground}}>
                     {t("loginData.loginButton")}
                   </button>
                 </div>
