@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import "./index.css";
 import { useTranslation } from "react-i18next";
 
@@ -50,4 +50,4 @@ const Language = () => {
   );
 };
 
-export default Language;
+export default memo(Language);

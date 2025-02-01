@@ -6,8 +6,6 @@ import DataProvider from './redux/store.jsx'
 
 createRoot(document.getElementById('root')).render(
   <DataProvider>
-    <StrictMode>
       <App />
-    </StrictMode>
   </DataProvider>
 )

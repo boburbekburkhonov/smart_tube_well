@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Icon, {
   BellOutlined,
   DesktopOutlined,
@@ -133,6 +133,11 @@ const Supervisor = () => {
     window.localStorage.removeItem("userId");
     window.location.reload();
   }
+  const memo = useCallback(() => {
+    return 'Hello'
+  })
+
+  console.log(memo());
 
   return (
     <Layout>
