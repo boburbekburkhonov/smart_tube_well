@@ -69,7 +69,7 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
     if (res.data.data.tokens != null) {
       localStorage.setItem('username', data.username)
       // localStorage.setItem('password', data.password)
-      localStorage.setItem("roles", res.data.data.user.role.id);
+      localStorage.setItem("role", res.data.data.user.role.code);
       localStorage.setItem("access_token", res.data.data.tokens.accessToken);
       localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
       localStorage.setItem('regionId', res.data.data.user.regionId)
@@ -83,7 +83,12 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
         },
       });
 
-      window.location.href = "/supervisor";
+      if(res.data.data.user.role.code == 'user'){
+        window.location.href = "/user";
+      }else if (res.data.data.user.role.code == 'supervisor'){
+        window.location.href = "/supervisor";
+      }
+
     } else {
       dispatch({
         type: GLOBALTYPES.ALERT,

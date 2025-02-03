@@ -26,18 +26,17 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/app_logo_white.png";
 import logout from "../../assets/logout.png";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import DashboardSupervisor from "../DashboardSupervisor";
-import InformationsSupervisor from "../InformationsSupervisor";
-import ApplicationsSupervisor from "../ApplicationsSupervisor";
-import StationsSupervisor from "../StationsSupervisor";
-import UsersSupervisor from "../UsersSupervisor";
-import NotificationsSupervisor from "../NotificationsSupervisor";
-import SettingsSupervisor from "../SettingsSupervisor";
 import Language from "../../components/Language";
 import { useTranslation } from "react-i18next";
 import { toggleTheme } from "../../redux/actions/themeType";
+import UserDashboard from "../UserDashboard";
+import UserInformations from "../UserInformations";
+import UserApplications from "../UserApplications";
+import UserStations from "../UserStations";
+import UserNotifications from "../UserNotifications";
+import UserSettings from "../UserSettings";
 
-const Supervisor = () => {
+const User = () => {
   const { i18n, t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
@@ -51,13 +50,12 @@ const Supervisor = () => {
   const accessToken = window.localStorage.getItem("access_token");
   const role = window.localStorage.getItem("role");
   const [notification, setNotification] = useState(0);
-
   const items = [
     {
       key: "home",
       icon: <HomeOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor">
+        <Link className="layout_links" to="/user">
           {t("layoutData.navLink1")}
         </Link>
       ),
@@ -66,7 +64,7 @@ const Supervisor = () => {
       key: "informations",
       icon: <ExceptionOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor/informations">
+        <Link className="layout_links" to="/user/informations">
           {t("layoutData.navLink2")}
         </Link>
       ),
@@ -75,7 +73,7 @@ const Supervisor = () => {
       key: "applications",
       icon: <HistoryOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor/applications">
+        <Link className="layout_links" to="/user/applications">
           {t("layoutData.navLink3")}
         </Link>
       ),
@@ -84,17 +82,8 @@ const Supervisor = () => {
       key: "stations",
       icon: <DesktopOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor/stations">
+        <Link className="layout_links" to="/user/stations">
           {t("layoutData.navLink4")}
-        </Link>
-      ),
-    },
-    {
-      key: "users",
-      icon: <UserOutlined />,
-      label: (
-        <Link className="layout_links" to="/supervisor/users">
-          {t("layoutData.navLink5")}
         </Link>
       ),
     },
@@ -102,7 +91,7 @@ const Supervisor = () => {
       key: "notifications",
       icon: <BellOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor/notifications">
+        <Link className="layout_links" to="/user/notifications">
           {t("layoutData.navLink6")}
         </Link>
       ),
@@ -111,18 +100,18 @@ const Supervisor = () => {
       key: "settings",
       icon: <SettingOutlined />,
       label: (
-        <Link className="layout_links" to="/supervisor/settings">
+        <Link className="layout_links" to="/user/settings">
           {t("layoutData.navLink7")}
         </Link>
       ),
     },
   ];
 
-  // useEffect(() => {
-  //   if (!accessToken || role != 'supervisor') {
-  //     navigate("/not-found");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!accessToken || role != "user") {
+      navigate("/not-found");
+    }
+  }, []);
 
   function logoutFunction() {
     window.localStorage.removeItem("username");
@@ -179,7 +168,7 @@ const Supervisor = () => {
             mode="inline"
             selectedKeys={[selectedKey]}
             onClick={(e) => setSelectedKey(e.key)}
-            items={items}
+            items={items} // ✅ Using items array
           />
         </ConfigProvider>
 
@@ -230,7 +219,7 @@ const Supervisor = () => {
           <div
             className="d-flex justify-content-center align-items-center header_badge_container ms-auto me-4 text-center notification icon"
             onClick={() => {
-              navigate("/supervisor/notifications");
+              navigate("/user/notifications");
               setSelectedKey("notifications");
             }}
             style={{ backgroundColor: colors.layoutBackground }}
@@ -246,6 +235,22 @@ const Supervisor = () => {
               0
             </div>
           </div>
+          {/* <div className="header_badge_container ms-auto pe-3">
+              <Badge>
+                <Button
+                  onClick={() => {
+                    navigate("/user/notifications");
+                    setSelectedKey("notifications");
+                  }}
+                  style={{
+                    background: colors.layoutBackground,
+                    color: colors.text,
+                  }}
+                  type="success"
+                  icon={<BellOutlined />}
+                />
+              </Badge>
+            </div> */}
 
           {/* <div className="switch-container ms-4">
               <input
@@ -275,16 +280,12 @@ const Supervisor = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<DashboardSupervisor />} />
-            <Route path="/informations" element={<InformationsSupervisor />} />
-            <Route path="/applications" element={<ApplicationsSupervisor />} />
-            <Route path="/stations" element={<StationsSupervisor />} />
-            <Route path="/users" element={<UsersSupervisor />} />
-            <Route
-              path="/notifications"
-              element={<NotificationsSupervisor />}
-            />
-            <Route path="/settings" element={<SettingsSupervisor />} />
+            <Route path="/" element={<UserDashboard />} />
+            <Route path="/informations" element={<UserInformations />} />
+            <Route path="/applications" element={<UserApplications />} />
+            <Route path="/stations" element={<UserStations />} />
+            <Route path="/notifications" element={<UserNotifications />} />
+            <Route path="/settings" element={<UserSettings />} />
           </Routes>
         </Content>
       </Layout>
@@ -292,4 +293,4 @@ const Supervisor = () => {
   );
 };
 
-export default Supervisor;
+export default User;
