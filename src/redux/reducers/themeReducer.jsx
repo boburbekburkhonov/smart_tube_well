@@ -2,7 +2,7 @@
 
 import { TOGGLE_THEME } from "../actions/themeType";
 
-const initialTheme = localStorage.getItem("theme") || "dark";
+const initialTheme = localStorage.getItem("theme") || "light";
 
 const initialState = {
   theme: initialTheme,

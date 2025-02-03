@@ -118,11 +118,11 @@ const Supervisor = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   if (!accessToken || role != 'supervisor') {
-  //     navigate("/not-found");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!accessToken || role != 'supervisor') {
+      navigate("/not-found");
+    }
+  }, []);
 
   function logoutFunction() {
     window.localStorage.removeItem("username");
