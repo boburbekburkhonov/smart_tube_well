@@ -55,7 +55,7 @@ const LoginSignIn = () => {
   return (
     <>
       {loading ? (
-        <div className="spinner-border text-success" role="status">
+        <div className={colors.layoutBackground == '#1A998E' ? 'spinner-border text-success' : 'spinner-border text-primary'} role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
@@ -126,7 +126,7 @@ const LoginSignIn = () => {
                       clearSignInMessage();
                     }}
                     href=""
-                    className="text-muted float-end"
+                    className="text-muted float-end mb-3"
                     style={{
                       fontFamily: "Roboto Flex"
                     }}

@@ -65,6 +65,7 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
       localStorage.setItem("username", data.username);
       // localStorage.setItem('password', data.password)
       localStorage.setItem("role", res.data.data.user.role.code);
+      localStorage.setItem("firstName", res.data.data.user.firstName);
       localStorage.setItem("access_token", res.data.data.tokens.accessToken);
       localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
       localStorage.setItem("regionId", res.data.data.user.regionId);
@@ -115,6 +116,7 @@ export const moreDevicesDeleteToSignInAction = (data, lang) => async (dispatch) 
       localStorage.setItem("username", data.username);
       // localStorage.setItem('password', data.password)
       localStorage.setItem("role", res.data.data.user.role.code);
+      localStorage.setItem("firstName", res.data.data.user.firstName);
       localStorage.setItem("access_token", res.data.data.tokens.accessToken);
       localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
       localStorage.setItem("regionId", res.data.data.user.regionId);

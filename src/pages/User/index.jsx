@@ -35,7 +35,8 @@ import UserApplications from "../UserApplications";
 import UserStations from "../UserStations";
 import UserNotifications from "../UserNotifications";
 import UserSettings from "../UserSettings";
-import imageNotification from '../../assets/notification.svg'
+import imageNotification from "../../assets/notification.svg";
+import imageProfile from "../../assets/profile.svg";
 
 const User = () => {
   const { i18n, t } = useTranslation();
@@ -50,11 +51,12 @@ const User = () => {
   const navigate = useNavigate();
   const accessToken = window.localStorage.getItem("access_token");
   const role = window.localStorage.getItem("role");
+  const firstName = window.localStorage.getItem("firstName");
   const [notification, setNotification] = useState(0);
   const items = [
     {
       key: "home",
-      icon: <HomeOutlined />,
+      icon: <HomeOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user">
           {t("layoutData.navLink1")}
@@ -63,7 +65,7 @@ const User = () => {
     },
     {
       key: "informations",
-      icon: <ExceptionOutlined />,
+      icon: <ExceptionOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user/informations">
           {t("layoutData.navLink2")}
@@ -72,7 +74,7 @@ const User = () => {
     },
     {
       key: "applications",
-      icon: <HistoryOutlined />,
+      icon: <HistoryOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user/applications">
           {t("layoutData.navLink3")}
@@ -81,7 +83,7 @@ const User = () => {
     },
     {
       key: "stations",
-      icon: <DesktopOutlined />,
+      icon: <DesktopOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user/stations">
           {t("layoutData.navLink4")}
@@ -90,7 +92,7 @@ const User = () => {
     },
     {
       key: "notifications",
-      icon: <BellOutlined />,
+      icon: <BellOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user/notifications">
           {t("layoutData.navLink6")}
@@ -99,7 +101,7 @@ const User = () => {
     },
     {
       key: "settings",
-      icon: <SettingOutlined />,
+      icon: <SettingOutlined style={{fontSize: '20px'}} />,
       label: (
         <Link className="layout_links" to="/user/settings">
           {t("layoutData.navLink7")}
@@ -108,14 +110,15 @@ const User = () => {
     },
   ];
 
-  useEffect(() => {
-    if (!accessToken || role != "user") {
-      navigate("/not-found");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!accessToken || role != "user") {
+  //     navigate("/not-found");
+  //   }
+  // }, []);
 
   function logoutFunction() {
     window.localStorage.removeItem("username");
+    window.localStorage.removeItem("firstName");
     window.localStorage.removeItem("roles");
     window.localStorage.removeItem("access_token");
     window.localStorage.removeItem("refresh_token");
@@ -165,11 +168,11 @@ const User = () => {
           }}
         >
           <Menu
-            style={{ background: colors.layoutBackground, paddingTop: "20px" }}
+            style={{ background: colors.layoutBackground, paddingTop: "20px", fontSize: '40px' }}
             mode="inline"
             selectedKeys={[selectedKey]}
             onClick={(e) => setSelectedKey(e.key)}
-            items={items} // ✅ Using items array
+            items={items}
           />
         </ConfigProvider>
 
@@ -218,13 +221,13 @@ const User = () => {
           />
 
           <div
-            className="d-flex justify-content-center align-items-center header_badge_container ms-auto me-4 text-center notification icon"
+            className="d-flex justify-content-center align-items-center header_badge_container ms-auto me-3 text-center notification icon"
             onClick={() => {
               navigate("/user/notifications");
               setSelectedKey("notifications");
             }}
           >
-            <img src={imageNotification} width={25} height={25}  />
+            <img src={imageNotification} width={25} height={25} />
             <div
               className={
                 notification == 0
@@ -234,6 +237,11 @@ const User = () => {
             >
               0
             </div>
+          </div>
+
+          <div className="d-flex justify-content-center align-items-center me-4">
+            <img src={imageProfile} alt="imageProfile" width={25} height={25} />
+            <p className="header_profile_desc m-0 ms-1">{firstName}</p>
           </div>
           {/* <div className="header_badge_container ms-auto pe-3">
               <Badge>

@@ -17,13 +17,13 @@
 }
 
 .delete_device_sign_in_heading {
-  font-family: "Roboto flex";
+  font-family: "Poppins", serif;
   max-width: 800px;
   width: 100%;
   text-align: center;
 }
 .delete_device_sign_in_table {
-  font-family: "Roboto flex";
+  font-family: "Poppins", serif;
   max-width: 800px;
   width: 100%;
 }
@@ -38,7 +38,7 @@
 
 .delete_device_sign_in_btn {
   display: flex;
-  font-family: "Roboto flex";
+  font-family: "Poppins", serif;
   color: white;
   border: none;
   padding: 10px 20px;
