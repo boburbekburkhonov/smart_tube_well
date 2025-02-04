@@ -3,12 +3,13 @@ import { AUTH_TYPES, resetPasswordUser } from "../../redux/actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 const ForgetPassword = () => {
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
   const { resetPasswordMessage } = useSelector((state) => state.auth);
-    const { colors } = useSelector((state) => state.theme);
+  const { colors } = useSelector((state) => state.theme);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,6 +37,7 @@ const ForgetPassword = () => {
       });
     }
   }, [resetPasswordMessage]);
+  console.log(resetPasswordMessage);
 
   return (
     <>
@@ -43,7 +45,13 @@ const ForgetPassword = () => {
         <h3 className="text-center">
           <i className="fa fa-lock fa-4x"></i>
         </h3>
-        <h2 className="fs-4"> {t("loginData.headerResetPassword")}</h2>
+        <h2
+          className="forget_password_heading"
+          style={{ color: colors.loginHeadingColor }}
+        >
+          {" "}
+          {t("loginData.headerResetPassword")}
+        </h2>
       </div>
       <div className="form">
         <form onSubmit={resetPassword}>
@@ -62,9 +70,23 @@ const ForgetPassword = () => {
               />
             </div>
 
+            {resetPasswordMessage.statusCode == 400 ? (
+              <div className="login_send_code_error">
+                <h4 className="sign_in_error_heading">
+                  {resetPasswordMessage.message}
+                </h4>
+              </div>
+            ) : (
+              ""
+            )}
+
             <div className="mt-4">
-              <button type="submit" className="btn btn-success login-btn" style={{background: colors.layoutBackground}}>
-              {t("loginData.headerResetPasswordButton")}
+              <button
+                type="submit"
+                className="btn btn-success login-btn"
+                style={{ background: colors.buttonColor }}
+              >
+                {t("loginData.headerResetPasswordButton")}
               </button>
             </div>
           </div>

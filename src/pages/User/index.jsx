@@ -35,6 +35,7 @@ import UserApplications from "../UserApplications";
 import UserStations from "../UserStations";
 import UserNotifications from "../UserNotifications";
 import UserSettings from "../UserSettings";
+import imageNotification from '../../assets/notification.svg'
 
 const User = () => {
   const { i18n, t } = useTranslation();
@@ -222,9 +223,8 @@ const User = () => {
               navigate("/user/notifications");
               setSelectedKey("notifications");
             }}
-            style={{ backgroundColor: colors.layoutBackground }}
           >
-            <div className="fa fa-envelope"></div>
+            <img src={imageNotification} width={25} height={25}  />
             <div
               className={
                 notification == 0

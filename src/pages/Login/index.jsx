@@ -12,7 +12,7 @@ const Login = () => {
   const { colors } = useSelector((state) => state.theme);
 
   return (
-    <section className="login" style={{background: colors.layoutBackground}}>
+    <section className="login" style={{background: colors.loginBackground}}>
       <div className="content">
         <div className="left">
           <img

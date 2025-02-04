@@ -14,8 +14,12 @@ const LoginVerifyUser = () => {
   const { colors } = useSelector((state) => state.theme);
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
-  const { signInMessage, resetPasswordMessage, verifyResetPasswordMessage } =
-    useSelector((state) => state.auth);
+  const {
+    signInMessage,
+    verifySignInMessage,
+    resetPasswordMessage,
+    verifyResetPasswordMessage,
+  } = useSelector((state) => state.auth);
   const [code, setCode] = useState(["", "", "", ""]);
   const [codeErrorMessage, setCodeErrorMessage] = useState("");
   const [remainingTime, setRemainingTime] = useState(59); // 60 soniyadan boshlanadi
@@ -57,16 +61,19 @@ const LoginVerifyUser = () => {
           code: fullCode,
         };
         dispatch(verifySignInAction(data, lang));
+        setIsActive(false);
       } else {
         const data = {
           username: resetPasswordMessage.username,
           code: fullCode,
         };
         dispatch(verifyResetPasswordUser(data, lang));
+        setIsActive(false);
       }
     } else {
+      verifySignInMessage.statusCode = null;
+      verifyResetPasswordMessage.statusCode = null;
       setCodeErrorMessage("Iltimos, barcha raqamlarni kiriting!");
-      return false;
     }
   };
 
@@ -116,10 +123,19 @@ const LoginVerifyUser = () => {
     }
   }, [verifyResetPasswordMessage]);
 
+  useEffect(() => {
+    if (Array.isArray(verifySignInMessage.devices)) {
+      navigate("/delete-devices");
+    }
+  }, [verifySignInMessage]);
+
   return (
     <div>
       <div className="login_send_code_container">
-        <h2 className="login_send_code_title">
+        <h2
+          className="login_send_code_title"
+          style={{ color: colors.loginHeadingColor }}
+        >
           {t("loginData.headerVerifyUser")}
         </h2>
         <div className="login_send_code_input_group">
@@ -138,16 +154,32 @@ const LoginVerifyUser = () => {
           ))}
         </div>
         <div className="login_send_code_error">
-          <h4 className="login_send_code_error_heading">{codeErrorMessage}</h4>
+          <h4 className="login_send_code_error_heading">
+            {verifySignInMessage.length != 0 &&
+            verifySignInMessage.statusCode == 400
+              ? verifySignInMessage.message
+              : verifyResetPasswordMessage.length != 0 &&
+                verifyResetPasswordMessage.statusCode == 400
+              ? verifyResetPasswordMessage.message
+              : codeErrorMessage}
+          </h4>
         </div>
 
-        <div className="timer-container mt-2">
+        <div
+          className={
+            isActive ? "timer-container mt-2" : "timer-container mt-2 d-none"
+          }
+        >
           <p className="time-display">{`${t(
             "loginData.timeLimitVerifyUser"
           )}: ${remainingTime}`}</p>
         </div>
 
-        <button className="login_send_code_button" onClick={handleVerifyCode} style={{background: colors.layoutBackground}}>
+        <button
+          className="login_send_code_button"
+          onClick={handleVerifyCode}
+          style={{ background: colors.buttonColor }}
+        >
           {t("loginData.timeLimitVerifyUserButton")}
         </button>
         <div className="d-flex  justify-content-between alice">

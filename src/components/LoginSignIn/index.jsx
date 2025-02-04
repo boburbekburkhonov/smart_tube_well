@@ -61,7 +61,7 @@ const LoginSignIn = () => {
       ) : (
         <>
           <div className="sign_in_title">
-            <h2 className="fs-4">{t("loginData.header")}</h2>
+            <h2 className="sign_in_title_heading" style={{color: colors.loginHeadingColor}}>{t("loginData.header")}</h2>
           </div>
           <div className="form">
             <form onSubmit={signIn}>
@@ -96,6 +96,14 @@ const LoginSignIn = () => {
                   </div>
                 </div>
 
+                {
+                  signInMessage.statusCode == 400 ?
+                  <div className="login_send_code_error">
+                    <h4 className="sign_in_error_heading">{signInMessage.message}</h4>
+                  </div>
+                : ""
+                }
+
                 <div className="form-check">
                   <input
                     className="form-check-input"
@@ -106,6 +114,9 @@ const LoginSignIn = () => {
                   <label
                     className="form-check-label"
                     htmlFor="auth-remember-check"
+                    style={{
+                      fontFamily: "Roboto Flex"
+                    }}
                   >
                     {t("loginData.remember")}
                   </label>
@@ -116,13 +127,16 @@ const LoginSignIn = () => {
                     }}
                     href=""
                     className="text-muted float-end"
+                    style={{
+                      fontFamily: "Roboto Flex"
+                    }}
                   >
                     {t("loginData.header2")}
                   </div>
                 </div>
 
                 <div className="mt-4">
-                  <button type="submit" className="btn btn-success login-btn" style={{background: colors.layoutBackground}}>
+                  <button type="submit" className="btn btn-success login-btn" style={{background: colors.buttonColor}}>
                     {t("loginData.loginButton")}
                   </button>
                 </div>

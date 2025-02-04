@@ -11,23 +11,10 @@ const initialState = {
     isActiveBackground: initialTheme === "light" ? "#F3F7FF" : "#F3F7FF",
     isActiveColor: initialTheme === "light" ? "#37424e" : "#262A35",
     layoutBackground: initialTheme === "light" ? "#1A998E" : "#176B87",
+    loginBackground: initialTheme === "light" ? "#F3F7FF" : "#F3F7FF",
+    buttonColor: initialTheme === "light" ? "#1A998E" : "#176B87",
     text: initialTheme === "light" ? "#FFFFFF" : "#FAFAFA",
-    buttonText: initialTheme === "light" ? "#F3F7FF" : "#37424e",
-    textWhite: "#fff",
-    textLight: "#748AA1",
-    buttonColor: "#3652AD",
-    statisticElement1: "#B558F6",
-    statisticElement2: "#FEC400",
-    statisticElement3: "#4072EE",
-    blurFilter:
-      initialTheme === "light"
-        ? "rgba(0, 0, 0, 0.1)"
-        : "rgba(256, 256, 256, 0.1)",
-    boxShadow:
-      initialTheme === "light"
-        ? "rgba(34, 60, 80, 0.1)"
-        : "rgba(255, 255, 255, 0.2)",
-    blurBgColor: "rgba(52, 152, 219, 0.2)"
+    loginHeadingColor: initialTheme === "light" ? "#1A998E" : "#176B87",
   },
 };
 
@@ -35,36 +22,22 @@ const themes = {
   light: {
     background: "#F3F7FF",
     layoutBackground:  "#1A998E",
+    loginBackground:  "#F3F7FF",
     isActiveBackground: "#F3F7FF",
     isActiveColor: "#37424e",
+    buttonColor: "#1A998E",
     text: "#FFFFFF" ,
-    buttonColor: "#3652AD",
-    buttonText: "#F3F7FF",
-    boxShadow: "rgba(34, 60, 80, 0.1)",
-    textWhite: "#fff",
-    textLight: "#748AA1",
-    blurFilter: "rgba(0, 0, 0, 0.1)",
-    statisticElement1: "#B558F6",
-    statisticElement2: "#FEC400",
-    statisticElement3: "#4072EE",
-    blurBgColor: "rgba(52, 152, 219, 0.2)"
+    loginHeadingColor: "#1A998E"
   },
   dark: {
     background: "#37424e",
     layoutBackground:  "#176B87",
+    loginBackground:  "#F3F7FF",
     isActiveBackground: "#F3F7FF" ,
     isActiveColor: "#262A35",
+    buttonColor: "#176B87",
     text:"#FAFAFA",
-    buttonColor: "#3652AD",
-    buttonText: "#37424e",
-    textWhite: "#fff",
-    textLight: "#748AA1",
-    statisticElement1: "#B558F6",
-    statisticElement2: "#FEC400",
-    statisticElement3: "#4072EE",
-    blurFilter: "rgba(256, 256, 256, 0.1)",
-    boxShadow: "rgba(255, 255, 255, 0.2)",
-    blurBgColor: "rgba(52, 152, 219, 0.2)"
+    loginHeadingColor: "#176B87"
   },
 };
 

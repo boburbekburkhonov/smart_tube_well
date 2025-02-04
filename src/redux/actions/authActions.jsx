@@ -31,17 +31,12 @@ export const signInAction = (data, lang) => async (dispatch) => {
       });
     }
 
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: res.data.message,
-      },
-    });
   } catch (err) {
     dispatch({
-      type: GLOBALTYPES.ALERT,
+      type: AUTH_TYPES.SIGN_IN,
       payload: {
-        error: err.response.data.message,
+        statusCode: 400,
+        message: err.response.data.message,
       },
     });
   } finally {
@@ -67,35 +62,70 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
     });
 
     if (res.data.data.tokens != null) {
-      localStorage.setItem('username', data.username)
+      localStorage.setItem("username", data.username);
       // localStorage.setItem('password', data.password)
       localStorage.setItem("role", res.data.data.user.role.code);
       localStorage.setItem("access_token", res.data.data.tokens.accessToken);
       localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
-      localStorage.setItem('regionId', res.data.data.user.regionId)
-      localStorage.setItem('districtId', res.data.data.user.districtId)
-      localStorage.setItem('userId', res.data.data.user.id)
+      localStorage.setItem("regionId", res.data.data.user.regionId);
+      localStorage.setItem("districtId", res.data.data.user.districtId);
+      localStorage.setItem("userId", res.data.data.user.id);
 
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: {
-          success: res.data.message,
-        },
-      });
-
-      if(res.data.data.user.role.code == 'user'){
+      if (res.data.data.user.role.code == "user") {
         window.location.href = "/user";
-      }else if (res.data.data.user.role.code == 'supervisor'){
+      } else if (res.data.data.user.role.code == "supervisor") {
         window.location.href = "/supervisor";
       }
-
     } else {
       dispatch({
-        type: GLOBALTYPES.ALERT,
+        type: AUTH_TYPES.VERIFY_SIGN_IN,
         payload: {
-          error: res.data.message,
+          statusCode: 400,
+          message: res.data.message,
+          devices: res.data.data.devices
         },
       });
+    }
+  } catch (err) {
+    dispatch({
+      type: AUTH_TYPES.VERIFY_SIGN_IN,
+      payload: {
+        statusCode: 400,
+        message: err.response.data.message,
+      },
+    });
+  } finally {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+  }
+};
+
+export const moreDevicesDeleteToSignInAction = (data, lang) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GLOBALTYPES.LOADING,
+      payload: false,
+    });
+
+    const res = await postDataApi(`auth/moreDevicesDeleteSignIn?lang=${lang}`,data);
+
+    if (res.data.data.tokens != null) {
+      localStorage.setItem("username", data.username);
+      // localStorage.setItem('password', data.password)
+      localStorage.setItem("role", res.data.data.user.role.code);
+      localStorage.setItem("access_token", res.data.data.tokens.accessToken);
+      localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
+      localStorage.setItem("regionId", res.data.data.user.regionId);
+      localStorage.setItem("districtId", res.data.data.user.districtId);
+      localStorage.setItem("userId", res.data.data.user.id);
+
+      if (res.data.data.user.role.code == "user") {
+        window.location.href = "/user";
+      } else if (res.data.data.user.role.code == "supervisor") {
+        window.location.href = "/supervisor";
+      }
     }
   } catch (err) {
     dispatch({
@@ -119,10 +149,13 @@ export const resetPasswordUser = (data, lang) => async (dispatch) => {
       payload: true,
     });
 
-    const res = await postDataApi(`auth/resetPasswordRequestCode?lang=${lang}`, {
-      username: data.username,
-      selectedSendType:"phone"
-    });
+    const res = await postDataApi(
+      `auth/resetPasswordRequestCode?lang=${lang}`,
+      {
+        username: data.username,
+        selectedSendType: "phone",
+      }
+    );
 
     if (res.data.statusCode == 200) {
       dispatch({
@@ -133,18 +166,12 @@ export const resetPasswordUser = (data, lang) => async (dispatch) => {
         },
       });
     }
-
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: res.data.message,
-      },
-    });
   } catch (err) {
     dispatch({
-      type: GLOBALTYPES.ALERT,
+      type: AUTH_TYPES.RESET_PASSWORD,
       payload: {
-        error: err.response.data.message,
+        statusCode: 400,
+        message: err.response.data.message,
       },
     });
   } finally {
@@ -177,17 +204,12 @@ export const verifyResetPasswordUser = (data, lang) => async (dispatch) => {
       });
     }
 
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: res.data.message,
-      },
-    });
   } catch (err) {
     dispatch({
-      type: GLOBALTYPES.ALERT,
+      type: AUTH_TYPES.VERIFY_RESET_PASSWORD,
       payload: {
-        error: err.response.data.message,
+        statusCode: 400,
+        message: err.response.data.message,
       },
     });
   } finally {
@@ -207,7 +229,7 @@ export const changePasswordUser = (data, lang) => async (dispatch) => {
 
     const res = await postDataApi(`auth/resetPassword?lang=${lang}`, {
       username: data.username,
-      password:data.password
+      password: data.password,
     });
 
     if (res.data.statusCode == 200) {
@@ -218,13 +240,6 @@ export const changePasswordUser = (data, lang) => async (dispatch) => {
         },
       });
     }
-
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: res.data.message,
-      },
-    });
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,

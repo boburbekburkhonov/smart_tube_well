@@ -107,7 +107,7 @@ const ChangePassword = () => {
                   <button
                     type="submit"
                     className="btn btn-success login-btn"
-                    style={{ background: colors.layoutBackground }}
+                    style={{ background: colors.buttonColor }}
                   >
                     {t("loginData.changePasswordButton")}
                   </button>
@@ -122,16 +122,16 @@ const ChangePassword = () => {
             <CheckCircleOutlined
               style={{
                 fontSize: "80px",
-                color: colors.layoutBackground,
+                color: colors.buttonColor,
               }}
             />
-            <h2 className="mt-3 mb-3 fs-4">
+            <h2 className="mt-3 mb-3 fs-4 checked_password_successfully_heading">
               {t("loginData.passwordChangedSuccessfully")}
             </h2>
             <button
               onClick={() => navigate(`/`)}
               className="btn btn-success login-btn"
-              style={{ background: colors.layoutBackground }}
+              style={{ background: colors.buttonColor }}
             >
               {t("loginData.loginButton")}
             </button>

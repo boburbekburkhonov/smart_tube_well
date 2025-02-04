@@ -1,3 +1,9 @@
 .login_send_code_error_change_password {
   max-width: 350px !important;
 }
+
+.checked_password_successfully_heading {
+  font-family: "Roboto Flex";
+  font-size: 24px !important;
+  font-weight: 500;
+}

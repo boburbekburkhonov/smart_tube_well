@@ -6,6 +6,7 @@ import "./index.css";
 import Supervisor from "./pages/Supervisor/index.jsx";
 import NotFoundPage from "./pages/NotFoundPage/index.jsx";
 import User from "./pages/User/index.jsx";
+import DeleteDevicesSignIn from "./components/DeleteDevicesSignIn/index.jsx";
 
 function App() {
 
@@ -13,10 +14,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact  path="/*" element={<Login />} />
+          <Route exact  path="/delete-devices" element={<DeleteDevicesSignIn />} />
+          <Route path="/not-found" element={<NotFoundPage />} />
           <Route path="/supervisor/*" element={<Supervisor />} />
           <Route path="/user/*" element={<User />} />
-          <Route path="/not-found" element={<NotFoundPage />} />
+          <Route exact  path="/*" element={<Login />} />
         </Routes>
         <Notif />
       </BrowserRouter>
