@@ -6,6 +6,7 @@ import "./index.css";
 import { useTranslation } from "react-i18next";
 import { postDataApi } from "../../utils";
 import { moreDevicesDeleteToSignInAction } from "../../redux/actions/authActions";
+import moment from 'moment'
 
 const DeleteDevicesSignIn = () => {
   const { signInMessage, verifySignInMessage } = useSelector(
@@ -84,7 +85,7 @@ const DeleteDevicesSignIn = () => {
                   <th scope="row">{i + 1}</th>
                   <td>{e.deviceName}</td>
                   <td>{e.ipAddress}</td>
-                  <td>{e.lastActiveAt}</td>
+                  <td>{moment(e.lastActiveAt).format('L')} {moment(e.lastActiveAt).format('LTS').split(' ')[0]}</td>
                   <td
                     className="delete_device_sign_in_table_delete_btn"
                     style={{ cursor: "pointer" }}

@@ -84,11 +84,17 @@ const LoginVerifyUser = () => {
         password: signInMessage.password,
       };
       dispatch(signInAction(dataSignIn, lang));
+      verifySignInMessage.statusCode = 100
+      setCodeErrorMessage('')
+      setCode(["", "", "", ""])
     } else {
       const dataResetPassword = {
         username: resetPasswordMessage.username,
       };
       dispatch(resetPasswordUser(dataResetPassword, lang));
+      verifyResetPasswordMessage.statusCode = 100
+      setCodeErrorMessage('')
+      setCode(["", "", "", ""])
     }
   };
 
