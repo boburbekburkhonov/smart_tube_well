@@ -32,6 +32,75 @@
     "eng": "Английский",
     "oz": "Узбекский"
   },
+  "settingNavbar": {
+    "profile": {
+      "item1": "Личный счет",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "notification": {
+      "item1": "Уведомление",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "password": {
+      "item1": "Изменить пароль",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "language": {
+      "item1": "Изменить язык",
+      "item2": "Выберите язык",
+      "item3": "Об изменении языка",
+      "item4": "Изменение языка позволяет пользователям менять язык интерфейса сайта, делая сайт более доступным для разных пользователей по всему миру",
+      "item5": "Поддерживаемые языки",
+      "item6": "Почему это важно?",
+      "item7": "Многоязычный сайт улучшает пользовательский опыт и помогает привлечь глобальную аудиторию, особенно для международных компаний"
+    },
+    "mode": {
+      "item1": "Изменить режим",
+      "item2": "Переключить темный/светлый режим",
+      "item3": "Переключайтесь между светлым и темным режимами, нажав кнопку ниже.",
+      "item4": "Изменить режим",
+      "item5": "Выберите среду, которая подходит именно вам и в которой вам будет комфортно.",
+      "item6": "Преимущества темного режима",
+      "item7": "Не вредит глазам.",
+      "item8": "Гибкость ночного режима работы",
+      "item9": "Современный и уникальный вид",
+      "item10": "Удобства",
+      "item11": "Светлый и темный режимы создают удобную для пользователя среду"
+    },
+    "privacy": {
+      "item1": "Политика конфиденциальности",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "about": {
+      "item1": "Информация о программе",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    }
+  },
   "stationsPageData": {
     "createStationsButton": "Создать станцию",
     "stationsDataHeader": "Информация о станции",

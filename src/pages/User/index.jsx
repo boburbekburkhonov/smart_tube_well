@@ -131,7 +131,7 @@ const User = () => {
   return (
     <Layout>
       <Sider
-        style={{ height: "100vh", background: colors.layoutBackground }}
+        style={{ minHeight: "100vh", background: colors.layoutBackground }}
         trigger={null}
         collapsible
         collapsed={collapsed}
@@ -272,10 +272,6 @@ const User = () => {
                 <SunFilled className="fa-sun" />
                 <span className="ball"></span>
               </label>
-            </div>
-
-            <div>
-              <Language />
             </div> */}
         </Header>
         <Content
@@ -293,7 +289,7 @@ const User = () => {
             <Route path="/applications" element={<UserApplications />} />
             <Route path="/stations" element={<UserStations />} />
             <Route path="/notifications" element={<UserNotifications />} />
-            <Route path="/settings" element={<UserSettings />} />
+            <Route path="/settings/*" element={<UserSettings />} />
           </Routes>
         </Content>
       </Layout>

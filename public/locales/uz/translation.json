@@ -32,6 +32,75 @@
     "eng": "Ingliz",
     "oz": "O'zbek"
   },
+  "settingNavbar": {
+    "profile": {
+      "item1": "Shaxsiy kabinet",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "notification": {
+      "item1": "Bildirishnoma",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "password": {
+      "item1": "Parolni o'zgartirish",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "language": {
+      "item1": "Tilni o'zgartirish",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "mode": {
+      "item1": "Rejimni o'zgartirish",
+      "item2": "Qorong'u/Yorug' rejimni o'zgartiring",
+      "item3": "Quyidagi tugmani bosib, yorug' va qorong'u rejimlarni o'zgartiring",
+      "item4": "Rejimni o'zgartirish",
+      "item5": "Qulay bo'lishi uchun o'zingizga to'gri va mos keladigan muhitni tanlang",
+      "item6": "Qorong'u rejimning foydalari",
+      "item7": "Ko'zlarga zarar bermaydi",
+      "item8": "Tungi ish rejimi uchun moslashuvchanlik",
+      "item9": "Zamonaviy va o'ziga xos ko'rinish",
+      "item10": "Qulayliklari",
+      "item11": "Yorug' va qorong'u rejimlar foydalanuvchiga qulay muhit yaratadi"
+    },
+    "privacy": {
+      "item1": "Maxfiylik siyosati",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "about": {
+      "item1": "Dastur haqida ma'lumot",
+      "item2": "Tilni tanlang",
+      "item3": "Tilni O'zgartirish Haqida",
+      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
+      "item5": "Qo'llab-quvvatlanadigan Tillar",
+      "item6": "Nima Uchun Bu Muhim?",
+      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    }
+  },
   "stationsPageData": {
     "createStationsButton": "Stansiya yaratish",
     "stationsDataHeader": "Stansiya ma'lumotlari",

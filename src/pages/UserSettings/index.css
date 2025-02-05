@@ -49,14 +49,14 @@ nav ul li a {
   border-radius: 10px;
 }
 
-.settings {
+.settings_right {
   flex: 1;
   padding: 40px;
   background: #fff;
   margin-left: 20px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  min-height: 80vh;
+  /* min-height: 75vh; */
 }
 
 .settings-content {

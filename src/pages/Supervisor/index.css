@@ -51,18 +51,14 @@
 
 /* DARK OR LIGHT */
 
-.switch-container {
-  margin-left: auto;
-}
-
 .switch-container label {
   display: flex;
-  width: 75px;
+  width: 85px;
   height: 35px;
   justify-content: space-between;
   align-items: center;
   padding: 0 6px;
-  background: #176B87;
+  background: #ffffff;
   border-radius: 50px;
   cursor: pointer;
   position: relative;
@@ -116,7 +112,7 @@
   height: 25px;
   top: 5px;
   left: 5px;
-  background: #ffffff;
+  background: #176B87;
   border-radius: 50%;
   transition: 0.8s;
 }

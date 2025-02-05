@@ -7,9 +7,20 @@ import imageModeChange from "../../assets/mode-change.png";
 import imagePrivatePolicy from "../../assets/private-policy.jpg";
 import imageInformationSite from "../../assets/information-site.webp";
 import "./index.css";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import SettingsProfile from "../../components/SettingsProfile";
+import SettingsNotification from "../../components/SettingsNotification";
+import SettingsPassword from "../../components/SettingsPassword";
+import SettingsLanguage from "../../components/SettingsLanguage";
+import SettingsTheme from "../../components/SettingsTheme";
+import SettingsPrivacy from "../../components/SettingsPrivacy";
+import SettingsInformations from "../../components/SettingsInformation";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
+  const { i18n, t } = useTranslation();
   const [activeItem, setActiveItem] = useState("profile");
+  const navigate = useNavigate();
   const firstName = window.localStorage.getItem("firstName");
 
   return (
@@ -22,12 +33,15 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("profile")}
+            onClick={() => {
+              setActiveItem("profile");
+              navigate("/user/settings");
+            }}
           >
             <img src={imageProfile} alt="imageProfile" width={20} height={20} />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Shaxsiy kabinet
+            {t("settingNavbar.profile.item1")}
             </p>
           </li>
           <li
@@ -36,7 +50,10 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("notification")}
+            onClick={() => {
+              setActiveItem("notification");
+              navigate("/user/settings/notification");
+            }}
           >
             <img
               src={imageNotification}
@@ -46,7 +63,7 @@ const Sidebar = () => {
             />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Bildirishnoma
+            {t("settingNavbar.notification.item1")}
             </p>
           </li>
           <li
@@ -55,12 +72,15 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("change-password")}
+            onClick={() => {
+              setActiveItem("change-password");
+              navigate("/user/settings/password");
+            }}
           >
             <img src={imageUnlock} alt="imageProfile" width={20} height={20} />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Parolni o'zgartirish
+            {t("settingNavbar.password.item1")}
             </p>
           </li>
           <li
@@ -69,7 +89,10 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("change-language")}
+            onClick={() => {
+              setActiveItem("change-language");
+              navigate("/user/settings/language");
+            }}
           >
             <img
               src={imagelanguageChange}
@@ -79,7 +102,7 @@ const Sidebar = () => {
             />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Tilni o'zgartirish
+            {t("settingNavbar.language.item1")}
             </p>
           </li>
           <li
@@ -88,7 +111,10 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("change-theme")}
+            onClick={() => {
+              setActiveItem("change-theme");
+              navigate("/user/settings/theme");
+            }}
           >
             <img
               src={imageModeChange}
@@ -98,7 +124,7 @@ const Sidebar = () => {
             />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Rejimni o'zgartirish
+            {t("settingNavbar.mode.item1")}
             </p>
           </li>
           <li
@@ -107,7 +133,10 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("privacy")}
+            onClick={() => {
+              setActiveItem("privacy");
+              navigate("/user/settings/privacy");
+            }}
           >
             <img
               src={imagePrivatePolicy}
@@ -117,7 +146,7 @@ const Sidebar = () => {
             />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Maxfiylik siyosati
+            {t("settingNavbar.privacy.item1")}
             </p>
           </li>
           <li
@@ -126,7 +155,10 @@ const Sidebar = () => {
                 ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
                 : "settings_sidebar_item d-flex align-items-center p-2"
             }
-            onClick={() => setActiveItem("information")}
+            onClick={() => {
+              setActiveItem("information");
+              navigate("/user/settings/information");
+            }}
           >
             <img
               src={imageInformationSite}
@@ -136,7 +168,7 @@ const Sidebar = () => {
             />
 
             <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
-              Dastur haqida ma'lumot
+            {t("settingNavbar.about.item1")}
             </p>
           </li>
         </ul>
@@ -172,7 +204,16 @@ const UserSettings = () => {
   return (
     <div className="settings_container">
       <Sidebar />
-      <Settings />
+      {/* <Settings /> */}
+      <Routes>
+        <Route path="/" element={<SettingsProfile />} />
+        <Route path="/notification" element={<SettingsNotification />} />
+        <Route path="/password" element={<SettingsPassword />} />
+        <Route path="/language" element={<SettingsLanguage />} />
+        <Route path="/theme" element={<SettingsTheme />} />
+        <Route path="/privacy" element={<SettingsPrivacy />} />
+        <Route path="/information" element={<SettingsInformations />} />
+      </Routes>
     </div>
   );
 };
