@@ -96,7 +96,7 @@ const SettingsProfile = () => {
           style={{ background: colors.buttonColor }}
           onClick={() => setIsActiveChangedBtn(true)}
         >
-          Ma'lumotlarni o'zgartirish
+          {t("settingNavbar.profile.item2")}
         </button>
       </div>
       <div className="settings-content">
@@ -106,7 +106,9 @@ const SettingsProfile = () => {
             style={{ gap: "20px" }}
           >
             <div>
-              <label htmlFor="firstName">Ism</label>
+              <label htmlFor="firstName">
+                {t("settingNavbar.profile.item3")}
+              </label>
               <div className="input-group">
                 <input
                   type="text"
@@ -135,7 +137,9 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="lastName">Familiya</label>
+              <label htmlFor="lastName">
+                {t("settingNavbar.profile.item4")}
+              </label>
               <div className="input-group">
                 <input
                   type="text"
@@ -165,7 +169,9 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="username">Foydalanuvchining logini</label>
+              <label htmlFor="username">
+                {t("settingNavbar.profile.item5")}
+              </label>
               <div className="input-group">
                 <input
                   type="text"
@@ -195,7 +201,7 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="email">Elektron pochta</label>
+              <label htmlFor="email">{t("settingNavbar.profile.item6")}</label>
 
               <div className="input-group">
                 <input
@@ -226,7 +232,7 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="phone">Telefon raqami</label>
+              <label htmlFor="phone">{t("settingNavbar.profile.item7")}</label>
 
               <div className="input-group">
                 <input
@@ -257,7 +263,9 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="regionName">Hudud nomi</label>
+              <label htmlFor="regionName">
+                {t("settingNavbar.profile.item8")}
+              </label>
 
               <div className="input-group">
                 <input
@@ -278,7 +286,7 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="role">Foydalanuvchi turi</label>
+              <label htmlFor="role">{t("settingNavbar.profile.item9")}</label>
 
               <div className="input-group">
                 <input
@@ -307,14 +315,14 @@ const SettingsProfile = () => {
                 style={{ background: "#F2F2F2" }}
                 onClick={() => setIsActiveChangedBtn(!isActiveChangedBtn)}
               >
-                O'zgarishlarni bekor qilish
+                {t("settingNavbar.profile.item10")}
               </button>
               <button
                 type="submit"
                 className="btn btn-success ms-3"
                 style={{ background: colors.buttonColor }}
               >
-                O'zgarishlarni saqlash
+                {t("settingNavbar.profile.item11")}
               </button>
             </div>
           ) : (

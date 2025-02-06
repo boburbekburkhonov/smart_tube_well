@@ -35,21 +35,23 @@
   "settingNavbar": {
     "profile": {
       "item1": "Личный счет",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "Изменить данные",
+      "item3": "Имя",
+      "item4": "Фамилия",
+      "item5": "Вход пользователя",
+      "item6": "Электронная почта",
+      "item7": "Номер телефона",
+      "item8": "Название региона",
+      "item9": "Тип пользователя",
+      "item10": "Отменить изменения",
+      "item11": "Сохранить изменения"
     },
     "notification": {
       "item1": "Уведомление",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "О настройках уведомлений",
+      "item3": "Управляйте настройками уведомлений, чтобы быть в курсе важных оповещений и сообщений",
+      "item4": "Настройки уведомлений",
+      "item5": "Уведомления gmail"
     },
     "password": {
       "item1": "Изменить пароль",

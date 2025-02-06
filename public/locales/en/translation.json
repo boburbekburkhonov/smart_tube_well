@@ -35,21 +35,23 @@
   "settingNavbar": {
     "profile": {
       "item1": "Personal account",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "Change information",
+      "item3": "Name",
+      "item4": "Surname",
+      "item5": "Username",
+      "item6": "Email",
+      "item7": "Phone number",
+      "item8": "Region name",
+      "item9": "User type",
+      "item10": "Cancel changes",
+      "item11": "Save changes"
     },
     "notification": {
       "item1": "Notification",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "About notification settings",
+      "item3": "Manage your notification settings to stay informed about important alerts and messages.",
+      "item4": "Notification settings",
+      "item5": "Gmail Notifications"
     },
     "password": {
       "item1": "Change password",
