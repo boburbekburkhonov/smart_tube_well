@@ -48,6 +48,9 @@ const User = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = themes.useToken();
   const { colors, theme } = useSelector((state) => state.theme);
+  const { updatedUserInformationById } = useSelector(
+    (state) => state.dashboard
+  );
   const [selectedKey, setSelectedKey] = useState("home");
   const handleToggleTheme = () => dispatch(toggleTheme());
   const navigate = useNavigate();
@@ -119,8 +122,8 @@ const User = () => {
   // }, []);
 
   useEffect(() => {
-    dispatch(getUserInformationById(userId, lang))
-  }, []);
+    dispatch(getUserInformationById(userId, lang));
+  }, [updatedUserInformationById]);
 
   function logoutFunction() {
     window.localStorage.removeItem("username");

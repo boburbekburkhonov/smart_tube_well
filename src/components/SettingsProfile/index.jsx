@@ -7,28 +7,81 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Input } from "antd";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import imageProfile from "../../assets/profile.svg";
 import "./index.css";
+import { useTranslation } from "react-i18next";
+import { ToastContainer, toast } from "react-toastify";
+import { postDataApi } from "../../utils/refreshDataApi";
+import { GLOBALTYPES } from "../../redux/actions/globalTypes";
+import { isUserUpdated } from "../../redux/actions/dashboard";
 
 const SettingsProfile = () => {
-  const { userInformationById } = useSelector((state) => state.dashboard);
+  const { i18n, t } = useTranslation();
+  const lang = i18n.language;
+  const dispatch = useDispatch();
+  const { userInformationById, updatedUserInformationById } = useSelector(
+    (state) => state.dashboard
+  );
   const { colors, theme } = useSelector((state) => state.theme);
   const [isActiveChangedBtn, setIsActiveChangedBtn] = useState(false);
-  console.log(userInformationById);
 
-  const changeUserInformation = (e) => {
+  const changeUserInformation = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
 
-    console.log(firstName);
+    const data = {
+      id: userInformationById.id,
+      firstName: firstName,
+      lastName: lastName,
+      username: username,
+      phone: phone,
+      email: email,
+      roleId: userInformationById.roleId,
+      regionId: userInformationById.regionId,
+      districtId: userInformationById.districtId,
+      organizationId: userInformationById.organizationId,
+    };
+
+    try {
+      const res = await postDataApi(`users/update?lang=${lang}`, data);
+
+      if (res.data.statusCode === 200) {
+        toast.success("Ma'lumotlaringiz muvaffaqqiyatli o'zgartirildi");
+        localStorage.setItem("firstName", data.firstName);
+        dispatch(isUserUpdated());
+        setIsActiveChangedBtn(!isActiveChangedBtn);
+      }
+    } catch (err) {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          error: err.response.data.message,
+        },
+      });
+    }
   };
 
   return (
     <main className="settings_right">
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="d-flex justify-content-between align-items-end mb-5">
         <div className="d-flex align-items-center">
           <img className="profile-pic" src={imageProfile} alt="User Avatar" />
@@ -41,7 +94,7 @@ const SettingsProfile = () => {
         <button
           className="btn btn-success"
           style={{ background: colors.buttonColor }}
-          onClick={() => setIsActiveChangedBtn(!isActiveChangedBtn)}
+          onClick={() => setIsActiveChangedBtn(true)}
         >
           Ma'lumotlarni o'zgartirish
         </button>
@@ -53,103 +106,164 @@ const SettingsProfile = () => {
             style={{ gap: "20px" }}
           >
             <div>
-              <label>Ism</label>
+              <label htmlFor="firstName">Ism</label>
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
-                  aria-label="Amount (to the nearest dollar)"
+                  name="firstName"
+                  id="firstName"
+                  className={`${
+                    isActiveChangedBtn
+                      ? "form-control active_input_change"
+                      : "form-control"
+                  }`}
                   defaultValue={userInformationById.firstName}
                   style={{ maxWidth: "300px" }}
                   disabled={!isActiveChangedBtn}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">
+                  <span
+                    className={`${
+                      isActiveChangedBtn
+                        ? "input-group-text active_input_change"
+                        : "input-group-text"
+                    }`}
+                  >
                     <UserOutlined style={{ fontSize: "24px" }} />
                   </span>
                 </div>
               </div>
             </div>
             <div>
-              <label>Familiya</label>
+              <label htmlFor="lastName">Familiya</label>
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
+                  name="lastName"
+                  id="lastName"
+                  className={`${
+                    isActiveChangedBtn
+                      ? "form-control active_input_change"
+                      : "form-control"
+                  }`}
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.lastName}
-                  style={{ maxWidth: "300px" }}
                   disabled={!isActiveChangedBtn}
+                  style={{ maxWidth: "300px" }}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">
+                  <span
+                    className={`${
+                      isActiveChangedBtn
+                        ? "input-group-text active_input_change"
+                        : "input-group-text"
+                    }`}
+                  >
                     <UserOutlined style={{ fontSize: "24px" }} />
                   </span>
                 </div>
               </div>
             </div>
             <div>
-              <label>Foydalanuvchining logini</label>
+              <label htmlFor="username">Foydalanuvchining logini</label>
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
+                  name="username"
+                  id="username"
+                  className={`${
+                    isActiveChangedBtn
+                      ? "form-control active_input_change"
+                      : "form-control"
+                  }`}
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.username}
                   style={{ maxWidth: "300px" }}
                   disabled={!isActiveChangedBtn}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">
+                  <span
+                    className={`${
+                      isActiveChangedBtn
+                        ? "input-group-text active_input_change"
+                        : "input-group-text"
+                    }`}
+                  >
                     <UserOutlined style={{ fontSize: "24px" }} />
                   </span>
                 </div>
               </div>
             </div>
             <div>
-              <label>Elektron pochta</label>
+              <label htmlFor="email">Elektron pochta</label>
 
               <div className="input-group">
                 <input
                   type="email"
-                  className="form-control"
+                  name="email"
+                  id="email"
+                  className={`${
+                    isActiveChangedBtn
+                      ? "form-control active_input_change"
+                      : "form-control"
+                  }`}
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.email}
                   style={{ maxWidth: "300px" }}
                   disabled={!isActiveChangedBtn}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">
+                  <span
+                    className={`${
+                      isActiveChangedBtn
+                        ? "input-group-text active_input_change"
+                        : "input-group-text"
+                    }`}
+                  >
                     <GoogleOutlined style={{ fontSize: "24px" }} />
                   </span>
                 </div>
               </div>
             </div>
             <div>
-              <label>Telefon raqami</label>
+              <label htmlFor="phone">Telefon raqami</label>
 
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
+                  name="phone"
+                  id="phone"
+                  className={`${
+                    isActiveChangedBtn
+                      ? "form-control active_input_change"
+                      : "form-control"
+                  }`}
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.phone}
                   style={{ maxWidth: "300px" }}
                   disabled={!isActiveChangedBtn}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">
+                  <span
+                    className={`${
+                      isActiveChangedBtn
+                        ? "input-group-text active_input_change"
+                        : "input-group-text"
+                    }`}
+                  >
                     <PhoneOutlined style={{ fontSize: "24px" }} />
                   </span>
                 </div>
               </div>
             </div>
             <div>
-              <label>Hudud nomi</label>
+              <label htmlFor="regionName">Hudud nomi</label>
 
               <div className="input-group">
                 <input
                   type="text"
+                  name="regionName"
+                  id="regionName"
                   className="form-control"
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.regionName}
@@ -164,11 +278,13 @@ const SettingsProfile = () => {
               </div>
             </div>
             <div>
-              <label>Foydalanuvchi turi</label>
+              <label htmlFor="role">Foydalanuvchi turi</label>
 
               <div className="input-group">
                 <input
                   type="text"
+                  name="role"
+                  id="role"
                   className="form-control"
                   aria-label="Amount (to the nearest dollar)"
                   defaultValue={userInformationById.roleName}
@@ -187,18 +303,18 @@ const SettingsProfile = () => {
             <div className="d-flex justify-content-end align-items-center">
               <button
                 type="submit"
-                className="btn btn-success"
-                style={{ background: colors.buttonColor }}
-              >
-                O'zgarishlarni saqlash
-              </button>
-              <button
-                type="submit"
-                className="btn btn-light ms-3"
-                style={{background: '#F2F2F2'}}
+                className="btn btn-light"
+                style={{ background: "#F2F2F2" }}
                 onClick={() => setIsActiveChangedBtn(!isActiveChangedBtn)}
               >
                 O'zgarishlarni bekor qilish
+              </button>
+              <button
+                type="submit"
+                className="btn btn-success ms-3"
+                style={{ background: colors.buttonColor }}
+              >
+                O'zgarishlarni saqlash
               </button>
             </div>
           ) : (

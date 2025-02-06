@@ -1,8 +1,9 @@
-import { getDataApi } from "../../utils/refreshDataApi";
+import { getDataApi, postDataApi } from "../../utils/refreshDataApi";
 import { GLOBALTYPES } from "./globalTypes";
 
 export const DASHBOARD_TYPES = {
   GET_USER_INFORMATION_BY_ID: "GET_USER_INFORMATION_BY_ID",
+  UPDATED_USER_INFORMATION_BY_ID: "UPDATE_USER_INFORMATION_BY_ID",
 };
 
 export const getUserInformationById = (userId, lang) => async (dispatch) => {
@@ -17,16 +18,15 @@ export const getUserInformationById = (userId, lang) => async (dispatch) => {
     if (res.data.statusCode == 200) {
       dispatch({
         type: DASHBOARD_TYPES.GET_USER_INFORMATION_BY_ID,
-        payload: res.data.data
+        payload: res.data.data,
       });
     }
-
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {
         error: err.response.data.message,
-      }
+      },
     });
   } finally {
     dispatch({
@@ -34,4 +34,13 @@ export const getUserInformationById = (userId, lang) => async (dispatch) => {
       payload: false,
     });
   }
+};
+
+export const isUserUpdated = () => async (dispatch) => {
+  dispatch({
+    type: DASHBOARD_TYPES.UPDATED_USER_INFORMATION_BY_ID,
+    payload: {
+      statusCode: 200,
+    },
+  });
 };
