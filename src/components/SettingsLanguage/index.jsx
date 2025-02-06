@@ -10,17 +10,17 @@ const SettingsLanguage = () => {
 
   return (
     <main className="settings_right">
-      <div class="settings_right_language_container">
-        <div class="language-switcher d-flex align-items-center justify-content-between">
+      <div className="settings_right_language_container">
+        <div className="language-switcher d-flex align-items-center justify-content-between">
           <h2>{t("settingNavbar.language.item2")}</h2>
           <div className="settings_right_language_container_select">
             <Language />
           </div>
         </div>
 
-        <div class="settings_right_language_cards_container">
+        <div className="settings_right_language_cards_container">
           <div
-            class="card"
+            className="card"
             style={{ background: colors.layoutBackground, color: colors.text }}
           >
             <h3 style={{ color: colors.text }}>
@@ -28,7 +28,7 @@ const SettingsLanguage = () => {
             </h3>
             <p style={{ color: colors.text }}>{t("settingNavbar.language.item4")}</p>
           </div>
-          <div class="card" style={{ background: colors.layoutBackground, color: colors.text }}>
+          <div className="card" style={{ background: colors.layoutBackground, color: colors.text }}>
             <h3 style={{ color: colors.text }}>{t("settingNavbar.language.item5")}</h3>
             <ul>
               <li style={{ color: colors.text }}>{t("layoutData.oz")}</li>
@@ -36,7 +36,7 @@ const SettingsLanguage = () => {
               <li style={{ color: colors.text }}>{t("layoutData.eng")}</li>
             </ul>
           </div>
-          <div class="card" style={{ background: colors.layoutBackground, color: colors.text }}>
+          <div className="card" style={{ background: colors.layoutBackground, color: colors.text }}>
             <h3 style={{ color: colors.text }}>{t("settingNavbar.language.item6")}</h3>
             <p style={{ color: colors.text }}>{t("settingNavbar.language.item7")}</p>
           </div>

@@ -7,6 +7,7 @@ export const AUTH_TYPES = {
   CHANGE_PASSWORD: "CHANGE_PASSWORD",
   VERIFY_SIGN_IN: "VERIFY_SIGN_IN",
   VERIFY_RESET_PASSWORD: "VERIFY_RESET_PASSWORD",
+  GET_USER_INFORMATION_BY_ID: "GET_USER_INFORMATION_BY_ID",
 };
 export const signInAction = (data, lang) => async (dispatch) => {
   try {

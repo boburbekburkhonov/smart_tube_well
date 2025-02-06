@@ -14,16 +14,16 @@ const SettingsTheme = () => {
 
   return (
     <main className="settings_right">
-      <div class="settings_right_theme_container">
-        <div class="settings_right_theme_header">
+      <div className="settings_right_theme_container">
+        <div className="settings_right_theme_header">
           <h1>{t("settingNavbar.mode.item2")}</h1>
           <p>
           {t("settingNavbar.mode.item3")}
           </p>
         </div>
 
-        <div class="settings_right_theme_content">
-          <div class="settings_right_theme_card" style={{background: colors.layoutBackground,color: colors.text}}>
+        <div className="settings_right_theme_content">
+          <div className="settings_right_theme_card" style={{background: colors.layoutBackground,color: colors.text}}>
             <h2>{t("settingNavbar.mode.item4")}</h2>
             <p>
             {t("settingNavbar.mode.item5")}
@@ -43,7 +43,7 @@ const SettingsTheme = () => {
             </div>
           </div>
 
-          <div class="settings_right_theme_info_card" style={{background: colors.layoutBackground,color: colors.text}}>
+          <div className="settings_right_theme_info_card" style={{background: colors.layoutBackground,color: colors.text}}>
             <h3>{t("settingNavbar.mode.item6")}</h3>
             <ul>
               <li>
@@ -58,7 +58,7 @@ const SettingsTheme = () => {
             </ul>
           </div>
 
-          <div class="settings_right_theme_extra_card" style={{background: colors.layoutBackground,color: colors.text}}>
+          <div className="settings_right_theme_extra_card" style={{background: colors.layoutBackground,color: colors.text}}>
             <h3>{t("settingNavbar.mode.item10")}</h3>
             <p>
             {t("settingNavbar.mode.item11")}

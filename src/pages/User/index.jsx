@@ -37,9 +37,11 @@ import UserNotifications from "../UserNotifications";
 import UserSettings from "../UserSettings";
 import imageNotification from "../../assets/notification.svg";
 import imageProfile from "../../assets/profile.svg";
+import { getUserInformationById } from "../../redux/actions/dashboard";
 
 const User = () => {
   const { i18n, t } = useTranslation();
+  const lang = i18n.language;
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
   const {
@@ -49,14 +51,14 @@ const User = () => {
   const [selectedKey, setSelectedKey] = useState("home");
   const handleToggleTheme = () => dispatch(toggleTheme());
   const navigate = useNavigate();
-  const accessToken = window.localStorage.getItem("access_token");
+  const userId = window.localStorage.getItem("userId");
   const role = window.localStorage.getItem("role");
   const firstName = window.localStorage.getItem("firstName");
   const [notification, setNotification] = useState(0);
   const items = [
     {
       key: "home",
-      icon: <HomeOutlined style={{fontSize: '20px'}} />,
+      icon: <HomeOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user">
           {t("layoutData.navLink1")}
@@ -65,7 +67,7 @@ const User = () => {
     },
     {
       key: "informations",
-      icon: <ExceptionOutlined style={{fontSize: '20px'}} />,
+      icon: <ExceptionOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user/informations">
           {t("layoutData.navLink2")}
@@ -74,7 +76,7 @@ const User = () => {
     },
     {
       key: "applications",
-      icon: <HistoryOutlined style={{fontSize: '20px'}} />,
+      icon: <HistoryOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user/applications">
           {t("layoutData.navLink3")}
@@ -83,7 +85,7 @@ const User = () => {
     },
     {
       key: "stations",
-      icon: <DesktopOutlined style={{fontSize: '20px'}} />,
+      icon: <DesktopOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user/stations">
           {t("layoutData.navLink4")}
@@ -92,7 +94,7 @@ const User = () => {
     },
     {
       key: "notifications",
-      icon: <BellOutlined style={{fontSize: '20px'}} />,
+      icon: <BellOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user/notifications">
           {t("layoutData.navLink6")}
@@ -101,7 +103,7 @@ const User = () => {
     },
     {
       key: "settings",
-      icon: <SettingOutlined style={{fontSize: '20px'}} />,
+      icon: <SettingOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/user/settings">
           {t("layoutData.navLink7")}
@@ -115,6 +117,10 @@ const User = () => {
   //     navigate("/not-found");
   //   }
   // }, []);
+
+  useEffect(() => {
+    dispatch(getUserInformationById(userId, lang))
+  }, []);
 
   function logoutFunction() {
     window.localStorage.removeItem("username");
@@ -168,7 +174,11 @@ const User = () => {
           }}
         >
           <Menu
-            style={{ background: colors.layoutBackground, paddingTop: "20px", fontSize: '40px' }}
+            style={{
+              background: colors.layoutBackground,
+              paddingTop: "20px",
+              fontSize: "40px",
+            }}
             mode="inline"
             selectedKeys={[selectedKey]}
             onClick={(e) => setSelectedKey(e.key)}
