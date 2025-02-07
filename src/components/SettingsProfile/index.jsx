@@ -6,16 +6,15 @@ import {
   UsergroupAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import imageProfile from "../../assets/profile.svg";
-import "./index.css";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import { postDataApi } from "../../utils/refreshDataApi";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import { isUserUpdated } from "../../redux/actions/dashboard";
+import "./index.css";
 
 const SettingsProfile = () => {
   const { i18n, t } = useTranslation();
@@ -310,7 +309,7 @@ const SettingsProfile = () => {
           {isActiveChangedBtn ? (
             <div className="d-flex justify-content-end align-items-center">
               <button
-                type="submit"
+              type="button"
                 className="btn btn-light"
                 style={{ background: "#F2F2F2" }}
                 onClick={() => setIsActiveChangedBtn(!isActiveChangedBtn)}

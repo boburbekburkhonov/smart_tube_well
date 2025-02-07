@@ -15,13 +15,22 @@ const SettingsNotification = () => {
           style={{ background: colors.layoutBackground, color: colors.text }}
         >
           <h3>{t("settingNavbar.notification.item2")}</h3>
-          <p>
-          {t("settingNavbar.notification.item3")}
-          </p>
+          <p>{t("settingNavbar.notification.item3")}</p>
         </div>
         <h3>{t("settingNavbar.notification.item4")}</h3>
         <div className="settings_right_notification_setting-item">
           <span>{t("settingNavbar.notification.item5")}</span>
+          <label className="settings_right_notification_toggle-switch">
+            <input
+              className="settings_right_notification_input"
+              type="checkbox"
+            />
+            <span className="settings_right_notification_slider"></span>
+          </label>
+        </div>
+
+        <div className="settings_right_notification_setting-item">
+          <span>{t("settingNavbar.notification.item6")}</span>
           <label className="settings_right_notification_toggle-switch">
             <input
               className="settings_right_notification_input"

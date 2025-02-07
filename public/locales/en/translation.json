@@ -44,23 +44,24 @@
       "item8": "Region name",
       "item9": "User type",
       "item10": "Cancel changes",
-      "item11": "Save changes"
+      "item11": "Save changes",
+      "item12": "Password"
     },
     "notification": {
       "item1": "Notification",
       "item2": "About notification settings",
       "item3": "Manage your notification settings to stay informed about important alerts and messages.",
       "item4": "Notification settings",
-      "item5": "Gmail Notifications"
+      "item5": "Gmail Notifications",
+      "item6": "SMS Notifications"
     },
     "password": {
       "item1": "Change password",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "Update your password regularly to ensure the security of your account.",
+      "item3": "Current password",
+      "item4": "New Password",
+      "item5": "Confirm new password",
+      "item6": "Сhange password"
     },
     "language": {
       "item1": "Change language",
@@ -101,6 +102,24 @@
       "item5": "Qo'llab-quvvatlanadigan Tillar",
       "item6": "Nima Uchun Bu Muhim?",
       "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "logOut": {
+      "item1": "Log out",
+      "item2": "Do you really want to withdraw from your account?",
+      "item3": "What happens if you log out of your account?",
+      "item4": "All open sessions will be closed.",
+      "item5": "Your data is safe on public computers.",
+      "item6": "You will need a login and password to log in again.",
+      "item7": "How can I log in again?",
+      "item8": "After logging out, you can log back in at any time from the login page."
+    },
+    "deleteUser": {
+      "item1": "Delete user",
+      "item2": "Bildirishnoma sozlamalari haqida",
+      "item3": "Muhim ogohlantirishlar va xabarlardan xabardor bo‘lish uchun bildirishnoma sozlamalaringizni boshqaring",
+      "item4": "Bildirishnoma Sozlamalari",
+      "item5": "Gmail bildirishnomalari",
+      "item6": "SMS bildirishnomalari"
     }
   },
   "stationsPageData": {

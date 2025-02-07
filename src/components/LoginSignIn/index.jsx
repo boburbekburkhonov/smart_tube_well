@@ -68,21 +68,21 @@ const LoginSignIn = () => {
               <div className="p-2 mt-3">
                 <div className="mb-3">
                   <label htmlFor="username" className="form-label">
-                    Username
+                  {t("settingNavbar.profile.item5")}
                   </label>
                   <input
                     name="username"
                     type="text"
                     id="username"
                     className="form-control"
-                    placeholder="username"
+                    placeholder={t("settingNavbar.profile.item5")}
                     required
                   />
                 </div>
 
                 <div className="mb-3">
                   <label className="form-label" htmlFor="password-input">
-                    Password
+                  {t("settingNavbar.profile.item12")}
                   </label>
                   <div className="position-relative auth-pass-inputgroup mb-3">
                     <input
@@ -90,7 +90,7 @@ const LoginSignIn = () => {
                       type="password"
                       id="password-input"
                       className="form-control pe-5 password-input"
-                      placeholder="password"
+                      placeholder={t("settingNavbar.profile.item12")}
                       required
                     />
                   </div>

@@ -6,6 +6,8 @@ import imagelanguageChange from "../../assets/language-change.webp";
 import imageModeChange from "../../assets/mode-change.png";
 import imagePrivatePolicy from "../../assets/private-policy.jpg";
 import imageInformationSite from "../../assets/information-site.webp";
+import imageLogOut from "../../assets/logout.svg";
+import imageDeleteUser from "../../assets/delete-user.png";
 import "./index.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import SettingsProfile from "../../components/SettingsProfile";
@@ -16,6 +18,8 @@ import SettingsTheme from "../../components/SettingsTheme";
 import SettingsPrivacy from "../../components/SettingsPrivacy";
 import SettingsInformations from "../../components/SettingsInformation";
 import { useTranslation } from "react-i18next";
+import SettingsDeleteUser from "../../components/SettingsDeleteUser";
+import SettingsLogout from "../../components/SettingsLogout";
 
 const Sidebar = () => {
   const { i18n, t } = useTranslation();
@@ -171,35 +175,58 @@ const Sidebar = () => {
             {t("settingNavbar.about.item1")}
             </p>
           </li>
+
+          <li
+            className={
+              activeItem == "delete-user"
+                ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
+                : "settings_sidebar_item d-flex align-items-center p-2"
+            }
+            onClick={() => {
+              setActiveItem("delete-user");
+              navigate("/user/settings/delete-user");
+            }}
+          >
+            <img
+              src={imageDeleteUser}
+              alt="imageProfile"
+              width={20}
+              height={20}
+            />
+
+            <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
+            {t("settingNavbar.deleteUser.item1")}
+            </p>
+          </li>
+
+          <li
+            className={
+              activeItem == "logout"
+                ? "settings_sidebar_item d-flex align-items-center p-2 active_sidebar"
+                : "settings_sidebar_item d-flex align-items-center p-2"
+            }
+            onClick={() => {
+              setActiveItem("logout");
+              navigate("/user/settings/logout");
+            }}
+          >
+            <img
+              src={imageLogOut}
+              alt="imageProfile"
+              width={20}
+              height={20}
+            />
+
+            <p className="m-0 settings_sidebar_item_desc ms-1 p-2">
+            {t("settingNavbar.logOut.item1")}
+            </p>
+          </li>
         </ul>
       </nav>
     </aside>
   );
 };
 
-const Settings = () => {
-  return (
-    <main className="settings">
-      <h2>Your Settings</h2>
-      <div className="settings-content">
-        <div className="profile-pic">
-          <img src="avatar.jpg" alt="User Avatar" />
-        </div>
-        <form>
-          <label>Your name:</label>
-          <input type="text" defaultValue="John Doe" />
-          <label>Your e-mail:</label>
-          <input type="email" defaultValue="johndoe@gmail.com" />
-          <label>Your e-mail for notifications:</label>
-          <input type="email" defaultValue="johndoe@gmail.com" />
-          <button type="submit" className="save-btn">
-            Save
-          </button>
-        </form>
-      </div>
-    </main>
-  );
-};
 const UserSettings = () => {
   return (
     <div className="settings_container">
@@ -213,6 +240,8 @@ const UserSettings = () => {
         <Route path="/theme" element={<SettingsTheme />} />
         <Route path="/privacy" element={<SettingsPrivacy />} />
         <Route path="/information" element={<SettingsInformations />} />
+        <Route path="/logout" element={<SettingsLogout />} />
+        <Route path="/delete-user" element={<SettingsDeleteUser />} />
       </Routes>
     </div>
   );

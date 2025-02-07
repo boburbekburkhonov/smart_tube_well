@@ -44,23 +44,24 @@
       "item8": "Название региона",
       "item9": "Тип пользователя",
       "item10": "Отменить изменения",
-      "item11": "Сохранить изменения"
+      "item11": "Сохранить изменения",
+      "item12": "Пароль"
     },
     "notification": {
       "item1": "Уведомление",
       "item2": "О настройках уведомлений",
       "item3": "Управляйте настройками уведомлений, чтобы быть в курсе важных оповещений и сообщений",
       "item4": "Настройки уведомлений",
-      "item5": "Уведомления gmail"
+      "item5": "Уведомления gmail",
+      "item6": "СМС-уведомления"
     },
     "password": {
       "item1": "Изменить пароль",
-      "item2": "Tilni tanlang",
-      "item3": "Tilni O'zgartirish Haqida",
-      "item4": "Tilni o'zgartirish foydalanuvchilarga sayt interfeysining tilini o'zgartirish imkonini beradi, bu esa dunyo bo'ylab turli foydalanuvchilarga saytni yanada qulayroq qiladi.",
-      "item5": "Qo'llab-quvvatlanadigan Tillar",
-      "item6": "Nima Uchun Bu Muhim?",
-      "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+      "item2": "Чтобы защитить свою учетную запись, регулярно обновляйте пароль.",
+      "item3": "Текущий пароль",
+      "item4": "Новый пароль",
+      "item5": "Подтвердите новый пароль",
+      "item6": "Изменить пароль"
     },
     "language": {
       "item1": "Изменить язык",
@@ -101,6 +102,24 @@
       "item5": "Qo'llab-quvvatlanadigan Tillar",
       "item6": "Nima Uchun Bu Muhim?",
       "item7": "Ko'p tilli sayt foydalanuvchi tajribasini yaxshilaydi va global auditoriyani jalb qilishda yordam beradi, ayniqsa xalqaro bizneslar uchun."
+    },
+    "logOut": {
+      "item1": "Выйти",
+      "item2": "Вы действительно хотите снять средства со своего счета?",
+      "item3": "Что произойдет, если вы выйдете из своей учетной записи?",
+      "item4": "Все открытые заседания будут закрытыми.",
+      "item5": "Ваши данные в безопасности на общедоступных компьютерах.",
+      "item6": "Для повторного входа вам понадобятся логин и пароль.",
+      "item7": "Как мне снова войти в систему?",
+      "item8": "После выхода из системы вы можете в любое время войти снова со страницы входа."
+    },
+    "deleteUser": {
+      "item1": "Удалить пользователя",
+      "item2": "Bildirishnoma sozlamalari haqida",
+      "item3": "Muhim ogohlantirishlar va xabarlardan xabardor bo‘lish uchun bildirishnoma sozlamalaringizni boshqaring",
+      "item4": "Bildirishnoma Sozlamalari",
+      "item5": "Gmail bildirishnomalari",
+      "item6": "SMS bildirishnomalari"
     }
   },
   "stationsPageData": {
