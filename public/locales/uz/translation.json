@@ -115,11 +115,16 @@
     },
     "deleteUser": {
       "item1": "Foydalanuvchini o'chirish",
-      "item2": "Bildirishnoma sozlamalari haqida",
-      "item3": "Muhim ogohlantirishlar va xabarlardan xabardor bo‘lish uchun bildirishnoma sozlamalaringizni boshqaring",
-      "item4": "Bildirishnoma Sozlamalari",
-      "item5": "Gmail bildirishnomalari",
-      "item6": "SMS bildirishnomalari"
+      "item2": "Shaxsiy kabinetni o'chirish",
+      "item3": "Siz rostdan ham ushbu hisobni butunlay o‘chirmoqchimisiz?",
+      "item4": "Agar hisobingizni o‘chirsangiz nima bo‘ladi?",
+      "item5": "Barcha ma’lumotlaringiz butunlay o‘chadi",
+      "item6": "Qayta kirish imkonsiz bo‘ladi",
+      "item7": "O‘chirilgan ma’lumotlarni tiklab bo‘lmaydi",
+      "item8": "Alternativ variant?",
+      "item9": "Agar faqat vaqtincha chiqmoqchi bo‘lsangiz",
+      "item10": "Tizimdan chiqish",
+      "item11": "sahifasiga o‘ting"
     }
   },
   "stationsPageData": {

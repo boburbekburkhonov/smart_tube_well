@@ -7,7 +7,7 @@ const SettingsPrivacy = () => {
 
   return (
     <main className="settings_right">
-      <div class="settings_right_privacy_container">
+      <div className="settings_right_privacy_container">
         <h1 style={{color: colors.loginHeadingColor}}>Privacy Policy</h1>
         <p>
           <strong>Last Updated:</strong> February 2025

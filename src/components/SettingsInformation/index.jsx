@@ -7,7 +7,7 @@ const SettingsInformations = () => {
 
   return (
     <main className="settings_right">
-      <div class="settings_right_information_container">
+      <div className="settings_right_information_container">
         <h1 style={{color: colors.loginHeadingColor}}>About Smart Tube Well</h1>
         <p>
           <strong>Smart Tube Well</strong> is an innovative application designed
@@ -26,7 +26,7 @@ const SettingsInformations = () => {
         </ul>
 
         <h2 style={{color: colors.loginHeadingColor}}>Download the App</h2>
-        <div class="settings_right_information_download_links" style={{borderLeft: `5px solid ${colors.loginHeadingColor}`}}>
+        <div className="settings_right_information_download_links" style={{borderLeft: `5px solid ${colors.loginHeadingColor}`}}>
           <p>Get the Smart Tube Well app on your mobile device:</p>
           <a
             href="https://play.google.com/store/apps/details?id=smarttubewell"

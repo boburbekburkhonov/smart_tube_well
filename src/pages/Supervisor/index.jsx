@@ -121,23 +121,11 @@ const Supervisor = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   if (!accessToken || role != "supervisor") {
-  //     navigate("/not-found");
-  //   }
-  // }, []);
-
-  function logoutFunction() {
-    window.localStorage.removeItem("username");
-    window.localStorage.removeItem("firstName");
-    window.localStorage.removeItem("roles");
-    window.localStorage.removeItem("access_token");
-    window.localStorage.removeItem("refresh_token");
-    window.localStorage.removeItem("regionId");
-    window.localStorage.removeItem("districtId");
-    window.localStorage.removeItem("userId");
-    window.location.reload();
-  }
+  useEffect(() => {
+    if (!accessToken || role != "supervisor") {
+      navigate("/not-found");
+    }
+  }, []);
 
   return (
     <Layout>

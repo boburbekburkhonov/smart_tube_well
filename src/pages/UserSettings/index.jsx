@@ -21,14 +21,15 @@ import { useTranslation } from "react-i18next";
 import SettingsDeleteUser from "../../components/SettingsDeleteUser";
 import SettingsLogout from "../../components/SettingsLogout";
 
-const Sidebar = () => {
+const UserSettings = () => {
   const { i18n, t } = useTranslation();
   const [activeItem, setActiveItem] = useState("profile");
   const navigate = useNavigate();
   const firstName = window.localStorage.getItem("firstName");
 
   return (
-    <aside className="settings_sidebar">
+    <div className="settings_container">
+         <aside className="settings_sidebar">
       <nav>
         <ul className="settings_sidebar_list">
           <li
@@ -224,13 +225,6 @@ const Sidebar = () => {
         </ul>
       </nav>
     </aside>
-  );
-};
-
-const UserSettings = () => {
-  return (
-    <div className="settings_container">
-      <Sidebar />
       {/* <Settings /> */}
       <Routes>
         <Route path="/" element={<SettingsProfile />} />
@@ -241,7 +235,7 @@ const UserSettings = () => {
         <Route path="/privacy" element={<SettingsPrivacy />} />
         <Route path="/information" element={<SettingsInformations />} />
         <Route path="/logout" element={<SettingsLogout />} />
-        <Route path="/delete-user" element={<SettingsDeleteUser />} />
+        <Route path="/delete-user" element={<SettingsDeleteUser setActiveItem={setActiveItem} />} />
       </Routes>
     </div>
   );

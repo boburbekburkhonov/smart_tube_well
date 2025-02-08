@@ -115,11 +115,16 @@
     },
     "deleteUser": {
       "item1": "Delete user",
-      "item2": "Bildirishnoma sozlamalari haqida",
-      "item3": "Muhim ogohlantirishlar va xabarlardan xabardor bo‘lish uchun bildirishnoma sozlamalaringizni boshqaring",
-      "item4": "Bildirishnoma Sozlamalari",
-      "item5": "Gmail bildirishnomalari",
-      "item6": "SMS bildirishnomalari"
+      "item2": "Delete personal account",
+      "item3": "Are you sure you want to permanently delete this account?",
+      "item4": "What happens if you delete your account?",
+      "item5": "All your data will be permanently deleted.",
+      "item6": "Re-entry will be impossible.",
+      "item7": "Deleted data cannot be recovered.",
+      "item8": "Alternative option?",
+      "item9": "If you only want to log out temporarily, go to the",
+      "item10": "Log Out",
+      "item11": "page"
     }
   },
   "stationsPageData": {

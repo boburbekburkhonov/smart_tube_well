@@ -15,7 +15,7 @@
 /* Matn va tavsif */
 .settings_right_delete_user-container p {
   color: #666;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
@@ -41,13 +41,13 @@
 
 /* Profil ma’lumotlari */
 .settings_right_delete_user-details h2 {
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   color: #333;
 }
 
 .settings_right_delete_user-details p {
-  font-size: 14px;
+  font-size: 16px;
   color: #888;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .settings_right_delete_user-info h3 {
-  font-size: 16px;
+  font-size: 20px;
   color: #D84343;
   margin-bottom: 5px;
 }
@@ -68,7 +68,7 @@
 }
 
 .settings_right_delete_user-info li {
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   margin-bottom: 5px;
 }
@@ -87,7 +87,7 @@
   color: black;
   border: none;
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   flex: 1;
@@ -104,7 +104,7 @@
   color: white;
   border: none;
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   flex: 1;
@@ -113,4 +113,8 @@
 
 .settings_right_delete_user-delete:hover {
   background-color: #C02525;
+}
+
+.cursor_pointer {
+  cursor: pointer;
 }

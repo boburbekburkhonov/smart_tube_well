@@ -115,11 +115,16 @@
     },
     "deleteUser": {
       "item1": "Удалить пользователя",
-      "item2": "Bildirishnoma sozlamalari haqida",
-      "item3": "Muhim ogohlantirishlar va xabarlardan xabardor bo‘lish uchun bildirishnoma sozlamalaringizni boshqaring",
-      "item4": "Bildirishnoma Sozlamalari",
-      "item5": "Gmail bildirishnomalari",
-      "item6": "SMS bildirishnomalari"
+      "item2": "Удалить личный аккаунт",
+      "item3": "Вы уверены, что хотите навсегда удалить эту учетную запись?",
+      "item4": "Что произойдет, если вы удалите свою учетную запись?",
+      "item5": "Все ваши данные будут удалены навсегда.",
+      "item6": "Возвращение будет невозможно.",
+      "item7": "Удаленные данные не подлежат восстановлению.",
+      "item8": "Альтернативный вариант?",
+      "item9": "Если вы хотите временно выйти из системы, перейдите",
+      "item10": "Выйти",
+      "item11": "страницу"
     }
   },
   "stationsPageData": {

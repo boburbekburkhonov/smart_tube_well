@@ -57,6 +57,7 @@ const User = () => {
   const userId = window.localStorage.getItem("userId");
   const role = window.localStorage.getItem("role");
   const firstName = window.localStorage.getItem("firstName");
+  const accessToken = window.localStorage.getItem("access_token");
   const [notification, setNotification] = useState(0);
   const items = [
     {
@@ -115,27 +116,15 @@ const User = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   if (!accessToken || role != "user") {
-  //     navigate("/not-found");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!accessToken || role != "user") {
+      navigate("/not-found");
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getUserInformationById(userId, lang));
   }, [updatedUserInformationById]);
-
-  function logoutFunction() {
-    window.localStorage.removeItem("username");
-    window.localStorage.removeItem("firstName");
-    window.localStorage.removeItem("roles");
-    window.localStorage.removeItem("access_token");
-    window.localStorage.removeItem("refresh_token");
-    window.localStorage.removeItem("regionId");
-    window.localStorage.removeItem("districtId");
-    window.localStorage.removeItem("userId");
-    window.location.reload();
-  }
 
   return (
     <Layout>
