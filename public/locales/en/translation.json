@@ -124,7 +124,10 @@
       "item8": "Alternative option?",
       "item9": "If you only want to log out temporarily, go to the",
       "item10": "Log Out",
-      "item11": "page"
+      "item11": "page",
+      "item12": "Are you sure you want to delete your personal profile? If you delete your personal profile, you can't restore it!",
+      "item13": "Cancel",
+      "item14": "Delete"
     }
   },
   "stationsPageData": {

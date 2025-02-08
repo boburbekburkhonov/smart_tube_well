@@ -108,7 +108,6 @@
   border-radius: 5px;
   cursor: pointer;
   flex: 1;
-  transition: background 0.3s ease;
 }
 
 .settings_right_delete_user-delete:hover {
