@@ -12,10 +12,12 @@ import Icon, {
   SunFilled,
   UserOutlined,
 } from "@ant-design/icons";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Badge  } from "@mui/material";
 import {
-  Badge,
   Button,
   ConfigProvider,
+  Drawer,
   Layout,
   Menu,
   theme as themes,
@@ -37,7 +39,11 @@ import UserNotifications from "../UserNotifications";
 import UserSettings from "../UserSettings";
 import imageNotification from "../../assets/notification.svg";
 import imageProfile from "../../assets/profile.svg";
-import { getUserInformationById } from "../../redux/actions/dashboard";
+import {
+  getCountNotification,
+  getUserInformationById,
+} from "../../redux/actions/dashboard";
+import UserInformationNotification from "../../components/UserInformationNotification";
 
 const User = () => {
   const { i18n, t } = useTranslation();
@@ -48,7 +54,7 @@ const User = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = themes.useToken();
   const { colors, theme } = useSelector((state) => state.theme);
-  const { updatedUserInformationById } = useSelector(
+  const { countNotification, updatedUserInformationById } = useSelector(
     (state) => state.dashboard
   );
   const [selectedKey, setSelectedKey] = useState("home");
@@ -115,6 +121,13 @@ const User = () => {
       ),
     },
   ];
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (!accessToken || role != "user") {
@@ -126,8 +139,18 @@ const User = () => {
     dispatch(getUserInformationById(userId, lang));
   }, [updatedUserInformationById]);
 
+  useEffect(() => {
+    dispatch(getCountNotification(lang));
+  }, []);
+  console.log(countNotification);
+
   return (
     <Layout>
+      <Drawer title="Basic Drawer" onClose={onClose} open={open}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
       <Sider
         style={{ minHeight: "100vh", background: colors.layoutBackground }}
         trigger={null}
@@ -177,31 +200,6 @@ const User = () => {
             items={items}
           />
         </ConfigProvider>
-
-        {/* <div
-          className="logout_supervisor_wrapper"
-          style={{
-            width: "100%",
-            padding: "0 5px",
-            display: "flex",
-            alignItems: "center",
-            position: "absolute",
-            bottom: "20px",
-            cursor: "pointer",
-            marginLeft: "15px",
-          }}
-          onClick={logoutFunction}
-        >
-          <img src={logout} alt="logout" width={20} height={20} />
-          {!collapsed && (
-            <p
-              className="logout_supervisor m-0 ms-1"
-              style={{ color: colors.text }}
-            >
-              {t("layoutData.logOut")}
-            </p>
-          )}
-        </div> */}
       </Sider>
       <Layout>
         <Header
@@ -223,58 +221,25 @@ const User = () => {
           />
 
           <div
-            className="d-flex justify-content-center align-items-center header_badge_container ms-auto me-3 text-center notification icon"
-            onClick={() => {
-              navigate("/user/notifications");
-              setSelectedKey("notifications");
-            }}
+            className="header_badge_notif_container d-flex justify-content-center align-items-center ms-auto me-3"
+            onClick={showDrawer}
           >
-            <img src={imageNotification} width={25} height={25} />
-            <div
-              className={
-                notification == 0
-                  ? "notification-number"
-                  : "notification-number animation_notifications"
-              }
-            >
-              0
-            </div>
+          <Badge
+            className="notification-message cursor-pointer"
+            color="error"
+            badgeContent={countNotification}
+            type="button"
+            onClick={showDrawer}
+          >
+            <NotificationsNoneIcon />
+          </Badge>
           </div>
+
 
           <div className="d-flex justify-content-center align-items-center me-4">
             <img src={imageProfile} alt="imageProfile" width={25} height={25} />
             <p className="header_profile_desc m-0 ms-1">{firstName}</p>
           </div>
-          {/* <div className="header_badge_container ms-auto pe-3">
-              <Badge>
-                <Button
-                  onClick={() => {
-                    navigate("/user/notifications");
-                    setSelectedKey("notifications");
-                  }}
-                  style={{
-                    background: colors.layoutBackground,
-                    color: colors.text,
-                  }}
-                  type="success"
-                  icon={<BellOutlined />}
-                />
-              </Badge>
-            </div> */}
-
-          {/* <div className="switch-container ms-4">
-              <input
-                onChange={handleToggleTheme}
-                checked={theme === "light"}
-                type="checkbox"
-                id="switch"
-              />
-              <label htmlFor="switch">
-                <MoonFilled className="fa-moon" />
-                <SunFilled className="fa-sun" />
-                <span className="ball"></span>
-              </label>
-            </div> */}
         </Header>
         <Content
           style={{
@@ -291,6 +256,10 @@ const User = () => {
             <Route path="/applications" element={<UserApplications />} />
             <Route path="/stations" element={<UserStations />} />
             <Route path="/notifications" element={<UserNotifications />} />
+            <Route
+              path="/notifications/:id"
+              element={<UserInformationNotification />}
+            />
             <Route path="/settings/*" element={<UserSettings />} />
           </Routes>
         </Content>

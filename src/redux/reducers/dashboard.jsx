@@ -1,6 +1,7 @@
-import { DASHBOARD_TYPES } from "../actions/dashboard";
+import { DASHBOARD_TYPES, getCountNotification } from "../actions/dashboard";
 
 const initialState = {
+  countNotification: [],
   userInformationById: [],
   updatedUserInformationById: [],
 };
@@ -16,6 +17,11 @@ const dashboard = (state = initialState, action) => {
       return {
         ...state,
         updatedUserInformationById: action.payload,
+      };
+    case DASHBOARD_TYPES.GET_COUNT_NOTIFICATION:
+      return {
+        ...state,
+        countNotification: action.payload,
       };
     default:
       return state;

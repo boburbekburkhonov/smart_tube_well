@@ -1,0 +1,10 @@
+.user_info_notif_wrapper {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user_info_notif_title {
+  max-width: 700px;
+  background: #F2F2F2;
+  padding: 20px;
+  border-radius: 4px;
+}

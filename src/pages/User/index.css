@@ -12,6 +12,14 @@
   color: #fff;
 }
 
+.header_badge_notif_container:hover {
+  opacity: 0.7;
+}
+
+.header_badge_notif_container:active {
+  opacity: 0.3;
+}
+
 .notification.icon .notification-number {
   font-family: "Poppins", serif;
   position: absolute;
