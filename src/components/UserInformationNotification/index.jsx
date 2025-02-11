@@ -66,7 +66,7 @@ const UserInformationNotification = () => {
                 </h2>
 
                 <div class="status-box mb-4">
-                    <p className="m-0">Status: <span class="status warning">
+                    <p className="m-0 fw-bold">Status: <span class="status warning">
                     <span className="fs-3">
                     ⚠️
                     </span>
