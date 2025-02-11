@@ -30,46 +30,68 @@ const UserInformationNotification = () => {
 
     const date = `${fixedTime.getDate()}.${
       fixedTime.getMonth() + 1
-    }.${fixedTime.getFullYear()} ${fixedTime.getHours()}:${
+    }.${fixedTime.getFullYear()} `
+
+    const timeDate = `${fixedTime.getHours()}:${
       String(fixedTime.getMinutes()).length == 1
         ? "0" + fixedTime.getMinutes()
         : fixedTime.getMinutes()
     }`;
 
-    return date;
+    return {
+      date: date,
+      time: timeDate
+    };
   };
 
   return (
     <div className="user_info_notif_wrapper d-flex justify-content-center align-items-center flex-column h-100">
       {notification.length != 0 ? (
         <>
-          <div className="text-center">
-            <img src={logo} alt="logo" width={180} height={180} />
-          </div>
+          <div className="notification_information_container">
+            <div className="notification_information_card">
+              <div className="notification_information_icon-box">
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="notification_information_icon"
+                  width={222}
+                  height={222}
+                />
+              </div>
+              <div className="notification_information_info">
+                <h2 className="mb-4 d-flex align-items-center justify-content-center">
+                  <span className="fs-2">💧</span>
+                  {t("settingNavbar.notification.item9")}
+                </h2>
 
-          <div className="w-100">
-            <h2 className="user_info_notif_title m-auto mt-4 d-flex">
-              Title:{" "}
-              <p className="fw-normal m-0 ms-1">
-                Lorem ipsum dolor, sit amet consectetur adipisicing.{" "}
-                {notification[0]?.id}
-              </p>
-            </h2>
+                <div class="status-box mb-4">
+                    <p className="m-0">Status: <span class="status warning">
+                    <span className="fs-3">
+                    ⚠️
+                    </span>
+                    {t("settingNavbar.notification.item10")}</span></p>
+                </div>
 
-            <h2 className="user_info_notif_title m-auto mt-4 d-flex">
-              Message:{" "}
-              <p className="fw-normal m-0 ms-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-                incidunt cumque voluptatibus!
-              </p>
-            </h2>
-
-            <h2 className="user_info_notif_title  m-auto mt-4 d-flex align-items-center">
-              Time:{" "}
-              <p className="fw-normal m-0 ms-1">
-                {fixDate(notification[0]?.createdAt)}
-              </p>
-            </h2>
+                <h2 className="notification_information_title d-flex align-items-center mb-4">
+                  Title:{" "}
+                  <p className="m-0 fw-normal ms-2">
+                    Lorem ipsum dolor, sit amet consectetur.{" "}
+                    {notification[0].id}
+                  </p>
+                </h2>
+                <h2 className="notification_information_message d-flex align-items-center mb-4">
+                  Message:{" "}
+                  <p className="m-0 fw-normal ms-2">
+                    Lorem ipsum dolor sit amet consectetur adipisici ng elit.
+                    Earum incidunt cumque voluptatibus!
+                  </p>
+                </h2>
+                <p className="notification_information_time">
+                  📅 {fixDate(notification[0].createdAt).date} | 🕒 {fixDate(notification[0].createdAt).time}
+                </p>
+              </div>
+            </div>
           </div>
         </>
       ) : (

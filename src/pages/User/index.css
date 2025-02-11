@@ -4,13 +4,13 @@
   border-bottom: 1px solid #e8eaf1;
   /* border-left: 2px solid #e8eaf1;
   border-right: 2px solid #e8eaf1; */
-  padding: 10px 0;
+  padding: 10px 7px;
   background: #FDFDFE;
   cursor: pointer;
 }
 
 .notification-wrapper-is-read li p {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .notification-wrapper-is-read li:hover {
@@ -96,4 +96,9 @@
     -ms-transform: translate3d(0, -4px, 0);
     transform: translate3d(0, -4px, 0);
   }
+}
+
+.notification-wrapper-item-time {
+  font-size: 12px !important;
+  color: #606060;
 }

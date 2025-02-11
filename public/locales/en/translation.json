@@ -55,7 +55,9 @@
       "item5": "Gmail Notifications",
       "item6": "SMS Notifications",
       "item7": "Letters",
-      "item8": "Date"
+      "item8": "Date",
+      "item9": "Water system warning",
+      "item10": "Warning"
     },
     "password": {
       "item1": "Change password",

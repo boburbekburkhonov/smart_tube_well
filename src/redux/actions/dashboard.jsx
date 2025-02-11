@@ -50,10 +50,12 @@ export const getIsReadNotifications = (lang) => async (dispatch) => {
     const res = await getDataApi(`notifications/findAllNotifications?lang=${lang}`);
     // &isRead=false
 
+    const responseData = res.data.data.data.sort( (a, b) => new Date(b.createdAt) - new Date(a.createdAt) );
+
     if (res.data.statusCode == 200) {
       dispatch({
         type: DASHBOARD_TYPES.GET_IS_READ_NOTIFICATIONS,
-        payload: res.data.data.data,
+        payload: responseData,
       });
     }
 

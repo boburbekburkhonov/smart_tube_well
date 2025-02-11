@@ -48,6 +48,34 @@ import {
 import UserInformationNotification from "../../components/UserInformationNotification";
 import messageRead from "../../assets/email-read.png";
 import messageNotRead from "../../assets/email-not-read.png";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import updateLocale from "dayjs/plugin/updateLocale";
+import "dayjs/locale/ru"; // Ruscha
+import "dayjs/locale/en"; // Inglizcha
+import "dayjs/locale/uz"; // O‘zbek (kirill)
+
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocale);
+
+// O‘zbek lotincha tarjima (qo‘lda)
+dayjs.updateLocale("uz", {
+  relativeTime: {
+    future: "%s dan keyin",
+    past: "%s oldin",
+    s: "bir necha soniya",
+    m: "bir daqiqa",
+    mm: "%d daqiqa",
+    h: "bir soat",
+    hh: "%d soat",
+    d: "bir kun",
+    dd: "%d kun",
+    M: "bir oy",
+    MM: "%d oy",
+    y: "bir yil",
+    yy: "%d yil",
+  },
+});
 
 const User = () => {
   const { i18n, t } = useTranslation();
@@ -68,7 +96,6 @@ const User = () => {
   const navigate = useNavigate();
   const userId = window.localStorage.getItem("userId");
   const role = window.localStorage.getItem("role");
-  const firstName = window.localStorage.getItem("firstName");
   const accessToken = window.localStorage.getItem("access_token");
   const [notification, setNotification] = useState(0);
   const items = [
@@ -151,20 +178,10 @@ const User = () => {
     dispatch(getAllNotifications(lang));
   }, []);
 
-  const fixDate = (time) => {
-    const fixedTime = new Date(time);
-    fixedTime.setHours(fixedTime.getHours() - 5);
-
-    const date = `${fixedTime.getDate()}.${
-      fixedTime.getMonth() + 1
-    }.${fixedTime.getFullYear()} ${fixedTime.getHours()}:${
-      String(fixedTime.getMinutes()).length == 1
-        ? "0" + fixedTime.getMinutes()
-        : fixedTime.getMinutes()
-    }`;
-
-    return date;
-  };
+  function timeAgo(dateString, lan) {
+    dayjs.locale(lan);
+    return dayjs(dateString).fromNow();
+  }
 
   return (
     <Layout>
@@ -173,23 +190,26 @@ const User = () => {
           {allIsReadNotifications?.map((e, i) => {
             return (
               <li
-                className="notification-wrapper-item d-flex align-items-center justify-content-between cursor-pointer"
+                className="notification-wrapper-item d-flex  cursor-pointer"
                 key={i}
                 onClick={() => {
                   navigate(`/user/notifications/${e.id}`);
                   onClose();
                 }}
               >
-                <div className="d-flex align-items-center">
+                <div className="d-flex">
                   <img
-                    src={e.isRead == true ? messageRead : messageNotRead}
+                    className="mt-2"
+                    src={imageNotification}
                     alt="messageRead"
-                    width={24}
-                    height={24}
+                    width={28}
+                    height={28}
                   />
-                  <p className="m-0 ms-3">stansiyadan kelgan xabar</p>
                 </div>
-                <p className="m-0 ms-2">{fixDate(e?.createdAt)}</p>
+                <div className="ms-4">
+                  <p className="m-0">stansiyadan kelgan xabar</p>
+                  <p className="notification-wrapper-item-time m-0 mt-2">{timeAgo(e?.createdAt, lang)}</p>
+                </div>
               </li>
             );
           })}
