@@ -2,8 +2,7 @@ import { getDataApi } from "../../utils/refreshDataApi";
 import { GLOBALTYPES } from "./globalTypes";
 
 export const NOTIFICATION_TYPES = {
-  FIND_ALL_NOTIFICATIONS: "GET_ALL_NOTIFICATIONS",
-
+  FIND_ALL_NOTIFICATIONS: "FIND_ALL_NOTIFICATIONS",
 };
 
 export const findAllNotifications = (lang, pageData) => async (dispatch) => {

@@ -13,7 +13,7 @@ import Icon, {
   UserOutlined,
 } from "@ant-design/icons";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { Badge  } from "@mui/material";
+import { Badge } from "@mui/material";
 import {
   Button,
   ConfigProvider,
@@ -40,10 +40,14 @@ import UserSettings from "../UserSettings";
 import imageNotification from "../../assets/notification.svg";
 import imageProfile from "../../assets/profile.svg";
 import {
+  getAllNotifications,
   getCountNotification,
+  getIsReadNotifications,
   getUserInformationById,
 } from "../../redux/actions/dashboard";
 import UserInformationNotification from "../../components/UserInformationNotification";
+import messageRead from "../../assets/email-read.png";
+import messageNotRead from "../../assets/email-not-read.png";
 
 const User = () => {
   const { i18n, t } = useTranslation();
@@ -54,9 +58,11 @@ const User = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = themes.useToken();
   const { colors, theme } = useSelector((state) => state.theme);
-  const { countNotification, updatedUserInformationById } = useSelector(
-    (state) => state.dashboard
-  );
+  const {
+    countNotification,
+    updatedUserInformationById,
+    allIsReadNotifications,
+  } = useSelector((state) => state.dashboard);
   const [selectedKey, setSelectedKey] = useState("home");
   const handleToggleTheme = () => dispatch(toggleTheme());
   const navigate = useNavigate();
@@ -141,15 +147,53 @@ const User = () => {
 
   useEffect(() => {
     dispatch(getCountNotification(lang));
+    dispatch(getIsReadNotifications(lang));
+    dispatch(getAllNotifications(lang));
   }, []);
-  console.log(countNotification);
+
+  const fixDate = (time) => {
+    const fixedTime = new Date(time);
+    fixedTime.setHours(fixedTime.getHours() - 5);
+
+    const date = `${fixedTime.getDate()}.${
+      fixedTime.getMonth() + 1
+    }.${fixedTime.getFullYear()} ${fixedTime.getHours()}:${
+      String(fixedTime.getMinutes()).length == 1
+        ? "0" + fixedTime.getMinutes()
+        : fixedTime.getMinutes()
+    }`;
+
+    return date;
+  };
 
   return (
     <Layout>
-      <Drawer title="Basic Drawer" onClose={onClose} open={open}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Drawer title={t("layoutData.navLink6")} onClose={onClose} open={open}>
+        <ul className="m-0 p-0 list-unstyled notification-wrapper-is-read mb-3">
+          {allIsReadNotifications?.map((e, i) => {
+            return (
+              <li
+                className="notification-wrapper-item d-flex align-items-center justify-content-between cursor-pointer"
+                key={i}
+                onClick={() => {
+                  navigate(`/user/notifications/${e.id}`);
+                  onClose();
+                }}
+              >
+                <div className="d-flex align-items-center">
+                  <img
+                    src={e.isRead == true ? messageRead : messageNotRead}
+                    alt="messageRead"
+                    width={24}
+                    height={24}
+                  />
+                  <p className="m-0 ms-3">stansiyadan kelgan xabar</p>
+                </div>
+                <p className="m-0 ms-2">{fixDate(e?.createdAt)}</p>
+              </li>
+            );
+          })}
+        </ul>
       </Drawer>
       <Sider
         style={{ minHeight: "100vh", background: colors.layoutBackground }}
@@ -224,21 +268,20 @@ const User = () => {
             className="header_badge_notif_container d-flex justify-content-center align-items-center ms-auto me-3"
             onClick={showDrawer}
           >
-          <Badge
-            className="notification-message cursor-pointer"
-            color="error"
-            badgeContent={countNotification}
-            type="button"
-            onClick={showDrawer}
-          >
-            <NotificationsNoneIcon />
-          </Badge>
+            <Badge
+              className="notification-message cursor-pointer"
+              color="error"
+              badgeContent={countNotification}
+              type="button"
+              onClick={showDrawer}
+            >
+              <NotificationsNoneIcon />
+            </Badge>
           </div>
-
 
           <div className="d-flex justify-content-center align-items-center me-4">
             <img src={imageProfile} alt="imageProfile" width={25} height={25} />
-            <p className="header_profile_desc m-0 ms-1">{firstName}</p>
+            <p className="header_profile_desc m-0 ms-1">{role}</p>
           </div>
         </Header>
         <Content

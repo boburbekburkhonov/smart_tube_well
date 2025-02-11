@@ -44,14 +44,14 @@ const UserNotifications = () => {
       <div className="home-section-notification-wrapper">
         <div className="card-notification w-100">
           <div className="card-body p-0">
-            <h2 className="mb-4">Bildirishnomalar</h2>
+            <h2 className="mb-4">{t("layoutData.navLink6")}</h2>
 
             <ul className="m-0 p-0 list-unstyled notification-wrapper mb-3">
               <li className="d-flex align-items-center justify-content-between notification-wrapper-item-first">
                 <p className="m-0 fw-bold">
-                  Xatlar {`(${getAllNotifications.totalDocuments})`}
+                {t("settingNavbar.notification.item7")} {`(${getAllNotifications.totalDocuments})`}
                 </p>
-                <p className="m-0 fw-bold">Sana</p>
+                <p className="m-0 fw-bold">{t("settingNavbar.notification.item8")}</p>
               </li>
               {getAllNotifications.data?.map((e, i) => {
                 return (

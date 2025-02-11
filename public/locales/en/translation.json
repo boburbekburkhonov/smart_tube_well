@@ -53,7 +53,9 @@
       "item3": "Manage your notification settings to stay informed about important alerts and messages.",
       "item4": "Notification settings",
       "item5": "Gmail Notifications",
-      "item6": "SMS Notifications"
+      "item6": "SMS Notifications",
+      "item7": "Letters",
+      "item8": "Date"
     },
     "password": {
       "item1": "Change password",

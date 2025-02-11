@@ -1,7 +1,9 @@
 import { DASHBOARD_TYPES, getCountNotification } from "../actions/dashboard";
 
 const initialState = {
+  allNotifications: [],
   countNotification: [],
+  allIsReadNotifications: [],
   userInformationById: [],
   updatedUserInformationById: [],
 };
@@ -22,6 +24,16 @@ const dashboard = (state = initialState, action) => {
       return {
         ...state,
         countNotification: action.payload,
+      };
+    case DASHBOARD_TYPES.GET_IS_READ_NOTIFICATIONS:
+      return {
+        ...state,
+        allIsReadNotifications: action.payload,
+      };
+    case DASHBOARD_TYPES.GET_ALL_NOTIFICATIONS:
+      return {
+        ...state,
+        allNotifications: action.payload,
       };
     default:
       return state;
