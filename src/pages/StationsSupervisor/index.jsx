@@ -9,7 +9,7 @@ import {
   MarkerF,
   InfoWindowF,
 } from "@react-google-maps/api";
-import './index.css'
+import "./index.css";
 
 const StationsSupervisor = () => {
   const { i18n, t } = useTranslation();
@@ -20,6 +20,7 @@ const StationsSupervisor = () => {
     page: 1,
     perPage: 10,
   });
+  const { colors, theme } = useSelector((state) => state.theme);
 
   useEffect(() => {
     dispatch(findAllStationsForSupervisor(lang, pageData));
@@ -45,7 +46,7 @@ const StationsSupervisor = () => {
 
   const [selectedMarker, setSelectedMarker] = useState(null);
 
-  if(!isLoaded) return <p>loading...</p>
+  if (!isLoaded) return <p>loading...</p>;
 
   return (
     <div className="user-stations">
@@ -64,7 +65,7 @@ const StationsSupervisor = () => {
             <div className="modal-header w-100">
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -106,46 +107,68 @@ const StationsSupervisor = () => {
 
       <h2 className="mb-5">{t("stationPage.item1")}</h2>
 
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">{t("stationPage.item8")}</th>
-            <th scope="col">{t("stationPage.item2")}</th>
-            <th scope="col">{t("stationPage.item3")}</th>
-            <th scope="col">{t("stationPage.item4")}</th>
-            <th scope="col">{t("stationPage.item5")}</th>
-            <th scope="col">{t("stationPage.item6")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allStationsForSupervisor.data?.map((e, i) => {
-            return (
-              <tr
-                key={i}
-                className="cursor_pointer"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdropForMap"
-              >
-                <th scope="row">{i + 1}</th>
-                <td>{e.name}</td>
-                <td>{e.organization}</td>
-                <td>{e.regionName}</td>
-                <td>{e.districtName}</td>
-                <td>{e.code}</td>
-                <td>{e.devicePhoneNumber}</td>
+      {allStationsForSupervisor.data?.length == 0 || !isLoaded ? (
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "80vh" }}
+        >
+          <div
+            className={
+              theme == "light"
+                ? "spinner-border text-success"
+                : "spinner-border text-primary"
+            }
+            role="status"
+          >
+            <span className="sr-only"></span>
+          </div>
+        </div>
+      ) : (
+        <>
+          <table className="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">{t("stationPage.item8")}</th>
+                <th scope="col">{t("stationPage.item2")}</th>
+                <th scope="col">{t("stationPage.item3")}</th>
+                <th scope="col">{t("stationPage.item4")}</th>
+                <th scope="col">{t("stationPage.item5")}</th>
+                <th scope="col">{t("stationPage.item6")}</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {allStationsForSupervisor.data?.map((e, i) => {
+                return (
+                  <tr
+                    key={i}
+                    className="cursor_pointer"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdropForMap"
+                  >
+                    <th scope="row">{i + 1}</th>
+                    <td>{e.name}</td>
+                    <td>{e.organization}</td>
+                    <td>{e.regionName}</td>
+                    <td>{e.districtName}</td>
+                    <td>{e.code}</td>
+                    <td>{e.devicePhoneNumber}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
 
-      <Pagination
-        className="d-flex justify-content-center"
-        defaultCurrent={pageData.page}
-        total={allStationsForSupervisor.totalDocuments}
-        onChange={(page, size) => setPageData({ page: page, perPage: size })}
-      />
+          <Pagination
+            className="d-flex justify-content-center"
+            defaultCurrent={pageData.page}
+            total={allStationsForSupervisor.totalDocuments}
+            onChange={(page, size) =>
+              setPageData({ page: page, perPage: size })
+            }
+          />
+        </>
+      )}
     </div>
   );
 };
