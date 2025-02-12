@@ -33,13 +33,14 @@
     "oz": "O'zbek"
   },
   "stationPage": {
-    "item1": "Stansiyaning ma'lumotlari",
+    "item1": "Stansiyalarning ma'lumotlari",
     "item2": "Tashkilot",
     "item3": "Viloyat",
     "item4": "Tuman",
     "item5": "Kod",
     "item6": "Telefon raqami",
-    "item7": "Joylashuv koordinatasi"
+    "item7": "Joylashuv koordinatasi",
+    "item8": "Nomi"
   },
   "toast": {
     "successProfile": "Ma'lumotlaringiz muvaffaqqiyatli o'zgartirildi",

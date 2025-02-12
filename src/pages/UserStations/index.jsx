@@ -30,7 +30,7 @@ const UserStations = () => {
 
   const mapContainerStyle = {
     width: "100%",
-    height: "500px",
+    height: "100%",
   };
 
   const center = {
@@ -39,7 +39,7 @@ const UserStations = () => {
   };
 
   const markers = [
-    { id: 1, position: { lat: 41.3, lng: 69.25 }, title: "Marker 1" },
+    { id: 1, position: { lat: 41.2995, lng: 69.2401 }, title: "Marker 1" },
   ];
 
   const { isLoaded } = useLoadScript({
@@ -160,7 +160,7 @@ const UserStations = () => {
             <GoogleMap
               mapContainerStyle={mapContainerStyle}
               center={center}
-              zoom={12}
+              zoom={18}
             >
               {markers.map((marker) => (
                 <MarkerF

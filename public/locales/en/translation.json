@@ -39,7 +39,8 @@
     "item4": "District",
     "item5": "Code",
     "item6": "Device phone number",
-    "item7": "Location coordinate"
+    "item7": "Location coordinate",
+    "item8": "Name"
   },
   "toast": {
     "successProfile": "Your information has been successfully changed.",

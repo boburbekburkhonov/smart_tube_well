@@ -1,0 +1,8 @@
+.table-location-width-user-data {
+	max-width: 50vw !important;
+}
+
+.modal-content-user-data {
+  height: 65vh;
+  overflow: auto;
+}
