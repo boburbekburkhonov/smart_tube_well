@@ -4,6 +4,7 @@ import auth from './authReducer'
 import alert from './alertReducers'
 import dashboard from './dashboard'
 import notification from './notification'
+import station from './station'
 
 
 
@@ -12,5 +13,6 @@ export default combineReducers({
   auth,
   alert,
   dashboard,
-  notification
+  notification,
+  station
 });

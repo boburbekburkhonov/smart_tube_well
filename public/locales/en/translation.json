@@ -32,6 +32,15 @@
     "eng": "English",
     "oz": "Uzbek"
   },
+  "stationPage": {
+    "item1": "Station information",
+    "item2": "Organization",
+    "item3": "Region",
+    "item4": "District",
+    "item5": "Code",
+    "item6": "Device phone number",
+    "item7": "Location coordinate"
+  },
   "settingNavbar": {
     "profile": {
       "item1": "Personal account",

@@ -32,6 +32,15 @@
     "eng": "Ingliz",
     "oz": "O'zbek"
   },
+  "stationPage": {
+    "item1": "Stansiyaning ma'lumotlari",
+    "item2": "Tashkilot",
+    "item3": "Viloyat",
+    "item4": "Tuman",
+    "item5": "Kod",
+    "item6": "Telefon raqami",
+    "item7": "Joylashuv koordinatasi"
+  },
   "settingNavbar": {
     "profile": {
       "item1": "Shaxsiy kabinet",
