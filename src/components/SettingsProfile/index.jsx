@@ -53,7 +53,7 @@ const SettingsProfile = () => {
       const res = await postDataApi(`users/update?lang=${lang}`, data);
 
       if (res.data.statusCode === 200) {
-        toast.success("Ma'lumotlaringiz muvaffaqqiyatli o'zgartirildi");
+        toast.success(t("toast.successProfile"));
         localStorage.setItem("firstName", data.firstName);
         dispatch(isUserUpdated());
         setIsActiveChangedBtn(!isActiveChangedBtn);

@@ -12,10 +12,12 @@ import Icon, {
   SunFilled,
   UserOutlined,
 } from "@ant-design/icons";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Badge } from "@mui/material";
 import {
-  Badge,
   Button,
   ConfigProvider,
+  Drawer,
   Layout,
   Menu,
   theme as themes,
@@ -26,6 +28,9 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/app_logo_white.png";
 import logout from "../../assets/logout.png";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import Language from "../../components/Language";
+import { useTranslation } from "react-i18next";
+import { toggleTheme } from "../../redux/actions/themeType";
 import DashboardSupervisor from "../DashboardSupervisor";
 import InformationsSupervisor from "../InformationsSupervisor";
 import ApplicationsSupervisor from "../ApplicationsSupervisor";
@@ -33,32 +38,70 @@ import StationsSupervisor from "../StationsSupervisor";
 import UsersSupervisor from "../UsersSupervisor";
 import NotificationsSupervisor from "../NotificationsSupervisor";
 import SettingsSupervisor from "../SettingsSupervisor";
-import Language from "../../components/Language";
-import { useTranslation } from "react-i18next";
-import { toggleTheme } from "../../redux/actions/themeType";
 import imageNotification from "../../assets/notification.svg";
 import imageProfile from "../../assets/profile.svg";
+import {
+  getAllNotifications,
+  getCountNotification,
+  getIsReadNotifications,
+  getUserInformationById,
+} from "../../redux/actions/dashboard";
+import UserInformationNotification from "../../components/UserInformationNotification";
+import messageRead from "../../assets/email-read.png";
+import messageNotRead from "../../assets/email-not-read.png";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import updateLocale from "dayjs/plugin/updateLocale";
+import "dayjs/locale/ru"; // Ruscha
+import "dayjs/locale/en"; // Inglizcha
+import "dayjs/locale/uz"; // O‘zbek (kirill)
+
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocale);
+
+// O‘zbek lotincha tarjima (qo‘lda)
+dayjs.updateLocale("uz", {
+  relativeTime: {
+    future: "%s dan keyin",
+    past: "%s oldin",
+    s: "bir necha soniya",
+    m: "bir daqiqa",
+    mm: "%d daqiqa",
+    h: "bir soat",
+    hh: "%d soat",
+    d: "bir kun",
+    dd: "%d kun",
+    M: "bir oy",
+    MM: "%d oy",
+    y: "bir yil",
+    yy: "%d yil",
+  },
+});
 
 const Supervisor = () => {
   const { i18n, t } = useTranslation();
+  const lang = i18n.language;
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = themes.useToken();
   const { colors, theme } = useSelector((state) => state.theme);
+  const {
+    countNotification,
+    updatedUserInformationById,
+    allIsReadNotifications,
+  } = useSelector((state) => state.dashboard);
   const [selectedKey, setSelectedKey] = useState("home");
   const handleToggleTheme = () => dispatch(toggleTheme());
   const navigate = useNavigate();
-  const accessToken = window.localStorage.getItem("access_token");
+  const userId = window.localStorage.getItem("userId");
   const role = window.localStorage.getItem("role");
-  const firstName = window.localStorage.getItem("firstName");
-  const [notification, setNotification] = useState(0);
-
+  const accessToken = window.localStorage.getItem("access_token");
   const items = [
     {
       key: "home",
-      icon: <HomeOutlined style={{fontSize: '20px'}} />,
+      icon: <HomeOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor">
           {t("layoutData.navLink1")}
@@ -67,7 +110,7 @@ const Supervisor = () => {
     },
     {
       key: "informations",
-      icon: <ExceptionOutlined style={{fontSize: '20px'}} />,
+      icon: <ExceptionOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/informations">
           {t("layoutData.navLink2")}
@@ -76,7 +119,7 @@ const Supervisor = () => {
     },
     {
       key: "applications",
-      icon: <HistoryOutlined style={{fontSize: '20px'}} />,
+      icon: <HistoryOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/applications">
           {t("layoutData.navLink3")}
@@ -85,7 +128,7 @@ const Supervisor = () => {
     },
     {
       key: "stations",
-      icon: <DesktopOutlined style={{fontSize: '20px'}} />,
+      icon: <DesktopOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/stations">
           {t("layoutData.navLink4")}
@@ -94,7 +137,7 @@ const Supervisor = () => {
     },
     {
       key: "users",
-      icon: <UserOutlined style={{fontSize: '20px'}} />,
+      icon: <UserOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/users">
           {t("layoutData.navLink5")}
@@ -103,7 +146,7 @@ const Supervisor = () => {
     },
     {
       key: "notifications",
-      icon: <BellOutlined style={{fontSize: '20px'}} />,
+      icon: <BellOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/notifications">
           {t("layoutData.navLink6")}
@@ -112,7 +155,7 @@ const Supervisor = () => {
     },
     {
       key: "settings",
-      icon: <SettingOutlined style={{fontSize: '20px'}} />,
+      icon: <SettingOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/settings">
           {t("layoutData.navLink7")}
@@ -121,16 +164,72 @@ const Supervisor = () => {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (!accessToken || role != "supervisor") {
       navigate("/not-found");
     }
   }, []);
 
+  useEffect(() => {
+    dispatch(getUserInformationById(userId, lang));
+  }, [updatedUserInformationById]);
+
+  useEffect(() => {
+    dispatch(getCountNotification(lang));
+    dispatch(getIsReadNotifications(lang));
+    dispatch(getAllNotifications(lang));
+  }, []);
+
+  function timeAgo(dateString, lan) {
+    dayjs.locale(lan);
+    return dayjs(dateString).fromNow();
+  }
+
   return (
     <Layout>
+      <Drawer title={t("layoutData.navLink6")} onClose={onClose} open={open}>
+        <ul className="m-0 p-0 list-unstyled notification-wrapper-is-read mb-3">
+          {allIsReadNotifications?.map((e, i) => {
+            return (
+              <li
+                className="notification-wrapper-item d-flex  cursor-pointer"
+                key={i}
+                onClick={() => {
+                  navigate(`/${role}/notifications/${e.id}`);
+                  onClose();
+                }}
+              >
+                <div className="d-flex">
+                  <img
+                    className="mt-2"
+                    src={imageNotification}
+                    alt="messageRead"
+                    width={28}
+                    height={28}
+                  />
+                </div>
+                <div className="ms-4">
+                  <p className="m-0">stansiyadan kelgan xabar</p>
+                  <p className="notification-wrapper-item-time m-0 mt-2">
+                    {timeAgo(e?.createdAt, lang)}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </Drawer>
+
       <Sider
-        style={{ height: "100vh", background: colors.layoutBackground }}
+        style={{ minHeight: "100vh", background: colors.layoutBackground }}
         trigger={null}
         collapsible
         collapsed={collapsed}
@@ -174,31 +273,6 @@ const Supervisor = () => {
             items={items}
           />
         </ConfigProvider>
-
-        {/* <div
-          className="logout_supervisor_wrapper"
-          style={{
-            width: "100%",
-            padding: "0 5px",
-            display: "flex",
-            alignItems: "center",
-            position: "absolute",
-            bottom: "20px",
-            cursor: "pointer",
-            marginLeft: "15px",
-          }}
-          onClick={logoutFunction}
-        >
-          <img src={logout} alt="logout" width={20} height={20} />
-          {!collapsed && (
-            <p
-              className="logout_supervisor m-0 ms-1"
-              style={{ color: colors.text }}
-            >
-              {t("layoutData.logOut")}
-            </p>
-          )}
-        </div> */}
       </Sider>
       <Layout>
         <Header
@@ -220,47 +294,24 @@ const Supervisor = () => {
           />
 
           <div
-            className="d-flex justify-content-center align-items-center header_badge_container ms-auto me-3 text-center notification icon"
-            onClick={() => {
-              navigate("/supervisor/notifications");
-              setSelectedKey("notifications");
-            }}
+            className="header_badge_notif_container d-flex justify-content-center align-items-center ms-auto me-3"
+            onClick={showDrawer}
           >
-            <img src={imageNotification} width={25} height={25} />
-
-            <div
-              className={
-                notification == 0
-                  ? "notification-number"
-                  : "notification-number animation_notifications"
-              }
+            <Badge
+              className="notification-message cursor-pointer"
+              color="error"
+              badgeContent={countNotification}
+              type="button"
+              onClick={showDrawer}
             >
-              0
-            </div>
+              <NotificationsNoneIcon />
+            </Badge>
           </div>
 
           <div className="d-flex justify-content-center align-items-center me-4">
             <img src={imageProfile} alt="imageProfile" width={25} height={25} />
-            <p className="m-0 ms-1">{firstName}</p>
+            <p className="m-0 ms-1">{role}</p>
           </div>
-
-          {/* <div className="switch-container ms-4">
-              <input
-                onChange={handleToggleTheme}
-                checked={theme === "light"}
-                type="checkbox"
-                id="switch"
-              />
-              <label htmlFor="switch">
-                <MoonFilled className="fa-moon" />
-                <SunFilled className="fa-sun" />
-                <span className="ball"></span>
-              </label>
-            </div>
-
-            <div>
-              <Language />
-            </div> */}
         </Header>
         <Content
           style={{
@@ -281,7 +332,11 @@ const Supervisor = () => {
               path="/notifications"
               element={<NotificationsSupervisor />}
             />
-            <Route path="/settings" element={<SettingsSupervisor />} />
+            <Route
+              path="/notifications/:id"
+              element={<UserInformationNotification />}
+            />
+            <Route path="/settings/*" element={<SettingsSupervisor />} />
           </Routes>
         </Content>
       </Layout>

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { postDataApi } from "../../utils/refreshDataApi";
 
 const SettingsLogout = () => {
-  const { userInformationById, updatedUserInformationById } = useSelector(
+  const { userInformationById } = useSelector(
     (state) => state.dashboard
   );
   const { colors, theme } = useSelector((state) => state.theme);
@@ -16,7 +16,6 @@ const SettingsLogout = () => {
   const logOut = async () => {
     try {
       const res = await postDataApi(`auth/logout?lang=${lang}`);
-      console.log(res);
 
       if (res.data.statusCode === 200) {
         window.localStorage.removeItem("username");

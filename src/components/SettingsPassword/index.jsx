@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { Form, Input } from "antd";
 import { postDataApi } from "../../utils/refreshDataApi";
 import { toast, ToastContainer } from "react-toastify";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 const SettingsPassword = () => {
   const { colors, theme } = useSelector((state) => state.theme);
   const { i18n, t } = useTranslation();
@@ -33,7 +32,7 @@ const SettingsPassword = () => {
         );
 
         if (res.data.statusCode === 200) {
-          toast.success("Parolingiz muvaffaqqiyatli o'zgartirildi");
+          toast.success(t("toast.successPassword"));
 
           setErrorMessage("");
 

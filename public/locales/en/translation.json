@@ -41,6 +41,10 @@
     "item6": "Device phone number",
     "item7": "Location coordinate"
   },
+  "toast": {
+    "successProfile": "Your information has been successfully changed.",
+    "successPassword": "Your password has been successfully changed."
+  },
   "settingNavbar": {
     "profile": {
       "item1": "Personal account",

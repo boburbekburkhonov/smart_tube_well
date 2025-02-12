@@ -41,6 +41,10 @@
     "item6": "Telefon raqami",
     "item7": "Joylashuv koordinatasi"
   },
+  "toast": {
+    "successProfile": "Ma'lumotlaringiz muvaffaqqiyatli o'zgartirildi",
+    "successPassword": "Parolingiz muvaffaqqiyatli o'zgartirildi"
+  },
   "settingNavbar": {
     "profile": {
       "item1": "Shaxsiy kabinet",

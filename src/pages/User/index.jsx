@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icon, {
   BellOutlined,
   DesktopOutlined,
@@ -7,10 +7,7 @@ import Icon, {
   HomeOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  MoonFilled,
   SettingOutlined,
-  SunFilled,
-  UserOutlined,
 } from "@ant-design/icons";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import { Badge } from "@mui/material";
@@ -26,9 +23,7 @@ const { Header, Sider, Content } = Layout;
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/app_logo_white.png";
-import logout from "../../assets/logout.png";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import Language from "../../components/Language";
 import { useTranslation } from "react-i18next";
 import { toggleTheme } from "../../redux/actions/themeType";
 import UserDashboard from "../UserDashboard";
@@ -46,8 +41,6 @@ import {
   getUserInformationById,
 } from "../../redux/actions/dashboard";
 import UserInformationNotification from "../../components/UserInformationNotification";
-import messageRead from "../../assets/email-read.png";
-import messageNotRead from "../../assets/email-not-read.png";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
@@ -55,8 +48,7 @@ import "dayjs/locale/ru"; // Ruscha
 import "dayjs/locale/en"; // Inglizcha
 import "dayjs/locale/uz"; // O‘zbek (kirill)
 
-dayjs.extend(relativeTime);
-dayjs.extend(updateLocale);
+
 
 // O‘zbek lotincha tarjima (qo‘lda)
 dayjs.updateLocale("uz", {
@@ -97,7 +89,6 @@ const User = () => {
   const userId = window.localStorage.getItem("userId");
   const role = window.localStorage.getItem("role");
   const accessToken = window.localStorage.getItem("access_token");
-  const [notification, setNotification] = useState(0);
   const items = [
     {
       key: "home",

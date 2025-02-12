@@ -15,7 +15,7 @@ const SettingsDeleteUser = ({ setActiveItem }) => {
   const lang = i18n.language;
   const navigate = useNavigate();
   const userId = window.localStorage.getItem("userId");
-
+  const role = window.localStorage.getItem("role");
 
   const deleteUserFunc = async () => {
     try {
@@ -141,7 +141,7 @@ const SettingsDeleteUser = ({ setActiveItem }) => {
               <span
                 onClick={() => {
                   setActiveItem("logout");
-                  navigate("/user/settings/logout");
+                  navigate(`/${role}/settings/logout`);
                 }}
                 className="text-primary cursor_pointer"
               >
