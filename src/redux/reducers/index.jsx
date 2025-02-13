@@ -5,6 +5,7 @@ import alert from './alertReducers'
 import dashboard from './dashboard'
 import notification from './notification'
 import station from './station'
+import application from './application'
 
 
 
@@ -14,5 +15,6 @@ export default combineReducers({
   alert,
   dashboard,
   notification,
-  station
+  station,
+  application
 });

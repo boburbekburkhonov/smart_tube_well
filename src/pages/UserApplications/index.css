@@ -1,0 +1,68 @@
+h2 {
+  font-size: 20px;
+}
+.user-application-requests-listlist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.user-application-request {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  transition: transform 0.2s, background 0.3s;
+}
+.user-application-request:hover {
+  transform: scale(1.03);
+  background: #d0e8fc;
+}
+.user-application-status {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+.user-application-status.user-application-pending {
+  background: #ffcc00;
+  color: #fff;
+}
+.status.completed {
+  background: #4caf50;
+  color: #fff;
+}
+.status.new {
+  background: #007bff;
+  color: #fff;
+}
+.user-application-btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.user-application-btn-add:hover {
+  background: #0056b3;
+}
+
+.user-application-requests-line {
+  background: #828282;
+  width: 2px;
+  min-height: 30px;
+}
+
+.user-application-select {
+  max-width: 150px;
+  width: 100%;
+}

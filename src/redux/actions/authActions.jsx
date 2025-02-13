@@ -72,6 +72,7 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
       localStorage.setItem("regionId", res.data.data.user.regionId);
       localStorage.setItem("districtId", res.data.data.user.districtId);
       localStorage.setItem("userId", res.data.data.user.id);
+      localStorage.setItem("supervisorId", res.data.data.user.supervisorUserId);
 
       if (res.data.data.user.role.code == "user") {
         window.location.href = "/user";
@@ -123,6 +124,7 @@ export const moreDevicesDeleteToSignInAction = (data, lang) => async (dispatch) 
       localStorage.setItem("regionId", res.data.data.user.regionId);
       localStorage.setItem("districtId", res.data.data.user.districtId);
       localStorage.setItem("userId", res.data.data.user.id);
+      localStorage.setItem("supervisorId", res.data.data.user.supervisorUserId);
 
       if (res.data.data.user.role.code == "user") {
         window.location.href = "/user";
