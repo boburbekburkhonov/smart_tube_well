@@ -63,6 +63,24 @@ h2 {
 }
 
 .user-application-select {
-  max-width: 150px;
+  max-width: 250px;
   width: 100%;
+}
+
+.modal-body-form-application-label {
+  font-size: 16px;
+}
+
+.result-box {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.result-box i {
+  color: #28a745;
+  font-size: 24px;
 }

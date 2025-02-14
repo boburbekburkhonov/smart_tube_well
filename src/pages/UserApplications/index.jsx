@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { findAllRequirementForUser } from "../../redux/actions/application";
 import { useTranslation } from "react-i18next";
 import { Pagination } from "antd";
+import { postDataApi } from "../../utils/refreshDataApi";
+import { GLOBALTYPES } from "../../redux/actions/globalTypes";
+import { toast, ToastContainer } from "react-toastify";
 
 const UserApplications = () => {
   const { i18n, t } = useTranslation();
@@ -16,7 +19,10 @@ const UserApplications = () => {
     page: 1,
     perPage: 10,
   });
+  const [waterVolume, setWaterVolume] = useState("");
+  const [value, setValue] = useState(0);
   const [statusForRequirement, setStatusForRequirement] = useState(1);
+  const [count, setCount] = useState(0);
   const userId = window.localStorage.getItem("userId");
   const supervisorId = window.localStorage.getItem("supervisorId");
 
@@ -30,7 +36,7 @@ const UserApplications = () => {
         pageData
       )
     );
-  }, [statusForRequirement]);
+  }, [statusForRequirement, count, pageData]);
 
   const fixDate = (time) => {
     const fixedTime = new Date(time);
@@ -51,56 +57,98 @@ const UserApplications = () => {
     {
       status: 0,
       text: "Jami talabnomalar",
-      background: '#6c757d',
-      color: '#fff'
+      background: "#6c757d",
+      color: "#fff",
     },
     {
       status: 1,
       text: "Jo'natilgan talabnomalar",
-      background: '#007bff',
-      color: '#fff'
+      background: "#007bff",
+      color: "#fff",
     },
     {
       status: 2,
       text: "Qabul qilingan talabnomalar",
-      background: '#17a2b8',
-      color: '#fff'
+      background: "#17a2b8",
+      color: "#fff",
     },
     {
       status: 3,
       text: "Ko'rib chiqilayotgan talabnomalar",
-      background: '#ffc107',
-      color: '#fff'
+      background: "#ffc107",
+      color: "#fff",
     },
     {
       status: 4,
       text: "To'liq bajarilgan talabnomalar",
-      background: '#28a745',
-      color: '#fff'
+      background: "#28a745",
+      color: "#fff",
     },
     {
       status: -1,
       text: "Rad etilgan talabnomalar",
-      background: '#dc3545',
-      color: '#fff'
+      background: "#dc3545",
+      color: "#fff",
     },
     {
       status: -2,
       text: "Bajarilmagan talabnomalar",
-      background: '#fd7e14',
-      color: '#fff'
+      background: "#fd7e14",
+      color: "#fff",
     },
     {
       status: -3,
       text: "To'liq bajarilmagan talabnomalar",
-      background: '#6610f2',
-      color: '#fff'
+      background: "#6610f2",
+      color: "#fff",
     },
   ];
-  console.log(allRequirements);
+
   const returnTextOfStatus = (text) => {
-    return String(text).split(" ").slice(0, String(text).split(" ").length - 1).join(' ')
-  }
+    return String(text)
+      .split(" ")
+      .slice(0, String(text).split(" ").length - 1)
+      .join(" ");
+  };
+
+  const handleChange = (e) => {
+    let num = e.target.value;
+    // Faqat raqamlar yoki bo'sh qiymatga ruxsat beramiz
+    if (num === "" || /^\d*\.?\d*$/.test(num)) {
+      if (num !== "") {
+        num = parseFloat(num);
+        if (num > 1) return; // 1 dan katta sonlar kiritilmaydi
+        if (num < 0) num = 0;
+      }
+      setValue(num);
+    }
+  };
+
+  const createNewRequirement = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    let waterVolume = formData.get("waterVolume");
+    let cop = formData.get("cop");
+
+    const data = {
+      userId: userId,
+      waterVolume: waterVolume * 1,
+      cop: cop * 1,
+      supervisorUserId: supervisorId,
+    };
+
+    postDataApi(`requirement-table/create?lang=${lang}`, data).then((data) => {
+      if (data.data.statusCode === 200) {
+        toast.success("Talabnoma muvaffaqqiyatli yuborildi");
+        setCount(count + 1);
+        e.target.reset();
+        setValue(0);
+        setWaterVolume(0);
+      }
+    });
+  };
+  console.log(waterVolume.length);
 
   return (
     <div>
@@ -124,23 +172,120 @@ const UserApplications = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">...</div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Yopish
-              </button>
-              <button type="button" className="btn btn-success">
-                Qo'shish
-              </button>
+            <div className="modal-body m-auto">
+              <form onSubmit={createNewRequirement}>
+                <div className="mb-3">
+                  <label
+                    className="modal-body-form-application-label mb-3"
+                    htmlFor="waterVolume"
+                  >
+                    <i className="fas fa-tint" style={{color: colors.buttonColor}}></i> Suv hajmi:
+                  </label>
+                  <input
+                    type="number"
+                    id="waterVolume"
+                    name="waterVolume"
+                    className="form-control"
+                    value={waterVolume}
+                    onChange={(e) => setWaterVolume(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label
+                    className="modal-body-form-application-label mb-3"
+                    htmlFor="cop"
+                  >
+                    <i className="fas fa-percentage" style={{color: colors.buttonColor}}></i> Foydalilik koeffitsienti:
+                  </label>
+                  <input
+                    type="number"
+                    id="cop"
+                    name="cop"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value={value}
+                    onChange={handleChange}
+                    onBlur={() => setValue(value === "" ? 0 : value)}
+                    className="form-control"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <p className="text-center m-0"></p>
+                  <p className="text-center m-0">
+                    Real talab qilyotgan suv hajmi{" "}
+                    {Number(waterVolume) + Math.ceil((1 - value) * waterVolume)}{" "}
+                    (m³)
+                  </p>
+                </div>
+                <div className="result-box mb-4">
+                  <i className="fas fa-calculator mb-3"></i>
+                  {waterVolume.length == 0  || waterVolume == 0 ? (
+                    ""
+                  ) : (
+                    <>
+                      <div className="d-flex justify-content-center">
+                        <p className="m-0 mb-3">
+                          {`((1 - ${value}) * ${waterVolume}) + ${Number(
+                            waterVolume
+                          )} = `}
+                        </p>
+                        <b style={{ color: colors.buttonColor }}>
+                          {Number(waterVolume) +
+                            Math.ceil((1 - value) * waterVolume)}
+                        </b>
+                      </div>
+                      <p>
+                        Real talab qilayotgan suv hajmi{" "}
+                        <b>
+                          <span style={{ color: colors.buttonColor }}>
+                            {Number(waterVolume) +
+                              Math.ceil((1 - value) * waterVolume)}{" "}
+                            (m³)
+                          </span>
+                        </b>
+                      </p>
+                    </>
+                  )}
+                </div>
+
+                <div className="d-flex justify-content-end">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Yopish
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-success ms-3"
+                    style={{ background: colors.layoutBackground }}
+                  >
+                    Qo'shish
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
       <div className="user-application-container">
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <div className="d-flex justify-content-between align-items-center mb-5">
           <div className="d-flex justify-content-between align-items-center">
             <img
@@ -174,45 +319,62 @@ const UserApplications = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              <i className="fas fa-plus"></i> Yangi talabnoma qo'shish
+              <i className="fas fa-plus"></i> Yangi talabnoma yaratish
             </button>
           </div>
         </div>
 
-        <table class="table table-striped table-hover">
+        <table className="table table-striped table-hover">
           <thead>
             <tr
               className="text-center"
               style={{
                 background: colors.layoutBackground,
                 color: colors.text,
-                fontSize: '16px'
+                fontSize: "16px",
               }}
             >
               <th scope="col">#</th>
               <th scope="col">Supervisor</th>
               <th scope="col">Suv hajmi (m³)</th>
+              <th scope="col">Foydalilik koeffitsienti</th>
               <th scope="col">Status</th>
-              <th scope="col">Talabnoma navbati</th>
               <th scope="col">Jo'natilgan vaqt</th>
+              <th scope="col">Bajarilgan vaqt</th>
             </tr>
           </thead>
           <tbody>
             {allRequirements.data?.map((e, i) => {
               return (
-                <tr className="text-center" key={i}  style={{
-                  fontSize: '16px'
-                }}>
-                  <th scope="row">{i + 1}</th>
+                <tr
+                  className="text-center"
+                  key={i}
+                  style={{
+                    fontSize: "16px",
+                  }}
+                >
+                  <th scope="row">{e.requirementNumber}</th>
                   <td>{e.supervisorUserName}</td>
                   <td>{e.waterVolume}</td>
+                  <td>{e.cop}</td>
                   <td className="d-flex justify-content-center">
-                    <p className="m-0" style={{background: statusOfRequirement[e.status]?.background, color: statusOfRequirement[e.status]?.color, padding: '2px 0', borderRadius: '10px', width: '80%'} }>
-                    {returnTextOfStatus(statusOfRequirement[e.status]?.text)}
+                    <p
+                      className="m-0"
+                      style={{
+                        background: statusOfRequirement[e.status]?.background,
+                        color: statusOfRequirement[e.status]?.color,
+                        padding: "2px 0",
+                        borderRadius: "10px",
+                        width: "80%",
+                      }}
+                    >
+                      {returnTextOfStatus(statusOfRequirement[e.status]?.text)}
                     </p>
                   </td>
-                  <td>{e.requirementNumber}</td>
                   <td>{fixDate(e.createdAt)}</td>
+                  <td>
+                    {e.createdAt == e.updatedAt ? "-" : fixDate(e.updatedAt)}
+                  </td>
                 </tr>
               );
             })}

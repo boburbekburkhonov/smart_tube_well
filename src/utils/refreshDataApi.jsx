@@ -82,7 +82,7 @@ export const getDataApi = async (url) => {
 };
 
 export const postDataApi = async (url, post) => {
-  const res = await customFetch.post(`${api}/${url}`, post);
+  const res = await customFetch?.post(`${api}/${url}`, post);
 
   return res;
 };
