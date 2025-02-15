@@ -125,9 +125,15 @@ const StationsSupervisor = () => {
         </div>
       ) : (
         <>
-          <table className="table table-bordered table-hover">
+          <table className="table table-striped table-hover">
             <thead>
-              <tr>
+              <tr
+                style={{
+                  background: colors.layoutBackground,
+                  color: colors.text,
+                  fontSize: "16px",
+                }}
+              >
                 <th scope="col">#</th>
                 <th scope="col">{t("stationPage.item8")}</th>
                 <th scope="col">{t("stationPage.item2")}</th>

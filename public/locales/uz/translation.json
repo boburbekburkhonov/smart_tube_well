@@ -32,6 +32,27 @@
     "eng": "Ingliz",
     "oz": "O'zbek"
   },
+  "applicationPage": {
+    "item1": "Mening talabnomalarim",
+    "item2": "Jami talabnomalar",
+    "item3": "Jo'natilgan talabnomalar",
+    "item4": "Qabul qilingan talabnomalar",
+    "item5": "Ko'rib chiqilayotgan talabnomalar",
+    "item6": "To'liq bajarilgan talabnomalar",
+    "item7": "Rad etilgan talabnomalar",
+    "item8": "Bajarilmagan talabnomalar",
+    "item9": "To'liq bajarilmagan talabnomalar",
+    "item10": "Yangi talabnoma yaratish",
+    "item11": "Supervisor",
+    "item12": "Suv hajmi (m³)",
+    "item13": "Foydalilik koeffitsienti",
+    "item14": "Status",
+    "item15": "Jo'natilgan vaqt",
+    "item16": "Bajarilgan vaqt",
+    "item17": "Yopish",
+    "item18": "Yuborish",
+    "item19": "Real talab qilayotgan suv hajmi"
+  },
   "stationPage": {
     "item1": "Stansiyalarning ma'lumotlari",
     "item2": "Tashkilot",

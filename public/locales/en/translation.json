@@ -32,6 +32,27 @@
     "eng": "English",
     "oz": "Uzbek"
   },
+  "applicationPage": {
+    "item1": "My applications",
+    "item2": "Total applications",
+    "item3": "Submitted applications",
+    "item4": "Applications received",
+    "item5": "Applications under consideration",
+    "item6": "Fully completed applications",
+    "item7": "Rejected applications",
+    "item8": "Unfulfilled requests",
+    "item9": "Incomplete applications",
+    "item10": "Create a new application",
+    "item11": "Supervisor",
+    "item12": "Water volume (m³)",
+    "item13": "Profitability ratio",
+    "item14": "Status",
+    "item15": "Sent time",
+    "item16": "Time completed",
+    "item17": "Close",
+    "item18": "Send",
+    "item19": "Actual water demand"
+  },
   "stationPage": {
     "item1": "Station information",
     "item2": "Organization",

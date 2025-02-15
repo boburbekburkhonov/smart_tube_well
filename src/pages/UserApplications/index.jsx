@@ -6,7 +6,6 @@ import { findAllRequirementForUser } from "../../redux/actions/application";
 import { useTranslation } from "react-i18next";
 import { Pagination } from "antd";
 import { postDataApi } from "../../utils/refreshDataApi";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import { toast, ToastContainer } from "react-toastify";
 
 const UserApplications = () => {
@@ -56,49 +55,49 @@ const UserApplications = () => {
   const statusOfRequirement = [
     {
       status: 0,
-      text: "Jami talabnomalar",
+      text: t("applicationPage.item2"),
       background: "#6c757d",
       color: "#fff",
     },
     {
       status: 1,
-      text: "Jo'natilgan talabnomalar",
+      text: t("applicationPage.item3"),
       background: "#007bff",
       color: "#fff",
     },
     {
       status: 2,
-      text: "Qabul qilingan talabnomalar",
+      text: t("applicationPage.item4"),
       background: "#17a2b8",
       color: "#fff",
     },
     {
       status: 3,
-      text: "Ko'rib chiqilayotgan talabnomalar",
+      text: t("applicationPage.item5"),
       background: "#ffc107",
       color: "#fff",
     },
     {
       status: 4,
-      text: "To'liq bajarilgan talabnomalar",
+      text: t("applicationPage.item6"),
       background: "#28a745",
       color: "#fff",
     },
     {
       status: -1,
-      text: "Rad etilgan talabnomalar",
+      text: t("applicationPage.item7"),
       background: "#dc3545",
       color: "#fff",
     },
     {
       status: -2,
-      text: "Bajarilmagan talabnomalar",
+      text: t("applicationPage.item8"),
       background: "#fd7e14",
       color: "#fff",
     },
     {
       status: -3,
-      text: "To'liq bajarilmagan talabnomalar",
+      text: t("applicationPage.item9"),
       background: "#6610f2",
       color: "#fff",
     },
@@ -148,7 +147,6 @@ const UserApplications = () => {
       }
     });
   };
-  console.log(waterVolume.length);
 
   return (
     <div>
@@ -179,7 +177,11 @@ const UserApplications = () => {
                     className="modal-body-form-application-label mb-3"
                     htmlFor="waterVolume"
                   >
-                    <i className="fas fa-tint" style={{color: colors.buttonColor}}></i> Suv hajmi:
+                    <i
+                      className="fas fa-tint"
+                      style={{ color: colors.buttonColor }}
+                    ></i>{" "}
+                    {t("applicationPage.item12")}:
                   </label>
                   <input
                     type="number"
@@ -197,7 +199,11 @@ const UserApplications = () => {
                     className="modal-body-form-application-label mb-3"
                     htmlFor="cop"
                   >
-                    <i className="fas fa-percentage" style={{color: colors.buttonColor}}></i> Foydalilik koeffitsienti:
+                    <i
+                      className="fas fa-percentage"
+                      style={{ color: colors.buttonColor }}
+                    ></i>{" "}
+                    {t("applicationPage.item13")}:
                   </label>
                   <input
                     type="number"
@@ -214,17 +220,9 @@ const UserApplications = () => {
                   />
                 </div>
 
-                <div className="mb-4">
-                  <p className="text-center m-0"></p>
-                  <p className="text-center m-0">
-                    Real talab qilyotgan suv hajmi{" "}
-                    {Number(waterVolume) + Math.ceil((1 - value) * waterVolume)}{" "}
-                    (m³)
-                  </p>
-                </div>
                 <div className="result-box mb-4">
                   <i className="fas fa-calculator mb-3"></i>
-                  {waterVolume.length == 0  || waterVolume == 0 ? (
+                  {waterVolume.length == 0 || waterVolume == 0 ? (
                     ""
                   ) : (
                     <>
@@ -240,7 +238,7 @@ const UserApplications = () => {
                         </b>
                       </div>
                       <p>
-                        Real talab qilayotgan suv hajmi{" "}
+                      {t("applicationPage.item19")}{" "}
                         <b>
                           <span style={{ color: colors.buttonColor }}>
                             {Number(waterVolume) +
@@ -259,14 +257,14 @@ const UserApplications = () => {
                     className="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
-                    Yopish
+                    {t("applicationPage.item17")}
                   </button>
                   <button
                     type="submit"
                     className="btn btn-success ms-3"
                     style={{ background: colors.layoutBackground }}
                   >
-                    Qo'shish
+                    {t("applicationPage.item18")}
                   </button>
                 </div>
               </form>
@@ -295,7 +293,7 @@ const UserApplications = () => {
               width={30}
               height={30}
             />
-            <h2 className="m-0">Mening talabnomalarim</h2>
+            <h2 className="m-0">{t("applicationPage.item1")}</h2>
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
@@ -319,7 +317,7 @@ const UserApplications = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              <i className="fas fa-plus"></i> Yangi talabnoma yaratish
+              <i className="fas fa-plus"></i> {t("applicationPage.item10")}
             </button>
           </div>
         </div>
@@ -335,12 +333,12 @@ const UserApplications = () => {
               }}
             >
               <th scope="col">#</th>
-              <th scope="col">Supervisor</th>
-              <th scope="col">Suv hajmi (m³)</th>
-              <th scope="col">Foydalilik koeffitsienti</th>
-              <th scope="col">Status</th>
-              <th scope="col">Jo'natilgan vaqt</th>
-              <th scope="col">Bajarilgan vaqt</th>
+              <th scope="col">{t("applicationPage.item11")}</th>
+              <th scope="col">{t("applicationPage.item12")}</th>
+              <th scope="col">{t("applicationPage.item13")}</th>
+              <th scope="col">{t("applicationPage.item14")}</th>
+              <th scope="col">{t("applicationPage.item15")}</th>
+              <th scope="col">{t("applicationPage.item16")}</th>
             </tr>
           </thead>
           <tbody>
