@@ -20,13 +20,14 @@
     "notFoundLink": "Bosh sahifaga qaytish"
   },
   "layoutData": {
-    "navLink1": "Bosh sahifa",
+    "navLink1": "Bosh oyna",
     "navLink2": "Ma'lumotlar",
     "navLink3": "Talabnomalar",
     "navLink4": "Stansiyalar",
     "navLink5": "Foydalanuvchilar",
     "navLink6": "Bildirishnomalar",
     "navLink7": "Sozlamalar",
+    "navLink8": "Buyruqlar tarixi",
     "logOut": "Tizimdan chiqish",
     "rus": "Rus",
     "eng": "Ingliz",

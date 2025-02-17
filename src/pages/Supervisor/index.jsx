@@ -9,6 +9,7 @@ import Icon, {
   MenuUnfoldOutlined,
   MoonFilled,
   SettingOutlined,
+  SnippetsOutlined,
   SunFilled,
   UserOutlined,
 } from "@ant-design/icons";
@@ -55,6 +56,7 @@ import updateLocale from "dayjs/plugin/updateLocale";
 import "dayjs/locale/ru"; // Ruscha
 import "dayjs/locale/en"; // Inglizcha
 import "dayjs/locale/uz"; // O‘zbek (kirill)
+import CommandHistorySupervisor from "../CommandHistorySupervisor";
 
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
@@ -119,10 +121,19 @@ const Supervisor = () => {
     },
     {
       key: "applications",
-      icon: <HistoryOutlined style={{ fontSize: "20px" }} />,
+      icon: <SnippetsOutlined style={{ fontSize: "20px" }} />,
       label: (
         <Link className="layout_links" to="/supervisor/applications">
           {t("layoutData.navLink3")}
+        </Link>
+      ),
+    },
+    {
+      key: "commandHistory",
+      icon: <HistoryOutlined style={{ fontSize: "20px" }} />,
+      label: (
+        <Link className="layout_links" to="/supervisor/commandHistory">
+          {t("layoutData.navLink8")}
         </Link>
       ),
     },
@@ -326,6 +337,7 @@ const Supervisor = () => {
             <Route path="/" element={<DashboardSupervisor />} />
             <Route path="/informations" element={<InformationsSupervisor />} />
             <Route path="/applications" element={<ApplicationsSupervisor />} />
+            <Route path="/commandHistory" element={<CommandHistorySupervisor />} />
             <Route path="/stations" element={<StationsSupervisor />} />
             <Route path="/users" element={<UsersSupervisor />} />
             <Route

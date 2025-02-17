@@ -1,0 +1,63 @@
+.table-location-width-user-data {
+  max-width: 60vw !important;
+}
+
+.table-location-width-user-data-create {
+  max-width: 40vw !important;
+}
+
+.modal-content-user-data {
+  min-height: 75vh;
+  overflow: auto;
+}
+.modal-content-user-data-update {
+  min-height: 55vh;
+  overflow: auto;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.profile-header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.form-control-label-user-info {
+  font-weight: bold;
+  color: #666;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-control-input-user-info {
+  border: none !important;
+  background: transparent;
+  outline: none !important;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-group-first {
+  margin-top: 20px;
+}
+
+.input-group + .input-group {
+  margin-top: 20px;
+}
+
+.modal-content-user-data-update input {
+  border: 2px solid #56CDAD !important;
+  border-radius: 4px !important;
+}

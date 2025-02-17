@@ -117,15 +117,15 @@ const User = () => {
         </Link>
       ),
     },
-    {
-      key: "stations",
-      icon: <DesktopOutlined style={{ fontSize: "20px" }} />,
-      label: (
-        <Link className="layout_links" to="/user/stations">
-          {t("layoutData.navLink4")}
-        </Link>
-      ),
-    },
+    // {
+    //   key: "stations",
+    //   icon: <DesktopOutlined style={{ fontSize: "20px" }} />,
+    //   label: (
+    //     <Link className="layout_links" to="/user/stations">
+    //       {t("layoutData.navLink4")}
+    //     </Link>
+    //   ),
+    // },
     {
       key: "notifications",
       icon: <BellOutlined style={{ fontSize: "20px" }} />,
@@ -308,7 +308,7 @@ const User = () => {
             <Route path="/" element={<UserDashboard />} />
             <Route path="/informations" element={<UserInformations />} />
             <Route path="/applications" element={<UserApplications />} />
-            <Route path="/stations" element={<UserStations />} />
+            {/* <Route path="/stations" element={<UserStations />} /> */}
             <Route path="/notifications" element={<UserNotifications />} />
             <Route
               path="/notifications/:id"

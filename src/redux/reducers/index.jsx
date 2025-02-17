@@ -6,6 +6,7 @@ import dashboard from './dashboard'
 import notification from './notification'
 import station from './station'
 import application from './application'
+import user from './user'
 
 
 
@@ -16,5 +17,6 @@ export default combineReducers({
   dashboard,
   notification,
   station,
-  application
+  application,
+  user
 });
