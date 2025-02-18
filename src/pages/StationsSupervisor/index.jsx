@@ -10,12 +10,20 @@ import {
   InfoWindowF,
 } from "@react-google-maps/api";
 import "./index.css";
+import {
+  BankOutlined,
+  EnvironmentOutlined,
+  EyeOutlined,
+  GlobalOutlined,
+  PhoneOutlined,
+} from "@ant-design/icons";
 
 const StationsSupervisor = () => {
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
   const dispatch = useDispatch();
   const { allStationsForSupervisor } = useSelector((state) => state.station);
+  const [oneStationInfo, setOneStationInfo] = useState({});
   const [pageData, setPageData] = useState({
     page: 1,
     perPage: 10,
@@ -27,8 +35,9 @@ const StationsSupervisor = () => {
   }, [pageData]);
 
   const mapContainerStyle = {
-    width: "100%",
-    height: "70vh",
+    width: "54%",
+    height: "45vh",
+    margin: 'auto',
   };
 
   const center = {
@@ -46,6 +55,12 @@ const StationsSupervisor = () => {
 
   const [selectedMarker, setSelectedMarker] = useState(null);
 
+  const findOneStationById = (id) => {
+    const foundStation = allStationsForSupervisor.data.find((e) => e.id === id);
+
+    setOneStationInfo(foundStation);
+  };
+
   if (!isLoaded) return <p>loading...</p>;
 
   return (
@@ -60,8 +75,8 @@ const StationsSupervisor = () => {
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog table-location-width-user-data modal-dialog-centered">
-          <div className="modal-content modal-content-user-data">
+        <div className="modal-dialog table-location-width-user-data-station modal-dialog-centered">
+          <div className="modal-content modal-content-user-data-station">
             <div className="modal-header w-100">
               <button
                 type="button"
@@ -71,35 +86,123 @@ const StationsSupervisor = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={center}
-                zoom={18}
-              >
-                {markers.map((marker) => (
-                  <MarkerF
-                    key={marker.id}
-                    position={marker.position}
-                    onClick={() => setSelectedMarker(marker)}
-                  />
-                ))}
+              <h2 className="text-center mb-5">
+                {oneStationInfo.name} ma'lumotlari
+              </h2>
 
-                {selectedMarker && (
-                  <InfoWindowF
-                    options={{
-                      pixelOffset: new window.google.maps.Size(0, -40),
-                    }}
-                    position={selectedMarker.position}
-                    onCloseClick={() => setSelectedMarker(null)}
+              <div className="d-flex justify-content-between align-items-center">
+                <ul className="list-unstyled m-0 p-0 m-auto">
+                  <li
+                    className="user-stations-item d-flex justify-content-between align-items-center mb-4"
+                    style={{ border: `3px solid ${colors.buttonColor}` }}
                   >
-                    <div>
-                      <h2 className="fw-normal" style={{ fontSize: "18px" }}>
-                        {t("stationPage.item7")}
-                      </h2>
+                    <div className="d-flex align-items-center">
+                      <BankOutlined
+                        style={{
+                          fontSize: "25px",
+                        }}
+                      />
+                      <h2 className="m-0 ms-3">{t("stationPage.item2")}:</h2>
                     </div>
-                  </InfoWindowF>
-                )}
-              </GoogleMap>
+
+                    <h2 className="m-0">{oneStationInfo.organization}</h2>
+                  </li>
+
+                  <li
+                    className="user-stations-item d-flex justify-content-between align-items-center mb-4"
+                    style={{ border: `3px solid ${colors.buttonColor}` }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <GlobalOutlined
+                        style={{
+                          fontSize: "25px",
+                        }}
+                      />
+                      <h2 className="m-0 ms-3">{t("stationPage.item3")}:</h2>
+                    </div>
+
+                    <h2 className="m-0">{oneStationInfo.regionName}</h2>
+                  </li>
+
+                  <li
+                    className="user-stations-item d-flex justify-content-between align-items-center mb-4"
+                    style={{ border: `3px solid ${colors.buttonColor}` }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <EnvironmentOutlined
+                        style={{
+                          fontSize: "28px",
+                        }}
+                      />
+                      <h2 className="m-0 ms-3">{t("stationPage.item4")}:</h2>
+                    </div>
+
+                    <h2 className="m-0">{oneStationInfo.districtName}</h2>
+                  </li>
+
+                  <li
+                    className="user-stations-item d-flex justify-content-between align-items-center mb-4"
+                    style={{ border: `3px solid ${colors.buttonColor}` }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <EyeOutlined
+                        style={{
+                          fontSize: "28px",
+                        }}
+                      />
+                      <h2 className="m-0 ms-3">{t("stationPage.item5")}:</h2>
+                    </div>
+
+                    <h2 className="m-0">{oneStationInfo.code}</h2>
+                  </li>
+
+                  <li
+                    className="user-stations-item d-flex justify-content-between align-items-center"
+                    style={{ border: `3px solid ${colors.buttonColor}` }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <PhoneOutlined
+                        style={{
+                          fontSize: "28px",
+                        }}
+                      />
+                      <h2 className="m-0 ms-3">{t("stationPage.item6")}:</h2>
+                    </div>
+
+                    <h2 className="m-0">{oneStationInfo.devicePhoneNumber}</h2>
+                  </li>
+                </ul>
+
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={center}
+                  zoom={18}
+                >
+                  {markers.map((marker) => (
+                    <MarkerF
+                      key={marker.id}
+                      position={marker.position}
+                      onClick={() => setSelectedMarker(marker)}
+                    />
+                  ))}
+
+                  {selectedMarker && (
+                    <InfoWindowF
+                      options={{
+                        pixelOffset: new window.google.maps.Size(0, -40),
+                      }}
+                      position={selectedMarker.position}
+                      onCloseClick={() => setSelectedMarker(null)}
+                    >
+                      <div>
+                        <h2 className="fw-normal" style={{ fontSize: "18px" }}>
+                          {t("stationPage.item7")}
+                        </h2>
+                      </div>
+                    </InfoWindowF>
+                  )}
+                </GoogleMap>
+              </div>
             </div>
           </div>
         </div>
@@ -149,6 +252,7 @@ const StationsSupervisor = () => {
                   <tr
                     key={i}
                     className="cursor_pointer"
+                    onClick={() => findOneStationById(e.id)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdropForMap"
                   >

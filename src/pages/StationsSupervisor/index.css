@@ -1,8 +1,32 @@
-.table-location-width-user-data {
+.table-location-width-user-data-station {
 	max-width: 50vw !important;
 }
 
-.modal-content-user-data {
-  height: 65vh;
+.modal-content-user-data-station {
+  height: 68vh;
   overflow: auto;
+}
+
+.user-stations {
+  width: 100%;
+}
+
+.user-stations-left {
+  width: 49%;
+  padding: 50px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+}
+
+.user-stations-right {
+  width: 49%;
+  padding: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+}
+
+.user-stations-item {
+  background:#F3F3F3;
+  padding: 15px;
+  border-radius: 10px;
 }

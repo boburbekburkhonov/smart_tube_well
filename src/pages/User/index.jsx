@@ -308,7 +308,7 @@ const User = () => {
             <Route path="/" element={<UserDashboard />} />
             <Route path="/informations" element={<UserInformations />} />
             <Route path="/applications" element={<UserApplications />} />
-            {/* <Route path="/stations" element={<UserStations />} /> */}
+            <Route path="/stations" element={<UserStations />} />
             <Route path="/notifications" element={<UserNotifications />} />
             <Route
               path="/notifications/:id"
