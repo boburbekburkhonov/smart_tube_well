@@ -71,6 +71,7 @@ export const verifySignInAction = (data, lang) => async (dispatch) => {
       localStorage.setItem("refresh_token", res.data.data.tokens.refreshToken);
       localStorage.setItem("regionId", res.data.data.user.regionId);
       localStorage.setItem("districtId", res.data.data.user.districtId);
+      localStorage.setItem("organizationId", res.data.data.user.organizationId);
       localStorage.setItem("userId", res.data.data.user.id);
       localStorage.setItem("supervisorId", res.data.data.user.supervisorUserId);
 

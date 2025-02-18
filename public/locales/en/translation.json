@@ -64,7 +64,29 @@
     "item7": "Location coordinate",
     "item8": "Name"
   },
+  "usersPage": {
+    "item1": "Users",
+    "item2": "Create a user",
+    "item3": "Name",
+    "item4": "Last name",
+    "item5": "Username",
+    "item6": "Phone number",
+    "item7": "Email",
+    "item8": "Role",
+    "item9": "Region name",
+    "item10": "District name",
+    "item11": "Organization name",
+    "item12": "Password",
+    "item13": "Close",
+    "item14": "Change",
+    "item15": "Delete",
+    "item16": "Create",
+    "item17": "Are you sure you want to delete this user? If you delete a user, you will not be able to restore them and their data!",
+    "item18": "Cancel"
+  },
   "toast": {
+    "successCreateUser": "User created successfully",
+    "successDeleteUser": "User successfully deleted.",
     "successProfile": "Your information has been successfully changed.",
     "successPassword": "Your password has been successfully changed."
   },

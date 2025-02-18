@@ -64,7 +64,29 @@
     "item7": "Joylashuv koordinatasi",
     "item8": "Nomi"
   },
+  "usersPage": {
+    "item1": "Foydalanuchilar",
+    "item2": "Foydalanuvchi yaratish",
+    "item3": "Ism",
+    "item4": "Familiya",
+    "item5": "Foydalanuvchi nomi",
+    "item6": "Telefon raqam",
+    "item7": "Email",
+    "item8": "Role",
+    "item9": "Hudud nomi",
+    "item10": "Tuman nomi",
+    "item11": "Tashkilot nomi",
+    "item12": "Parol",
+    "item13": "Yopish",
+    "item14": "O'zgartirish",
+    "item15": "O'chirish",
+    "item16": "Yaratish",
+    "item17": "Rostdan ham shu foydalanuvchini o'chirmoqchimisiz agar foydalanuvchini o'chirsangiz uni va unga tegishli ma'lumotlarini qayta tiklolmaysiz!",
+    "item18": "Bekor qilish"
+  },
   "toast": {
+    "successCreateUser": "Foydalanuchi muvaffaqqiyatli yaratildi",
+    "successDeleteUser": "Foydalanuchi muvaffaqqiyatli o'chirildi",
     "successProfile": "Ma'lumotlaringiz muvaffaqqiyatli o'zgartirildi",
     "successPassword": "Parolingiz muvaffaqqiyatli o'zgartirildi"
   },

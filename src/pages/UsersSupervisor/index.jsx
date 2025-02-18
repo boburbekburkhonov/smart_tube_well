@@ -18,6 +18,7 @@ import "./index.css";
 import { toast, ToastContainer } from "react-toastify";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import { postDataApi } from "../../utils/refreshDataApi";
+import imageAlertDelete from "../../assets/alert-delete.png";
 
 const UsersSupervisor = () => {
   const { i18n, t } = useTranslation();
@@ -31,6 +32,10 @@ const UsersSupervisor = () => {
   const [userInfo, setUserInfo] = useState({});
   const [count, setCount] = useState(0);
   const { colors, theme } = useSelector((state) => state.theme);
+  const regionId = window.localStorage.getItem("regionId");
+  const districtId = window.localStorage.getItem("districtId");
+  const organizationId = window.localStorage.getItem("organizationId");
+  const userId = window.localStorage.getItem("userId");
 
   useEffect(() => {
     dispatch(findAllUsers(lang, pageData));
@@ -62,13 +67,77 @@ const UsersSupervisor = () => {
 
     try {
       const res = await postDataApi(`users/update?lang=${lang}`, data);
-      console.log(res);
 
       if (res.data.statusCode === 200) {
         toast.success(t("toast.successProfile"));
         localStorage.setItem("firstName", data.firstName);
         setCount(count + 1);
         window.location.reload();
+      }
+    } catch (err) {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          error: err.response.data.message,
+        },
+      });
+    }
+  };
+
+  const createUser = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, username, password, phone, email } = e.target;
+
+    const data = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      username: username.value,
+      password: password.value,
+      phone: phone.value,
+      email: email.value,
+      roleId: "6791f379bd0c23173e7bf9dd",
+      regionId: regionId,
+      districtId: districtId,
+      organizationId: organizationId,
+      supervisorUserId: userId,
+    };
+
+    try {
+      const res = await postDataApi(`users/create?lang=${lang}`, data);
+
+      if (res.data.statusCode === 200) {
+        toast.success(t("toast.successCreateUser"));
+        setCount(count + 1);
+
+        firstName.value = "";
+        lastName.value = "";
+        username.value = "";
+        password.value = "";
+        phone.value = "+998";
+        email.value = "";
+      }
+    } catch (err) {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          error: err.response.data.message,
+        },
+      });
+    }
+  };
+
+  const deleteUser = async () => {
+    const data = {
+      id: userInfo.id,
+    };
+
+    try {
+      const res = await postDataApi(`users/delete?lang=${lang}`, data);
+
+      if (res.data.statusCode === 200) {
+        toast.success(t("toast.successDeleteUser"));
+        setCount(count + 1);
       }
     } catch (err) {
       dispatch({
@@ -127,12 +196,13 @@ const UsersSupervisor = () => {
                     maxWidth: "360px",
                   }}
                 >
-                  <label className="form-control-label-user-info">Ism</label>
+                  <label className="form-control-label-user-info">
+                    {t("usersPage.item3")}
+                  </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.firstName ? userInfo?.firstName : ""}
                     style={{
@@ -156,13 +226,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Familiya
+                    {t("usersPage.item4")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.lastName ? userInfo?.lastName : ""}
                     style={{
@@ -186,13 +255,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Foydalanuvchi nomi
+                    {t("usersPage.item5")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.username ? userInfo?.username : ""}
                     style={{
@@ -216,13 +284,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Telefon raqam
+                    {t("usersPage.item6")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.phone ? userInfo?.phone : ""}
                     style={{
@@ -245,12 +312,13 @@ const UsersSupervisor = () => {
                     maxWidth: "360px",
                   }}
                 >
-                  <label className="form-control-label-user-info">Email</label>
+                  <label className="form-control-label-user-info">
+                    {t("usersPage.item7")}
+                  </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.email ? userInfo?.email : ""}
                     style={{
@@ -273,12 +341,13 @@ const UsersSupervisor = () => {
                     maxWidth: "360px",
                   }}
                 >
-                  <label className="form-control-label-user-info">Role</label>
+                  <label className="form-control-label-user-info">
+                    {t("usersPage.item8")}
+                  </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.role?.name ? userInfo?.role?.name : ""}
                     style={{
@@ -302,13 +371,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Hudud nomi
+                    {t("usersPage.item9")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.regionName ? userInfo?.regionName : ""}
                     style={{
@@ -332,13 +400,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Tuman nomi
+                    {t("usersPage.item10")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={userInfo?.districtName ? userInfo?.districtName : ""}
                     style={{
@@ -362,13 +429,12 @@ const UsersSupervisor = () => {
                   }}
                 >
                   <label className="form-control-label-user-info">
-                    Tashkilot nomi
+                    {t("usersPage.item11")}
                   </label>
 
                   <input
                     type="text"
                     name="firstName"
-                    id="firstName"
                     className="form-control form-control-input-user-info"
                     value={
                       userInfo?.organizationName
@@ -400,7 +466,7 @@ const UsersSupervisor = () => {
                   color: colors.text,
                 }}
               >
-                Yopish
+                {t("usersPage.item13")}
               </button>
             </div>
           </div>
@@ -442,7 +508,9 @@ const UsersSupervisor = () => {
                       maxWidth: "360px",
                     }}
                   >
-                    <label className="form-control-label-user-info">Ism</label>
+                    <label className="form-control-label-user-info">
+                      {t("usersPage.item3")}
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -474,7 +542,7 @@ const UsersSupervisor = () => {
                       htmlFor="lastName"
                       className="form-control-label-user-info"
                     >
-                      Familiya
+                      {t("usersPage.item4")}
                     </label>
 
                     <input
@@ -505,7 +573,7 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Foydalanuvchi nomi
+                      {t("usersPage.item5")}
                     </label>
 
                     <input
@@ -536,7 +604,7 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Telefon raqam
+                      {t("usersPage.item6")}
                     </label>
 
                     <input
@@ -565,7 +633,7 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Email
+                      {t("usersPage.item7")}
                     </label>
 
                     <input
@@ -598,7 +666,7 @@ const UsersSupervisor = () => {
                     color: colors.text,
                   }}
                 >
-                  O'zgartirish
+                  {t("usersPage.item14")}
                 </button>
               </form>
             </div>
@@ -633,7 +701,7 @@ const UsersSupervisor = () => {
                   {userInfo?.firstName} {userInfo?.lastName}
                 </h2>
               </div> */}
-              <form onSubmit={updateUser}>
+              <form onSubmit={createUser}>
                 <div className="profile-container">
                   <div
                     className="input-group input-group-first"
@@ -641,11 +709,13 @@ const UsersSupervisor = () => {
                       maxWidth: "360px",
                     }}
                   >
-                    <label className="form-control-label-user-info">Ism</label>
+                    <label className="form-control-label-user-info">
+                      {t("usersPage.item3")}
+                    </label>
                     <input
                       type="text"
                       name="firstName"
-                      id="firstName"
+                      id="firstNameForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -653,6 +723,7 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Ism"
+                      required
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -671,13 +742,13 @@ const UsersSupervisor = () => {
                       htmlFor="lastName"
                       className="form-control-label-user-info"
                     >
-                      Familiya
+                      {t("usersPage.item4")}
                     </label>
 
                     <input
                       type="text"
                       name="lastName"
-                      id="lastName"
+                      id="lastNameForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -685,7 +756,7 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Familiya"
-
+                      required
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -701,13 +772,13 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Foydalanuvchi nomi
+                      {t("usersPage.item5")}
                     </label>
 
                     <input
                       type="text"
                       name="username"
-                      id="username"
+                      id="usernameForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -715,6 +786,7 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Foydalanuvchi nomi"
+                      required
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -730,13 +802,13 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Parol
+                      {t("usersPage.item12")}
                     </label>
 
                     <input
                       type="password"
                       name="password"
-                      id="password"
+                      id="passwordForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -744,6 +816,7 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Foydalanuvchi nomi"
+                      required
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -759,13 +832,13 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Telefon raqam
+                      {t("usersPage.item6")}
                     </label>
 
                     <input
-                      type="text"
+                      type="tel"
                       name="phone"
-                      id="phone"
+                      id="phoneForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -773,6 +846,9 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Telefon raqam"
+                      required
+                      defaultValue="+998"
+                      maxLength={13}
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -788,13 +864,13 @@ const UsersSupervisor = () => {
                     }}
                   >
                     <label className="form-control-label-user-info">
-                      Email
+                      {t("usersPage.item7")}
                     </label>
 
                     <input
                       type="text"
                       name="email"
-                      id="email"
+                      id="emailForCreate"
                       className="form-control form-control-input-user-info"
                       style={{
                         maxWidth: "250px",
@@ -802,6 +878,7 @@ const UsersSupervisor = () => {
                         padding: "10px",
                       }}
                       placeholder="Email"
+                      required
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">
@@ -811,26 +888,80 @@ const UsersSupervisor = () => {
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-secondary ms-auto d-flex"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style={{
-                    background: colors.layoutBackground,
-                    color: colors.text,
-                  }}
-                >
-                  Yaratish
-                </button>
+                <div className="d-flex justify-content-end mt-xl-3">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    {t("usersPage.item13")}
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="btn btn-secondary ms-3"
+                    style={{
+                      background: colors.layoutBackground,
+                      color: colors.text,
+                    }}
+                  >
+                    {t("usersPage.item16")}
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
 
+      {/* MODAL DELETE */}
+      <div
+        className="modal fade"
+        id="staticBackdropForDelete"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header w-100">
+              <img
+                className="m-auto"
+                width={90}
+                height={90}
+                src={imageAlertDelete}
+                alt="imageAlertDelete"
+              />
+            </div>
+            <div className="modal-body">
+              <p className="m-0 text-center">{t("usersPage.item17")}</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                {t("settingNavbar.deleteUser.item13")}
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => deleteUser()}
+                data-bs-dismiss="modal"
+              >
+                {t("settingNavbar.deleteUser.item14")}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Foydalanuchilar</h2>
+        <h2>{t("usersPage.item1")}</h2>
 
         <button
           className="user-application-btn-add"
@@ -838,7 +969,7 @@ const UsersSupervisor = () => {
           data-bs-toggle="modal"
           data-bs-target="#staticBackdropForCreate"
         >
-          <i className="fas fa-plus"></i> Foydalanuvchi yaratish
+          <i className="fas fa-plus"></i> {t("usersPage.item2")}
         </button>
       </div>
 
@@ -853,12 +984,12 @@ const UsersSupervisor = () => {
             }}
           >
             <th scope="col">#</th>
-            <th scope="col">Ism</th>
-            <th scope="col">Familiya</th>
-            <th scope="col">Foydalanuvchi nomi</th>
-            <th scope="col">Role</th>
-            <th scope="col">O'zgartirish</th>
-            <th scope="col">O'chirish</th>
+            <th scope="col">{t("usersPage.item3")}</th>
+            <th scope="col">{t("usersPage.item4")}</th>
+            <th scope="col">{t("usersPage.item5")}</th>
+            <th scope="col">{t("usersPage.item8")}</th>
+            <th scope="col">{t("usersPage.item14")}</th>
+            <th scope="col">{t("usersPage.item15")}</th>
           </tr>
         </thead>
         <tbody>
@@ -883,7 +1014,10 @@ const UsersSupervisor = () => {
                 >
                   <img src={updateImg} alt="updateImg" width={24} height={24} />
                 </td>
-                <td>
+                <td
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdropForDelete"
+                >
                   <DeleteOutlined style={{ fontSize: "18px" }} />
                 </td>
               </tr>
