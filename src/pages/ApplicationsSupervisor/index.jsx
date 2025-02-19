@@ -107,6 +107,7 @@ const ApplicationsSupervisor = () => {
       .slice(0, String(text).split(" ").length - 1)
       .join(" ");
   };
+  console.log(allRequirements);
 
   return (
     <div>
@@ -140,69 +141,96 @@ const ApplicationsSupervisor = () => {
           </div>
         </div>
 
-        <table className="table table-striped table-hover">
-          <thead>
-            <tr
-              className="text-center"
-              style={{
-                background: colors.layoutBackground,
-                color: colors.text,
-                fontSize: "16px",
-              }}
+        {allRequirements.length == 0 ? (
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ minHeight: "80vh" }}
+          >
+            <div
+              className={
+                theme == "light"
+                  ? "spinner-border text-success"
+                  : "spinner-border text-primary"
+              }
+              role="status"
             >
-              <th scope="col">#</th>
-              <th scope="col">{t("applicationPage.item11")}</th>
-              <th scope="col">{t("applicationPage.item12")}</th>
-              <th scope="col">{t("applicationPage.item13")}</th>
-              <th scope="col">{t("applicationPage.item14")}</th>
-              <th scope="col">{t("applicationPage.item15")}</th>
-              <th scope="col">{t("applicationPage.item16")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allRequirements.data?.map((e, i) => {
-              return (
+              <span className="sr-only"></span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <table className="table table-striped table-hover">
+              <thead>
                 <tr
                   className="text-center"
-                  key={i}
                   style={{
+                    background: colors.layoutBackground,
+                    color: colors.text,
                     fontSize: "16px",
                   }}
                 >
-                  <th scope="row">{e.requirementNumber}</th>
-                  <td>{e.supervisorUserName}</td>
-                  <td>{e.waterVolume}</td>
-                  <td>{e.cop}</td>
-                  <td className="d-flex justify-content-center">
-                    <p
-                      className="m-0"
+                  <th scope="col">#</th>
+                  <th scope="col">{t("applicationPage.item11")}</th>
+                  <th scope="col">{t("applicationPage.item12")}</th>
+                  <th scope="col">{t("applicationPage.item13")}</th>
+                  <th scope="col">{t("applicationPage.item14")}</th>
+                  <th scope="col">{t("applicationPage.item15")}</th>
+                  <th scope="col">{t("applicationPage.item16")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allRequirements.data?.map((e, i) => {
+                  return (
+                    <tr
+                      className="text-center"
+                      key={i}
                       style={{
-                        background: statusOfRequirement[e.status]?.background,
-                        color: statusOfRequirement[e.status]?.color,
-                        padding: "2px 0",
-                        borderRadius: "10px",
-                        width: "80%",
+                        fontSize: "16px",
                       }}
                     >
-                      {returnTextOfStatus(statusOfRequirement[e.status]?.text)}
-                    </p>
-                  </td>
-                  <td>{fixDate(e.createdAt)}</td>
-                  <td>
-                    {e.createdAt == e.updatedAt ? "-" : fixDate(e.updatedAt)}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      <th scope="row">{e.requirementNumber}</th>
+                      <td>{e.supervisorUserName}</td>
+                      <td>{e.waterVolume}</td>
+                      <td>{e.cop}</td>
+                      <td className="d-flex justify-content-center">
+                        <p
+                          className="m-0"
+                          style={{
+                            background:
+                              statusOfRequirement[e.status]?.background,
+                            color: statusOfRequirement[e.status]?.color,
+                            padding: "2px 0",
+                            borderRadius: "10px",
+                            width: "80%",
+                          }}
+                        >
+                          {returnTextOfStatus(
+                            statusOfRequirement[e.status]?.text
+                          )}
+                        </p>
+                      </td>
+                      <td>{fixDate(e.createdAt)}</td>
+                      <td>
+                        {e.createdAt == e.updatedAt
+                          ? "-"
+                          : fixDate(e.updatedAt)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
 
-        <Pagination
-          className="d-flex justify-content-center"
-          defaultCurrent={pageData.page}
-          total={allRequirements.totalDocuments}
-          onChange={(page, size) => setPageData({ page: page, perPage: size })}
-        />
+            <Pagination
+              className="d-flex justify-content-center"
+              defaultCurrent={pageData.page}
+              total={allRequirements.totalDocuments}
+              onChange={(page, size) =>
+                setPageData({ page: page, perPage: size })
+              }
+            />
+          </>
+        )}
       </div>
     </div>
   );

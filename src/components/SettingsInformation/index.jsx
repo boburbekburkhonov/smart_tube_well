@@ -1,33 +1,37 @@
 import React from "react";
-import './index.css'
+import "./index.css";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const SettingsInformations = () => {
   const { colors, theme } = useSelector((state) => state.theme);
+  const { i18n, t } = useTranslation();
 
   return (
     <main className="settings_right">
       <div className="settings_right_information_container">
-        <h1 style={{color: colors.loginHeadingColor}}>About Smart Tube Well</h1>
+        <h1 style={{ color: colors.loginHeadingColor }}>
+        {t("settingNavbar.about.item2")}
+        </h1>
         <p>
-          <strong>Smart Tube Well</strong> is an innovative application designed
-          to help farmers and water resource managers efficiently control and
-          monitor their tube wells. The app provides real-time data, remote
-          control functionality, and analytics to ensure optimal water usage.
+        {t("settingNavbar.about.item3")}
         </p>
 
-        <h2 style={{color: colors.loginHeadingColor}}>Key Features</h2>
+        <h2 style={{ color: colors.loginHeadingColor }}>{t("settingNavbar.about.item4")}</h2>
         <ul>
-          <li>Remote tube well control via smartphone</li>
-          <li>Real-time water usage monitoring</li>
-          <li>Automated scheduling and alerts</li>
-          <li>Energy efficiency tracking</li>
-          <li>Detailed analytics and reports</li>
+          <li>{t("settingNavbar.about.item5")}</li>
+          <li>{t("settingNavbar.about.item6")}</li>
+          <li>{t("settingNavbar.about.item7")}</li>
+          <li>{t("settingNavbar.about.item8")}</li>
+          <li>{t("settingNavbar.about.item9")}</li>
         </ul>
 
-        <h2 style={{color: colors.loginHeadingColor}}>Download the App</h2>
-        <div className="settings_right_information_download_links" style={{borderLeft: `5px solid ${colors.loginHeadingColor}`}}>
-          <p>Get the Smart Tube Well app on your mobile device:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>{t("settingNavbar.about.item10")}</h2>
+        <div
+          className="settings_right_information_download_links"
+          style={{ borderLeft: `5px solid ${colors.loginHeadingColor}` }}
+        >
+          <p>{t("settingNavbar.about.item11")}:</p>
           <a
             href="https://play.google.com/store/apps/details?id=smarttubewell"
             target="_blank"

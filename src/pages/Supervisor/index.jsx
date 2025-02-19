@@ -183,11 +183,11 @@ const Supervisor = () => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (!accessToken || role != "supervisor") {
-      navigate("/not-found");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!accessToken || role != "supervisor") {
+  //     navigate("/not-found");
+  //   }
+  // }, []);
 
   useEffect(() => {
     dispatch(getUserInformationById(userId, lang));

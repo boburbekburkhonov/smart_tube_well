@@ -62,6 +62,7 @@ const StationsSupervisor = () => {
   };
 
   if (!isLoaded) return <p>loading...</p>;
+  console.log(allStationsForSupervisor.data == undefined);
 
   return (
     <div className="user-stations">
@@ -210,7 +211,7 @@ const StationsSupervisor = () => {
 
       <h2 className="mb-5">{t("stationPage.item1")}</h2>
 
-      {allStationsForSupervisor.data?.length == 0 || !isLoaded ? (
+      {allStationsForSupervisor.data == undefined || allStationsForSupervisor.data?.length == 0 || !isLoaded ? (
         <div
           className="d-flex justify-content-center align-items-center"
           style={{ minHeight: "80vh" }}

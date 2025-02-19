@@ -1,69 +1,79 @@
 import React from "react";
-import './index.css'
+import "./index.css";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const SettingsPrivacy = () => {
   const { colors, theme } = useSelector((state) => state.theme);
+  const { i18n, t } = useTranslation();
+  const date = new Date()
 
   return (
     <main className="settings_right">
       <div className="settings_right_privacy_container">
-        <h1 style={{color: colors.loginHeadingColor}}>Privacy Policy</h1>
+        <h1 style={{ color: colors.loginHeadingColor }}>{t("settingNavbar.privacy.item2")}</h1>
         <p>
-          <strong>Last Updated:</strong> February 2025
+          <strong>{t("settingNavbar.privacy.item3")}</strong> {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
         </p>
 
-        <h2 style={{color: colors.loginHeadingColor}}>1. Collected Information</h2>
-        <p>We may collect personal information such as:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>
+        {t("settingNavbar.privacy.item4")}
+        </h2>
+        <p>{t("settingNavbar.privacy.item5")}</p>
         <ul>
-          <li>Name, email address, phone number</li>
-          <li>Location data (if enabled)</li>
-          <li>Usage statistics for improving our service</li>
-          <li>Device information (browser type, operating system, etc.)</li>
-          <li>IP address and cookies for analytics purposes</li>
+          <li>{t("settingNavbar.privacy.item6")}</li>
+          <li>{t("settingNavbar.privacy.item7")}</li>
+          <li>{t("settingNavbar.privacy.item8")}</li>
+          <li>{t("settingNavbar.privacy.item9")}</li>
+          <li>{t("settingNavbar.privacy.item10")}</li>
         </ul>
 
-        <h2 style={{color: colors.loginHeadingColor}}>2. How We Use Your Data</h2>
-        <p>Your data is used for:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>
+        {t("settingNavbar.privacy.item11")}
+        </h2>
+        <p>{t("settingNavbar.privacy.item12")}</p>
         <ul>
-          <li>Enhancing user experience</li>
-          <li>Providing customer support</li>
-          <li>Improving our services</li>
-          <li>Ensuring security and fraud prevention</li>
-          <li>Sending updates and notifications</li>
+          <li>{t("settingNavbar.privacy.item13")}</li>
+          <li>{t("settingNavbar.privacy.item14")}</li>
+          <li>{t("settingNavbar.privacy.item15")}</li>
+          <li>{t("settingNavbar.privacy.item16")}</li>
         </ul>
 
-        <h2 style={{color: colors.loginHeadingColor}}>3. Data Sharing and Security</h2>
-        <p>We do not sell or share your data with third parties, except:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>
+        {t("settingNavbar.privacy.item17")}
+        </h2>
+        <p>{t("settingNavbar.privacy.item18")}</p>
         <ul>
-          <li>When required by law</li>
-          <li>For service providers assisting in app operations</li>
-          <li>With your explicit consent</li>
+          <li>{t("settingNavbar.privacy.item19")}</li>
+          <li>{t("settingNavbar.privacy.item20")}</li>
+          <li>{t("settingNavbar.privacy.item21")}</li>
         </ul>
         <p>
-          We implement security measures to protect your data from unauthorized
-          access.
+        {t("settingNavbar.privacy.item22")}
         </p>
 
-        <h2 style={{color: colors.loginHeadingColor}}>4. Your Rights</h2>
-        <p>You have the right to:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>{t("settingNavbar.privacy.item23")}</h2>
+        <p>{t("settingNavbar.privacy.item24")}</p>
         <ul>
-          <li>Request access to your data</li>
-          <li>Request correction or deletion of your data</li>
-          <li>Opt-out of marketing communications</li>
+          <li>{t("settingNavbar.privacy.item25")}</li>
+          <li>{t("settingNavbar.privacy.item26")}</li>
+          <li>{t("settingNavbar.privacy.item27")}</li>
         </ul>
 
-        <h2 style={{color: colors.loginHeadingColor}}>5. Contact Us</h2>
-        <div className="settings_right_privacy_contact" style={{borderLeft: `5px solid ${colors.loginHeadingColor}`}}>
-          <p>If you have any questions, contact us:</p>
+        <h2 style={{ color: colors.loginHeadingColor }}>{t("settingNavbar.privacy.item28")}</h2>
+        <div
+          className="settings_right_privacy_contact"
+          style={{ borderLeft: `5px solid ${colors.loginHeadingColor}` }}
+        >
+          <p>{t("settingNavbar.privacy.item29")}</p>
           <p>
-            <strong>Email:</strong> support@smarttubewell.com
+            <strong>{t("settingNavbar.privacy.item30")}</strong> {t("settingNavbar.privacy.item31")}
           </p>
           <p>
-            <strong>Phone:</strong> +998 90 123 45 67
+            <strong>{t("settingNavbar.privacy.item32")}</strong> {t("settingNavbar.privacy.item33")}
           </p>
           <p>
-            <strong>Location:</strong> Tashkent, Uzbekistan
+            <strong>{t("settingNavbar.privacy.item34")}</strong> {t("settingNavbar.privacy.item35")}
           </p>
         </div>
       </div>

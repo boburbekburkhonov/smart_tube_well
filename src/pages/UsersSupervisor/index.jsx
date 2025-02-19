@@ -973,58 +973,81 @@ const UsersSupervisor = () => {
         </button>
       </div>
 
-      <table className="table table-striped table-hover">
-        <thead>
-          <tr
-            className="text-center"
-            style={{
-              background: colors.layoutBackground,
-              color: colors.text,
-              fontSize: "16px",
-            }}
+      {allUsers.usersData?.length == 0 || allUsers.usersData == undefined ? (
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "80vh" }}
+        >
+          <div
+            className={
+              theme == "light"
+                ? "spinner-border text-success"
+                : "spinner-border text-primary"
+            }
+            role="status"
           >
-            <th scope="col">#</th>
-            <th scope="col">{t("usersPage.item3")}</th>
-            <th scope="col">{t("usersPage.item4")}</th>
-            <th scope="col">{t("usersPage.item5")}</th>
-            <th scope="col">{t("usersPage.item8")}</th>
-            <th scope="col">{t("usersPage.item14")}</th>
-            <th scope="col">{t("usersPage.item15")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allUsers.usersData?.map((e, i) => {
-            return (
-              <tr
-                key={i}
-                className="text-center cursor_pointer"
-                onClick={() => findUserById(e.id)}
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdropForInfo"
-              >
-                <th scope="row">{i + 1}</th>
-                <td>{e.firstName}</td>
-                <td>{e.lastName}</td>
-                <td>{e.username}</td>
-                <td>{e.role.name}</td>
-                <td
+            <span className="sr-only"></span>
+          </div>
+        </div>
+      ) : (
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr
+              className="text-center"
+              style={{
+                background: colors.layoutBackground,
+                color: colors.text,
+                fontSize: "16px",
+              }}
+            >
+              <th scope="col">#</th>
+              <th scope="col">{t("usersPage.item3")}</th>
+              <th scope="col">{t("usersPage.item4")}</th>
+              <th scope="col">{t("usersPage.item5")}</th>
+              <th scope="col">{t("usersPage.item8")}</th>
+              <th scope="col">{t("usersPage.item14")}</th>
+              <th scope="col">{t("usersPage.item15")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allUsers.usersData?.map((e, i) => {
+              return (
+                <tr
+                  key={i}
+                  className="text-center cursor_pointer"
                   onClick={() => findUserById(e.id)}
                   data-bs-toggle="modal"
-                  data-bs-target="#staticBackdropForUpdate"
+                  data-bs-target="#staticBackdropForInfo"
                 >
-                  <img src={updateImg} alt="updateImg" width={24} height={24} />
-                </td>
-                <td
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdropForDelete"
-                >
-                  <DeleteOutlined style={{ fontSize: "18px" }} />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  <th scope="row">{i + 1}</th>
+                  <td>{e.firstName}</td>
+                  <td>{e.lastName}</td>
+                  <td>{e.username}</td>
+                  <td>{e.role.name}</td>
+                  <td
+                    onClick={() => findUserById(e.id)}
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdropForUpdate"
+                  >
+                    <img
+                      src={updateImg}
+                      alt="updateImg"
+                      width={24}
+                      height={24}
+                    />
+                  </td>
+                  <td
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdropForDelete"
+                  >
+                    <DeleteOutlined style={{ fontSize: "18px" }} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
