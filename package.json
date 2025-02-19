@@ -54,12 +54,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ios_saf >=12"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 2 safari version"
+      "last 2 safari version",
+      "last 3 safari version"
     ]
   }
 }
