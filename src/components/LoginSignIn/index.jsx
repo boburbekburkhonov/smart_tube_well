@@ -61,7 +61,7 @@ const LoginSignIn = () => {
       ) : (
         <>
           <div className="sign_in_title">
-            <h2 className="sign_in_title_heading" style={{color: colors.loginHeadingColor}}>{t("loginData.header")} 123</h2>
+            <h2 className="sign_in_title_heading" style={{color: colors.loginHeadingColor}}>{t("loginData.header")}</h2>
           </div>
           <div className="form">
             <form onSubmit={signIn}>
