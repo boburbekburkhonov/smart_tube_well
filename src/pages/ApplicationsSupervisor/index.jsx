@@ -107,7 +107,6 @@ const ApplicationsSupervisor = () => {
       .slice(0, String(text).split(" ").length - 1)
       .join(" ");
   };
-  console.log(allRequirements);
 
   return (
     <div>

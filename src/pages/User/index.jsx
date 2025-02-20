@@ -153,11 +153,11 @@ const User = () => {
     setOpen(false);
   };
 
-  // useEffect(() => {
-  //   if (!accessToken || role != "user") {
-  //     navigate("/not-found");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!accessToken || role != "user") {
+      navigate("/not-found");
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getUserInformationById(userId, lang));

@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import imageProfile from "../../assets/profile.svg";
+import imageProfile from "../../assets/profile-users.jpg";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import { postDataApi } from "../../utils/refreshDataApi";

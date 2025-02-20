@@ -13,7 +13,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import updateImg from "../../assets/update.png";
-import imageProfile from "../../assets/profile.svg";
+import imageProfile from "../../assets/profile-users.jpg";
 import "./index.css";
 import { toast, ToastContainer } from "react-toastify";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";

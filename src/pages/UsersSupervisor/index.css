@@ -6,15 +6,6 @@
   max-width: 40vw !important;
 }
 
-.modal-content-user-data {
-  min-height: 75vh;
-  overflow: auto;
-}
-.modal-content-user-data-update {
-  min-height: 55vh;
-  overflow: auto;
-}
-
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -22,10 +13,10 @@
   margin-bottom: 20px;
 }
 .profile-header img {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 .profile-container {
