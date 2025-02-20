@@ -88,18 +88,18 @@ const StationsSupervisor = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <h2 className="text-center">
-                {oneStationInfo.name} ma'lumotlari
+              <h2 className="text-center mb-4">
+                {oneStationInfo.name} {t("stationPage.item9")}
               </h2>
 
-              <div className="mb-5 mt-4">
+              <div>
                 <Button
                 className={modalPage == 'info' ? 'btn_stations_modal active_btn_stations_modal' : 'btn_stations_modal'}
                   icon={<EyeOutlined style={{color: modalPage == 'info' ? colors.buttonColor : colors.text}} />}
                   style={{ background: colors.layoutBackground,  color: colors.text, fontSize: "17px", border: `1px solid ${colors.buttonColor}` }}
                   onClick={() => setModalPage('info')}
                 >
-                  Ma'lumotlarini ko'rish
+                  {t("stationPage.item10")}
                 </Button>
 
                 <Button
@@ -108,9 +108,11 @@ const StationsSupervisor = () => {
                   style={{ background: colors.layoutBackground,  color: colors.text, fontSize: "17px", border: `1px solid ${colors.buttonColor}` }}
                   onClick={() => setModalPage('location')}
                 >
-                  Joylashgan koordinatasini ko'rish
+                  {t("stationPage.item11")}
                 </Button>
               </div>
+
+              <div className="my-4" style={{width: '100%', height: '3px', background: "#E5E5E5"}}></div>
 
               <div className="d-flex justify-content-between align-items-center">
                 {modalPage == "info" ? (

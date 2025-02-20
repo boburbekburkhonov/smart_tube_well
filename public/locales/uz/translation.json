@@ -46,13 +46,14 @@
     "item10": "Yangi talabnoma yaratish",
     "item11": "Supervisor",
     "item12": "Suv hajmi (m³)",
-    "item13": "Foydalilik koeffitsienti",
+    "item13": "Foydali ish koeffitsienti",
     "item14": "Status",
     "item15": "Jo'natilgan vaqt",
     "item16": "Bajarilgan vaqt",
     "item17": "Yopish",
     "item18": "Yuborish",
-    "item19": "Real talab qilayotgan suv hajmi"
+    "item19": "Real talab qilayotgan suv hajmi",
+    "item20": "Foydalanuvchi"
   },
   "stationPage": {
     "item1": "Stansiyalarning ma'lumotlari",
@@ -62,7 +63,10 @@
     "item5": "Kod",
     "item6": "Telefon raqami",
     "item7": "Joylashuv koordinatasi",
-    "item8": "Nomi"
+    "item8": "Nomi",
+    "item9": "ma'lumotlari",
+    "item10": "Ma'lumotlarini ko'rish",
+    "item11": "Joylashgan koordinatasini ko'rish"
   },
   "usersPage": {
     "item1": "Foydalanuchilar",

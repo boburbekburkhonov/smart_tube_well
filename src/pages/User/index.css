@@ -2,8 +2,6 @@
 
 .notification-wrapper-is-read li {
   border-bottom: 1px solid #e8eaf1;
-  /* border-left: 2px solid #e8eaf1;
-  border-right: 2px solid #e8eaf1; */
   padding: 10px 7px;
   background: #FDFDFE;
   cursor: pointer;

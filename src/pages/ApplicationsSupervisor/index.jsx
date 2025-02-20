@@ -169,7 +169,7 @@ const ApplicationsSupervisor = () => {
                   }}
                 >
                   <th scope="col">#</th>
-                  <th scope="col">{t("applicationPage.item11")}</th>
+                  <th scope="col">{t("applicationPage.item20")}</th>
                   <th scope="col">{t("applicationPage.item12")}</th>
                   <th scope="col">{t("applicationPage.item13")}</th>
                   <th scope="col">{t("applicationPage.item14")}</th>
@@ -188,7 +188,7 @@ const ApplicationsSupervisor = () => {
                       }}
                     >
                       <th scope="row">{e.requirementNumber}</th>
-                      <td>{e.supervisorUserName}</td>
+                      <td>{e.userName}</td>
                       <td>{e.waterVolume}</td>
                       <td>{e.cop}</td>
                       <td className="d-flex justify-content-center">

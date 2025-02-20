@@ -52,7 +52,8 @@
     "item16": "Time completed",
     "item17": "Close",
     "item18": "Send",
-    "item19": "Actual water demand"
+    "item19": "Actual water demand",
+    "item20": "User"
   },
   "stationPage": {
     "item1": "Station information",
@@ -62,7 +63,10 @@
     "item5": "Code",
     "item6": "Device phone number",
     "item7": "Location coordinate",
-    "item8": "Name"
+    "item8": "Name",
+    "item9": "information",
+    "item10": "View information",
+    "item11": "View location coordinates"
   },
   "usersPage": {
     "item1": "Users",
